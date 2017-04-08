@@ -1,5 +1,5 @@
 {
-  "name": "appid1f2ehg2xdb",
+  "name": "node-elm",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -10,7 +10,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://git.duapp.com/appid1f2ehg2xdb"
+    "url": "https://github.com/bailicangdu/node-elm"
   },
   "author": "",
   "license": "ISC",
