@@ -1,31 +1,40 @@
 {
-  "name": "test",
-  "version": "0.0.1",
-  "description": "test",
+  "name": "appid1f2ehg2xdb",
+  "version": "1.0.0",
+  "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "supervisor --harmony index.js"
+    "dev": "supervisor --harmony index.js",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "NODE_ENV=production node --harmony index.js"
   },
   "repository": {
     "type": "git",
-    "url": "sdf"
+    "url": "https://git.duapp.com/appid1f2ehg2xdb"
   },
-  "keywords": [
-    "sdf"
-  ],
-  "author": "sdfsd",
+  "author": "",
   "license": "ISC",
   "dependencies": {
+    "babel": "^6.23.0",
     "babel-core": "^6.24.0",
     "babel-preset-es2015": "^6.24.0",
     "babel-preset-stage-3": "^6.22.0",
-    "body-parser": "^1.17.1",
-    "cookie-parser": "^1.4.3",
-    "ejs": "^2.5.6",
+    "babel-register": "^6.24.0",
+    "bluebird": "^3.5.0",
+    "config-lite": "^1.5.0",
+    "connect-flash": "^0.1.1",
     "express": "^4.15.2",
-    "express-session": "^1.15.1",
+    "express-session": "^1.15.2",
     "formidable": "^1.1.1",
+    "marked": "^0.3.6",
+    "moment": "^2.18.1",
     "mongodb": "^2.2.25",
+    "mongoose": "^4.9.3",
+    "pm2": "^2.4.3",
+    "sha1": "^1.1.1",
     "supervisor": "^0.12.0"
+  },
+  "devDependencies": {
+    
   }
 }
