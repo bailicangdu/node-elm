@@ -3,8 +3,6 @@
 
 >  nodejs + mongodb 构建的外卖平台后台系统
 
->  目的是构建一个横跨 前端 + 后台 + 原生IOS + 原生Android 的完整电商系统。
-
 >  如果对您对此项目有兴趣，可以点 "Star" 支持一下 谢谢！ ^_^
 
 >  或者您可以 "follow" 一下，我会不断开源更多的有趣的项目
@@ -15,6 +13,10 @@
 
 >  传送门：[原生APP项目地址](https://github.com/bailicangdu/RN-elm)
 
+
+## 技术栈
+
+nodejs + express + mongodb + es6/7 + mocha + bluebird + ejs + bootstrap
 
 
 # 项目运行
@@ -38,7 +40,7 @@ npm run dev  访问: http://localhost:3000
 
 部署服务器采用百度应用引擎BAE基础版
 
-部署方式：[百度BAE部署文档](https://cloud.baidu.com/doc/BAE/GUIGettingStarted.html) 
+部署方式：[百度BAE部署](https://cloud.baidu.com/doc/BAE/GUIGettingStarted.html) 
 
 
 
@@ -48,7 +50,7 @@ npm run dev  访问: http://localhost:3000
 
 - [ ] 静态数据
 - [ ] 定位功能
-- [ ] 选择城市
+- [ ] 城市列表
 - [ ] 搜索地址
 - [ ] 展示所选地址附近商家列表
 - [ ] 搜索美食，餐馆
@@ -70,4 +72,7 @@ npm run dev  访问: http://localhost:3000
 - [ ] 服务中心
 - [ ] 红包
 - [ ] 上传头像
-- [ ] 付款
+- [ ] 调用支付宝支付
+- [ ] 调用微信支付
+- [ ] 后台管理系统
+- [ ] 部署上线
