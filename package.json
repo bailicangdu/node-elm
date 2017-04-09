@@ -16,6 +16,7 @@
   "license": "ISC",
   "dependencies": {
     "babel": "^6.23.0",
+    "babel-cli": "^6.24.1",
     "babel-core": "^6.24.0",
     "babel-preset-es2015": "^6.24.0",
     "babel-preset-stage-3": "^6.22.0",
@@ -35,6 +36,9 @@
     "supervisor": "^0.12.0"
   },
   "devDependencies": {
-    
+    "babel-plugin-transform-async-to-generator": "^6.24.1",
+    "babel-plugin-transform-es2015-classes": "^6.24.1",
+    "babel-plugin-transform-es2015-modules-commonjs": "^6.24.1",
+    "babel-plugin-transform-export-extensions": "^6.22.0"
   }
 }

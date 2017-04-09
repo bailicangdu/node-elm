@@ -1,8 +1,11 @@
-const mongoose = require('mongoose');
+'use strict';
+
+import mongoose from 'mongoose'
+
 const foodSchema = new mongoose.Schema({
 	name: String
 })
 
 const Food = mongoose.model('Food', foodSchema)
 
-module.exports = Food;
+export default Food
