@@ -36,12 +36,11 @@ npm run dev  访问: http://localhost:3000
 
 # 部署
 
-```
 部署服务器采用百度应用引擎BAE基础版
 
 部署方式：[百度BAE部署文档](https://cloud.baidu.com/doc/BAE/GUIGettingStarted.html) 
 
-```
+
 
 
 
