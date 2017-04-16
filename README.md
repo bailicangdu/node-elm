@@ -80,6 +80,7 @@ npm run dev  访问: http://localhost:3000
 
 
 # 项目布局
+```
 .
 ├── config                                  // 配置文件目录
 │   ├── default.js                          // 默认配置
@@ -145,7 +146,7 @@ npm run dev  访问: http://localhost:3000
 ├── package.json                             // 配置文件
 .
 
-
+```
 .
 ├── README.md
 ├── app.conf
