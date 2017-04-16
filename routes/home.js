@@ -6,9 +6,21 @@ const router = express.Router();
 
 router.get('/', async (req, res) => {
 	
-	const foods = await Food.findOne();
+	let foods = await Food.findOne();
+	if(!foods){
+		const test = new Food({name: '测试'});
+		try{
+			await test.save();
+			foods = await Food.findOne();
+		}catch(err){
+			throw new Error(err);
+		}
+	}
 	res.send(foods.toString());
 	
 });
 
+router.get('/a', (req, res, next) => {
+	res.json({a: 1111})
+})
 export default router;

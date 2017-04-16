@@ -12,7 +12,7 @@
     "type": "git",
     "url": "https://github.com/bailicangdu/node-elm"
   },
-  "author": "",
+  "author": "cangdu",
   "license": "ISC",
   "dependencies": {
     "babel": "^6.23.0",
@@ -24,8 +24,10 @@
     "bluebird": "^3.5.0",
     "config-lite": "^1.5.0",
     "connect-flash": "^0.1.1",
+    "connect-mongo": "^1.3.2",
     "express": "^4.15.2",
     "express-session": "^1.15.2",
+    "express-winston": "^2.3.0",
     "formidable": "^1.1.1",
     "marked": "^0.3.6",
     "moment": "^2.18.1",
@@ -33,7 +35,8 @@
     "mongoose": "^4.9.3",
     "pm2": "^2.4.3",
     "sha1": "^1.1.1",
-    "supervisor": "^0.12.0"
+    "supervisor": "^0.12.0",
+    "winston": "^2.3.1"
   },
   "devDependencies": {
     "babel-plugin-transform-async-to-generator": "^6.24.1",

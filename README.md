@@ -16,7 +16,7 @@
 
 ## 技术栈
 
-nodejs + express + mongodb + es6/7 + mocha + bluebird + ejs + bootstrap
+nodejs + express + mongodb + mongoose + es6/7 + mocha + bluebird + ejs + bootstrap
 
 
 # 项目运行
@@ -38,9 +38,10 @@ npm run dev  访问: http://localhost:3000
 
 # 部署
 
-部署服务器采用百度应用引擎BAE基础版
+部署服务器--百度应用引擎BAE基础版
 
 部署方式：[百度BAE部署](https://cloud.baidu.com/doc/BAE/GUIGettingStarted.html) 
+
 
 
 
@@ -76,3 +77,70 @@ npm run dev  访问: http://localhost:3000
 - [ ] 调用微信支付
 - [ ] 后台管理系统
 - [ ] 部署上线
+
+
+# 项目布局
+.
+├── config                                  // 配置文件目录
+│   ├── default.js                          // 默认配置
+│   └── production.js                       // 生产环节配置文件
+├── controller                              // 负责路由操作的具体执行
+│   ├── bos
+│   ├── eus
+│   ├── food.js
+│   ├── member
+│   ├── payapi
+│   ├── promotion
+│   ├── shopping
+│   ├── ugc
+│   ├── v1
+│   ├── v2
+│   ├── v3
+│   └── v4
+├── logs                                    // 日志文件
+│   └── success.log
+├── middlewares                             // 路由中间件
+│   └── userStatus.js
+├── models                                  // 数据模型
+│   ├── bos
+│   ├── eus
+│   ├── food.js
+│   ├── member
+│   ├── payapi
+│   ├── promotion
+│   ├── shopping
+│   ├── ugc
+│   ├── v1
+│   ├── v2
+│   ├── v3
+│   └── v4
+├── mongodb                                  // 连接 mongodb
+│   └── db.js
+├── public                                   // 静态资源目录
+│   ├── css
+│   ├── elm                                  // 前端项目地址
+│   ├── img
+│   └── js
+├── routes                                   // 路由控制中心
+│   ├── bos.js
+│   ├── eus.js
+│   ├── home.js
+│   ├── index.js
+│   ├── member.js
+│   ├── payapi.js
+│   ├── promotion.js
+│   ├── shopping.js
+│   ├── ugc.js
+│   ├── v1.js
+│   ├── v2.js
+│   ├── v3.js
+│   └── v4.js
+├─── test                                    // 测试
+├─── views                                   // 后台管理系统页面
+├── .babelrc                                 // 配置babel
+├── .gitignore                               // 设置忽略文件
+├── app.conf                                 // 百度BAE部署所需配置文件
+├── app.js                                   // 基础配置
+├── index.js                                 // 入口
+├── package.json                             // 配置文件
+.
