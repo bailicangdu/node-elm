@@ -119,7 +119,7 @@ npm run dev  访问: http://localhost:3000
 │   └── db.js
 ├── public                                   // 静态资源目录
 │   ├── css
-│   ├── elm                                  // 前端项目地址
+│   ├── elm                                  // 前端页面
 │   ├── img
 │   └── js
 ├── routes                                   // 路由控制中心
