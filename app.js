@@ -74,6 +74,6 @@ const app = express();
 // });
 // 
 app.get('/', function (req, res, next){
-	res.send('sdfsdfsdfsfsdsf')
+	res.send('啊啊啊啊啊')
 })
 app.listen(config.port);
