@@ -1,10 +1,9 @@
 'use strict';
 
 import express from 'express';
+import CityHandle from '../controller/v1/cities'
 const router = express.Router();
 
-router.get('/cities', (req, res, next) => {
-	res.send('2323132131')
-});
+router.get('/cities', CityHandle.cityGuess);
 
 export default router
