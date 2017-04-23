@@ -37,36 +37,36 @@ app.use(session({
 }))
 
 app.use((req, res, next) => {
-  res.locals.user = req.session.user;
-  res.locals.success = req.flash('success').toString();
-  res.locals.error = req.flash('error').toString();
-  next();
+    res.locals.user = req.session.user;
+    res.locals.success = req.flash('success').toString();
+    res.locals.error = req.flash('error').toString();
+    next();
 });
 
 app.use(expressWinston.logger({
-  transports: [
-    new (winston.transports.Console)({
-      json: true,
-      colorize: true
-    }),
-    new winston.transports.File({
-      filename: 'logs/success.log'
-    })
-  ]
+    transports: [
+        new (winston.transports.Console)({
+          json: true,
+          colorize: true
+        }),
+        new winston.transports.File({
+          filename: 'logs/success.log'
+        })
+    ]
 }));
 
 router(app);
 
 app.use(expressWinston.errorLogger({
-  transports: [
-    new winston.transports.Console({
-      json: true,
-      colorize: true
-    }),
-    new winston.transports.File({
-      filename: 'logs/error.log'
-    })
-  ]
+    transports: [
+        new winston.transports.Console({
+          json: true,
+          colorize: true
+        }),
+        new winston.transports.File({
+          filename: 'logs/error.log'
+        })
+    ]
 }));
 
 app.use((err, req, res, next) => {
