@@ -1,6 +1,6 @@
 'use strict';
 
-export default {
+module.exports = {
 	port: 80,
 	url: 'mongodb://localhost:27017/elm'
 }
