@@ -18,11 +18,16 @@ class CityHandle {
 		let cityInfo;
 		switch (type){
 			case 'guess': 
-				cityInfo = await Cities.cityGuess('SH');
-
-
+				cityInfo = await Cities.cityGuess('shanghai');
+				break;
+			case 'hot': 
+				cityInfo = await Cities.cityHot();
+				break;
+			case 'group': 
+				cityInfo = await Cities.cityGroup();
+				break;
 		}
-		res.json(cityInfo)
+		res.send(cityInfo)
 	}
 }
 
