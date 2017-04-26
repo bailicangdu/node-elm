@@ -34,11 +34,13 @@ class CityHandle {
 		res.send(cityInfo)
 	}
 	getCityName(req){
-		const ip = req.headers['x-forwarded-for'] || 
+		let ip = req.headers['x-forwarded-for'] || 
  		req.connection.remoteAddress || 
  		req.socket.remoteAddress ||
  		req.connection.socket.remoteAddress;
- 		console.log(ip.toString())
+ 		const ipArr = ip.split(':')[2];
+ 		ip = ipArr[ipArr.length -1];
+ 		console.log(ip)
      	//调用阿里云接口
 		http.get('http://saip.market.alicloudapi.com/ip?ip=' + ip,function(req,res){  
 		    var html='';  
