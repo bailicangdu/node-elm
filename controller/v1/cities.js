@@ -41,7 +41,6 @@ class CityHandle {
 	 		req.connection.socket.remoteAddress;
 	 		const ipArr = ip.split(':');
 	 		ip = ipArr[ipArr.length -1];
-	 		ip = "116.231.55.195";
 	     	//调用新浪接口
 			http.get('http://int.dpool.sina.com.cn/iplookup/iplookup.php?format=js&ip=' + ip, 
 				(req,res) => {  
