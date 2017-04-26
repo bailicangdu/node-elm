@@ -19,7 +19,7 @@
 nodejs + express + mongodb + mongoose + es6/7 + mocha + bluebird + ejs + bootstrap
 
 
-# 项目运行
+## 项目运行
 
 
 ```
@@ -36,14 +36,14 @@ npm run dev  访问: http://localhost:3000
 ```
 
 
-# 部署
+## 部署
 
 部署服务器--阿里云(百度BAE太坑，已弃用)
 
 
 
 
-# 目标功能
+## 目标功能
 
 - [ ] 静态数据
 - [ ] 定位功能
@@ -74,7 +74,7 @@ npm run dev  访问: http://localhost:3000
 - [ ] 部署上线
 
 
-# 项目布局
+## 项目布局
 ```
 .
 ├── config                                  // 配置文件目录
@@ -142,3 +142,7 @@ npm run dev  访问: http://localhost:3000
 .
 
 ```
+
+## License
+
+[MIT](LICENSE)
