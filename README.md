@@ -145,4 +145,4 @@ npm run dev  访问: http://localhost:3000
 
 ## License
 
-[MIT](LICENSE)
+[MIT](https://mit-license.org/)
