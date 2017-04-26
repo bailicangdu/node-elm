@@ -38,7 +38,7 @@ class CityHandle {
  		req.connection.remoteAddress || 
  		req.socket.remoteAddress ||
  		req.connection.socket.remoteAddress;
- 		const ipArr = ip.split(':')[2];
+ 		const ipArr = ip.split(':');
  		ip = ipArr[ipArr.length -1];
  		console.log(ip)
      	//调用阿里云接口
