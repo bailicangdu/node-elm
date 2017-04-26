@@ -38,6 +38,7 @@ class CityHandle {
  		req.connection.remoteAddress || 
  		req.socket.remoteAddress ||
  		req.connection.socket.remoteAddress;
+ 		console.log(ip.toString())
      	//调用阿里云接口
 		http.get('http://saip.market.alicloudapi.com/ip?ip=' + ip,function(req,res){  
 		    var html='';  
