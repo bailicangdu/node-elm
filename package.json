@@ -6,7 +6,8 @@
   "scripts": {
     "dev": "supervisor --harmony index.js",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "NODE_ENV=production node --harmony index.js"
+    "start": "NODE_ENV=production pm2 start index.js --node-args='--harmony' --name 'node-elm'",
+    "stop": "NODE_ENV=production pm2 stop index.js --node-args='--harmony' --name 'node-elm'"
   },
   "repository": {
     "type": "git",
