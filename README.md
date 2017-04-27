@@ -1,7 +1,12 @@
 
+# 前言
+
+此项目是 [vue2-elm](https://github.com/bailicangdu/vue2-elm) 的后台系统，尽量保持和前台一致的API接口，这个流程从登陆注册到下单付款。
+
+
 # 说明
 
->  nodejs + mongodb 构建的外卖平台后台系统
+>  如果对您对此项目有兴趣，可以点 "Star" 支持一下 谢谢！ ^_^
 
 >  如果对您对此项目有兴趣，可以点 "Star" 支持一下 谢谢！ ^_^
 
@@ -9,14 +14,12 @@
 
 >  开发环境 macOS 10.12.4  nodejs 6.10.2
 
->  传送门：[前端项目地址](https://github.com/bailicangdu/vue2-elm)
-
->  传送门：[原生APP项目地址](https://github.com/bailicangdu/RN-elm)
+>  传送门：[前端项目地址](https://github.com/bailicangdu/vue2-elm) 传送门：[后台管理系统地址](https://github.com/bailicangdu/back-manage) 传送门：[原生APP项目地址](https://github.com/bailicangdu/RN-elm)
 
 
 ## 技术栈
 
-nodejs + express + mongodb + mongoose + es6/7 + mocha + bluebird + ejs + bootstrap
+nodejs + express + mongodb + mongoose + es6/7 + mocha + bluebird + bootstrap
 
 
 ## 项目运行
@@ -31,14 +34,16 @@ npm install
 
 开启 mongodb
 
-npm run dev  访问: http://localhost:3000
+npm run dev 
+
+访问: http://localhost:8001
 
 ```
 
 
 ## 部署
 
-部署服务器--阿里云(百度BAE太坑，已弃用)
+部署服务器--阿里云
 
 
 
