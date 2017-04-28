@@ -54,15 +54,18 @@ class CityHandle {
 			}catch(err){
 				console.log(err)
 			}
-			const cityInfo = JSON.parse(res.split('=')[1].toString().replace(';', ''))
+			const cityInfo = JSON.parse(res.split('=')[1].toString().replace(';', ''));
+			/*
+			汉字转换成拼音
+			 */
 	        const pinyinArr = pinyin(cityInfo.city, {
 			  	style: pinyin.STYLE_NORMAL,
 			});
-			let city = '';
+			let cityName = '';
 			pinyinArr.forEach(item => {
-				city += item[0];
+				cityName += item[0];
 			})
-			resolve(city)
+			resolve(cityName)
 		})
 	}
 }
