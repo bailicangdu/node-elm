@@ -9,31 +9,50 @@ import BaseComponent from '../../prototype/baseComponent'
 class CityHandle extends BaseComponent{
 	constructor(){
 		super()
-		this.cityGuess = this.cityGuess.bind(this);
+		this.getCity = this.getCity.bind(this);
 	}
-	async cityGuess(req, res, next){
+	async getCity(req, res, next){
 		const type = req.query.type;
-		if (!type) {
+		let cityInfo;
+		try{
+			switch (type){
+				case 'guess': 
+					const city = await this.getCityName(req);
+					cityInfo = await Cities.cityGuess(city);
+					break;
+				case 'hot': 
+					cityInfo = await Cities.cityHot();
+					break;
+				case 'group': 
+					cityInfo = await Cities.cityGroup();
+					break;
+				default: 
+					res.json({
+						name: 'ERROR_QUERY_TYPE',
+						message: '参数错误',
+					})
+					return
+			}
+			res.send(cityInfo);
+		}catch(err){
+			res.send(err);
+		}
+	}
+	async getCityById(req, res, next){
+		const cityid = req.params.id;
+		if (isNaN(cityid)) {
 			res.json({
-				name: 'ERROR_QUERY_TYPE',
+				name: 'ERROR_PARAM_TYPE',
 				message: '参数错误',
 			})
-			return 
+			return
 		}
-		let cityInfo;
-		switch (type){
-			case 'guess': 
-				const city = await this.getCityName(req);
-				cityInfo = await Cities.cityGuess(city);
-				break;
-			case 'hot': 
-				cityInfo = await Cities.cityHot();
-				break;
-			case 'group': 
-				cityInfo = await Cities.cityGroup();
-				break;
+		try{
+			const cityInfo = await Cities.getCityById(cityid);
+			res.send(cityInfo);
+		}catch(err){
+			res.send(err);
 		}
-		res.send(cityInfo)
 	}
 	getCityName(req){
 		return new Promise(async (resolve, reject) => {
