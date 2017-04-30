@@ -4,7 +4,7 @@ export default class BaseComponent {
 	constructor(){
 
 	}
-	async fetch(type = 'GET', url = '', data = {}, resType = 'JSON'){
+	async fetch(url = '', data = {}, type = 'GET', resType = 'JSON'){
 		type = type.toUpperCase();
 		resType = resType.toUpperCase();
 		if (type == 'GET') {

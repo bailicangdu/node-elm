@@ -1,7 +1,6 @@
 'use strict';
 
 import Cities from '../../models/v1/cities';
-import http from 'http';
 import pinyin from "pinyin";  
 import BaseComponent from '../../prototype/baseComponent'
 
@@ -67,7 +66,7 @@ class CityHandle extends BaseComponent{
 	 		调用新浪接口，获取ip地址信息
 	 		 */
 			const url = 'http://int.dpool.sina.com.cn/iplookup/iplookup.php';
-			let res = await this.fetch('GET', url , {format: 'js', ip,}, 'TEXT');
+			let res = await this.fetch(url , {format: 'js', ip,}, 'GET', 'TEXT');
 			const cityInfo = JSON.parse(res.split('=')[1].toString().replace(';', ''));
 			/*
 			汉字转换成拼音
