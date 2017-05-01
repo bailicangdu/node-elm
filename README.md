@@ -75,7 +75,7 @@ npm run dev
 
 ## 接口文档
 
-#### 目录:
+### 目录:
 [1. 获取城市列表](#api_1) 
 
 
@@ -83,7 +83,7 @@ npm run dev
 说明：baseUrl: http:www.cangdu.org
 ```
 
-##### 1.获取城市列表
+#### 1.获取城市列表
 
 - **请求URL**
 > [baseUrl + '/v1/cities'](#)
