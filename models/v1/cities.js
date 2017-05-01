@@ -33,7 +33,7 @@ citySchema.statics.cityGuess = function(name){
 				name: 'ERROR_DATA',
 				message: '查找数据失败',
 			});
-			console.log(err);
+			console.error(err);
 		}
 	})
 }
@@ -48,7 +48,7 @@ citySchema.statics.cityHot = function (){
 				name: 'ERROR_DATA',
 				message: '查找数据失败',
 			});
-			console.log(err);
+			console.error(err);
 		}
 	})
 }
@@ -66,7 +66,7 @@ citySchema.statics.cityGroup = function (){
 				name: 'ERROR_DATA',
 				message: '查找数据失败',
 			});
-			console.log(err);
+			console.error(err);
 		}
 	})
 }
@@ -89,7 +89,7 @@ citySchema.statics.getCityById = function(id){
 				name: 'ERROR_DATA',
 				message: '查找数据失败',
 			});
-			console.log(err);
+			console.error(err);
 		}
 	})
 }

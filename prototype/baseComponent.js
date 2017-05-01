@@ -33,14 +33,16 @@ export default class BaseComponent {
 			})
 		}
 		let responseJson;
+		console.log(url)
 		try {
-			let response = await fetch(url, requestConfig);
+			const response = await fetch(url, requestConfig);
 			if (resType === 'TEXT') {
 				responseJson = await response.text();
 			}else{
 				responseJson = await response.json();
 			}
 		} catch (error) {
+			console.error(error)
 			throw new Error(error)
 		}
 		return responseJson

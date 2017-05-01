@@ -61,7 +61,7 @@ class CityHandle extends BaseComponent{
 	 		req.connection.socket.remoteAddress;
 	 		const ipArr = ip.split(':');
 	 		ip = ipArr[ipArr.length -1];
-	 		ip = '116.231.55.195';
+	 		//ip = '116.231.55.195';
 	 		/*
 	 		调用新浪接口，获取ip地址信息
 	 		 */

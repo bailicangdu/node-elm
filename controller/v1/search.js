@@ -3,9 +3,11 @@
 import BaseComponent from '../../prototype/baseComponent';
 import Cities from '../../models/v1/cities';
 
+
 class SearchPlace extends BaseComponent{
 	constructor(){
 		super()
+		this.search = this.search.bind(this)
 	}
 	async search(req, res, next){
 		const {type, city_id, keyword} = req.query;
@@ -18,20 +20,31 @@ class SearchPlace extends BaseComponent{
 		}
 		try{
 			const cityInfo = await Cities.getCityById(city_id);
-			const aaa = await this.fetch('http://restapi.amap.com/v3/place/text?key=e1467cff48d3359df43012aa8c3a252b&keywords=北京大学&types=141201&city=北京&children=1&offset=20&page=1&extensions=all')
-			// const resList = await this.fetch(http://restapi.amap.com/v3/place/text', {
-			// 	key: 'e1467cff48d3359df43012aa8c3a252b',
-			// 	keywords: keyword,
-			// 	types: 141201,
-			// 	city: cityInfo.name,
-			// 	children: 1,
-			// 	offset: 10,
-			// 	page: 1,
-			// 	extensions: 'all',
-			// })
-			res.send(aaa);
+			/*
+			调用腾讯地图api
+			 */
+			const resObj = await this.fetch('http://apis.map.qq.com/ws/place/v1/search', {
+				key: 'RLHBZ-WMPRP-Q3JDS-V2IQA-JNRFH-EJBHL',
+				keyword: encodeURIComponent(keyword),
+				boundary: 'region(' + encodeURIComponent(cityInfo.name) + ',0)',
+				page_size: 10,
+			});
+			const resArr = [];
+			resObj.data.forEach((item, index) => {
+				resArr.push({
+					name: item.title,
+					address: item.address,
+					latitude: item.location.lat,
+					longitude: item.location.lng,
+					geohash: item.location.lat + ',' + item.location.lng,
+				})
+			});
+			res.send(resArr);
 		}catch(err){
-			res.send(err);
+			res.send({
+				name: 'GET_ADDRESS_ERROR',
+				message: '获取地址信息失败',
+			});
 		}
 	}
 }
