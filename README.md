@@ -83,6 +83,7 @@ npm run dev
 ```
 
 <span id="api_1">1.获取城市列表</span>
+
 |参数|是否必选|类型|说明|
 |:-----|:-------|:-----|:-----|
 |type      |Y       |string   |类型 guess：定位城市  hot：热门城市 group：所有城市 |
