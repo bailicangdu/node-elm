@@ -164,7 +164,7 @@ npm run dev
 **请求方式**
 >**GET**
 
-**请求参数 **
+**请求参数**
 
 |参数|是否必选|类型|说明|
 |:-----|:-------:|:-----|:-----|
@@ -216,10 +216,11 @@ npm run dev
   pinyin: "shanghai"
 }
 ```
-### 2.获取所选地址信息
+
+### 3.搜索地址
 
 **请求URL**
-> baseUrl + '/v1/cities/:id'
+> baseUrl + '/v1/pois'
 
 **请求方式** 
 >**GET**
@@ -229,22 +230,30 @@ npm run dev
 >
 |参数|是否必选|类型|说明|
 |:-----|:-------:|:-----|:-----|
-|id      |Y       |int   |城市id |
+|city_id      |Y       |int   |城市id |
+|keyword      |Y       |string   |搜索关键词 |
+|type      |N       |string   |搜索类型，默认为search |
 
 **返回示例**
 >    
 ```javascript 
-{
-  id: 1,
-  name: "上海",
-  abbr: "SH",
-  area_code: "021",
-  sort: 1,
-  latitude: 31.23037,
-  longitude: 121.473701,
-  is_map: true,
-  pinyin: "shanghai"
-}
+[
+    {
+        name: "上海迪士尼乐园",
+        address: "上海市浦东新区申迪西路753号",
+        latitude: 31.14419,
+        longitude: 121.66034,
+        geohash: "31.14419,121.66034"
+    },
+    {
+        name: "迪士尼",
+        address: "上海市浦东新区妙境路1118号家乐福川沙店1层",
+        latitude: 31.18183,
+        longitude: 121.69279,
+        geohash: "31.18183,121.69279"
+    },
+    ...  //共10个数据
+]
 ```
 
 
