@@ -83,46 +83,34 @@ npm run dev
 说明：baseUrl: http:www.cangdu.org
 ```
 
-<span id="api_1">1.获取城市列表</span>
+#### 1.获取城市列表
 
-URL
->   baseUrl + '/v1/cities'
+- **请求URL**
+> [baseUrl + '/v1/cities'](#)
 
-参数
+- **请求方式** 
+>**GET**
 
+- **请求参数**
+
+>
 |参数|是否必选|类型|说明|
 |:-----|:-------|:-----|:-----|
-|type      |Y       |string   |类型 guess：定位城市  hot：热门城市 group：所有城市 |
+|type      |Y       |<mark>string</mark>   |类型 guess：定位城市  hot：热门城市 group：所有城市 |
 
-#### 鎺ュ彛璇存槑 **1銆�**鏂板鏈哄櫒浜�
-
-- **璇锋眰URL**
-> [api/v2/operating/newRobot](#)
-
-- **璇锋眰鏂瑰紡** 
->**POST**
-
-- **璇锋眰鍙傛暟**
->
- | 璇锋眰鍙傛暟      |     鍙傛暟绫诲瀷 |   鍙傛暟璇存槑   |
-| :-------- | :--------| :------ |
-| uid|  <mark>Long,**涓嶅彲涓虹┖**</mark>|  鏈哄櫒浜篣ID|
-| status|   Integer,鍙负绌簗  鏈哄櫒浜哄彲鐢ㄦ€�,榛樿鍙敤  **-1.涓嶅彲浣跨敤 1.鍙敤**|
-
-- **杩斿洖鍙傛暟**
-> | 杩斿洖鍙傛暟      |     鍙傛暟绫诲瀷 |   鍙傛暟璇存槑   |
-| :-------- | :--------| :------ |
-| success|   boolean|  璇锋眰鎴愬姛涓庡惁|
-| code|   Integer|  鎵ц缁撴灉code|
-| message|   String|  鎵ц缁撴灉娑堟伅|
-
-- **杩斿洖绀轰緥**
+- **返回示例**
 >    
-```java 
+```javascript 
 {
-  "success": true,
-  "code": 200,
-  "message": "鎿嶄綔姝ｇ‘"
+  id: 1,
+  name: "上海",
+  abbr: "SH",
+  area_code: "021",
+  sort: 1,
+  latitude: 31.23037,
+  longitude: 121.473701,
+  is_map: true,
+  pinyin: "shanghai"
 }
 ```
 
