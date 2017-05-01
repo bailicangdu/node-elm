@@ -10,8 +10,8 @@ class SearchPlace extends BaseComponent{
 		this.search = this.search.bind(this)
 	}
 	async search(req, res, next){
-		const {type, city_id, keyword} = req.query;
-		if (!type || isNaN(city_id) || !keyword) {
+		const {type = 'search', city_id, keyword} = req.query;
+		if (isNaN(city_id) || !keyword) {
 			res.send({
 				name: 'ERROR_QUERY_TYPE',
 				message: '参数错误',
