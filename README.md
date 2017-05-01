@@ -175,7 +175,7 @@ npm run dev
 
 **返回示例**
 >    
-```javascript 
+```json
 {
   id: 1,
   name: "上海",
@@ -206,7 +206,7 @@ npm run dev
 
 **返回示例**
 >    
-```javascript 
+```json
 {
   id: 1,
   name: "上海",
@@ -239,7 +239,7 @@ npm run dev
 
 **返回示例**
 >    
-```javascript 
+```json
 [
     {
         name: "上海迪士尼乐园",
