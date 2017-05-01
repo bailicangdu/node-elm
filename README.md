@@ -75,12 +75,17 @@ npm run dev
 
 ## 接口文档
 
-| 左对齐 | 居中  | 右对齐 |
-| :------------ |:---------------:| -----:|
-| col 3 is      | some wordy text | $1600 |
-| col 2 is      | centered        |   $12 |
-| zebra stripes | are neat        |    $1 |
+[1. 获取城市列表](#api_1) 
 
+
+```
+说明：baseUrl: http:www.cangdu.org
+```
+
+<span id="api_1">1.获取城市列表</span>
+|参数|是否必选|类型|说明|
+|:-----|:-------|:-----|-----|
+|type      |Y       |string   |类型 guess：定位城市  hot：热门城市 group：所有城市 |
 
 
 
