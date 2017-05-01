@@ -73,51 +73,6 @@ npm run dev
 - [ ] 部署上线
 
 
-## 接口文档
-
-### 目录:
-[1. 获取城市列表](#api_1) 
-
-
-```
-说明：baseUrl: http:www.cangdu.org
-```
-
-#### 1.获取城市列表
-
-- **请求URL**
-> [baseUrl + '/v1/cities'](#)
-
-- **请求方式** 
->**GET**
-
-- **请求参数**
-
->
-|参数|是否必选|类型|说明|
-|:-----|:-------:|:-----|:-----|
-|type      |Y       |<mark>string</mark>   |类型 guess：定位城市  hot：热门城市 group：所有城市 |
-
-- **返回示例**
->    
-```javascript 
-{
-  id: 1,
-  name: "上海",
-  abbr: "SH",
-  area_code: "021",
-  sort: 1,
-  latitude: 31.23037,
-  longitude: 121.473701,
-  is_map: true,
-  pinyin: "shanghai"
-}
-```
-
-
-## 部署
-
-部署服务器--阿里云
 
 
 
@@ -189,6 +144,49 @@ npm run dev
 .
 
 ```
+
+
+## 接口文档
+
+### 目录:
+[1. 获取城市列表](#api_1) 
+
+
+```
+说明：baseUrl: http:www.cangdu.org
+```
+
+#### 1.获取城市列表
+
+- **请求URL**
+> baseUrl + '/v1/cities'
+
+- **请求方式** 
+>**GET**
+
+- **请求参数**
+
+>
+|参数|是否必选|类型|说明|
+|:-----|:-------:|:-----|:-----|
+|type      |Y       |<mark>string</mark>   |类型 guess：定位城市  hot：热门城市 group：所有城市 |
+
+- **返回示例**
+>    
+```javascript 
+{
+  id: 1,
+  name: "上海",
+  abbr: "SH",
+  area_code: "021",
+  sort: 1,
+  latitude: 31.23037,
+  longitude: 121.473701,
+  is_map: true,
+  pinyin: "shanghai"
+}
+```
+
 
 ## License
 
