@@ -152,4 +152,4 @@ npm run dev
 
 ### License
 
-[MIT](https://mit-license.org/)
+[MIT](https://github.com/bailicangdu/node-elm/blob/master/LICENSE)
