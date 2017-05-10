@@ -57,7 +57,6 @@ class CityHandle extends AddressComponent{
 		let cityInfo;
 		try{
 			cityInfo = await this.guessPosition(req);
-			console.log(cityInfo)
 		}catch(err){
 			console.error()
 		}

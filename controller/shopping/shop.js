@@ -8,6 +8,7 @@ class Shop extends AddressComponent{
 	constructor(){
 		super()
 		this.addShop = this.addShop.bind(this);
+		this.uploadShopImg = this.uploadShopImg.bind(this);
 	}
 	async addShop(req, res, next){
 		let shopId;
@@ -21,7 +22,6 @@ class Shop extends AddressComponent{
 			return
 		}
 		const form = new formidable.IncomingForm();
-		form.uploadDir = './img/shop';
 		form.parse(req, async (err, fields, files) => {
 			try{
 				if (!fields.name) {
@@ -138,10 +138,24 @@ class Shop extends AddressComponent{
 					name: "开发票"
 				})
 			}
-			console.log(newShop)
 			res.send(newShop)
 			return
 		})
+	}
+	async uploadShopImg(req, res, next){
+		try{
+			let path = await this.uploadImg(req, 'shop');
+			res.send({
+				status: 1,
+				image_path: path
+			})
+		}catch(err){
+			res.send({
+				type: 'ERROR_PATH',
+				message: '上传头像失败',
+				status: 0,
+			})
+		}
 	}
 }
 
