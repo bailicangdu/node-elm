@@ -2,10 +2,10 @@
 
 import Cities from '../../models/v1/cities';
 import pinyin from "pinyin";  
-import BaseComponent from '../../prototype/baseComponent'
+import AddressComponent from '../../prototype/addressComponent'
 
 
-class CityHandle extends BaseComponent{
+class CityHandle extends AddressComponent{
 	constructor(){
 		super()
 		this.getCity = this.getCity.bind(this);
@@ -53,35 +53,25 @@ class CityHandle extends BaseComponent{
 			res.send(err);
 		}
 	}
-	getCityName(req){
-		return new Promise(async (resolve, reject) => {
-			let ip = req.headers['x-forwarded-for'] || 
-	 		req.connection.remoteAddress || 
-	 		req.socket.remoteAddress ||
-	 		req.connection.socket.remoteAddress;
-	 		const ipArr = ip.split(':');
-	 		ip = ipArr[ipArr.length -1];
-	 		if (process.env.NODE_ENV == 'development') {
-	 			ip = '116.231.55.195';
-	 		}
-	 		/*
-	 		调用新浪接口，获取ip地址信息
-	 		 */
-			const url = 'http://int.dpool.sina.com.cn/iplookup/iplookup.php';
-			let res = await this.fetch(url , {format: 'js', ip,}, 'GET', 'TEXT');
-			const cityInfo = JSON.parse(res.split('=')[1].toString().replace(';', ''));
-			/*
-			汉字转换成拼音
-			 */
-	        const pinyinArr = pinyin(cityInfo.city, {
-			  	style: pinyin.STYLE_NORMAL,
-			});
-			let cityName = '';
-			pinyinArr.forEach(item => {
-				cityName += item[0];
-			})
-			resolve(cityName)
+	async getCityName(req){
+		let cityInfo;
+		try{
+			cityInfo = await this.guessPosition(req);
+			console.log(cityInfo)
+		}catch(err){
+			console.error()
+		}
+		/*
+		汉字转换成拼音
+		 */
+        const pinyinArr = pinyin(cityInfo.city, {
+		  	style: pinyin.STYLE_NORMAL,
+		});
+		let cityName = '';
+		pinyinArr.forEach(item => {
+			cityName += item[0];
 		})
+		return cityName
 	}
 }
 export default new CityHandle()

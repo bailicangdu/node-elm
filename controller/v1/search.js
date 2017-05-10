@@ -1,10 +1,10 @@
 'use strict';
 
-import BaseComponent from '../../prototype/baseComponent';
+import AddressComponent from '../../prototype/addressComponent';
 import Cities from '../../models/v1/cities';
 
 
-class SearchPlace extends BaseComponent{
+class SearchPlace extends AddressComponent{
 	constructor(){
 		super()
 		this.search = this.search.bind(this)
@@ -20,18 +20,10 @@ class SearchPlace extends BaseComponent{
 		}
 		try{
 			const cityInfo = await Cities.getCityById(city_id);
-			/*
-			调用腾讯地图api
-			 */
-			const resObj = await this.fetch('http://apis.map.qq.com/ws/place/v1/search', {
-				key: 'RLHBZ-WMPRP-Q3JDS-V2IQA-JNRFH-EJBHL',
-				keyword: encodeURIComponent(keyword),
-				boundary: 'region(' + encodeURIComponent(cityInfo.name) + ',0)',
-				page_size: 10,
-			});
-			const resArr = [];
+			const resObj = await this.searchPlace(keyword, cityInfo.name);
+			const cityList = [];
 			resObj.data.forEach((item, index) => {
-				resArr.push({
+				cityList.push({
 					name: item.title,
 					address: item.address,
 					latitude: item.location.lat,
@@ -39,7 +31,7 @@ class SearchPlace extends BaseComponent{
 					geohash: item.location.lat + ',' + item.location.lng,
 				})
 			});
-			res.send(resArr);
+			res.send(cityList);
 		}catch(err){
 			res.send({
 				name: 'GET_ADDRESS_ERROR',

@@ -18,8 +18,8 @@ const shopSchema = new mongoose.Schema({
 		text: String
 	},
 	description: { type: String, default: "" },
-	float_delivery_fee: Number,
-	float_minimum_order_amount: Number,
+	float_delivery_fee: { type: Number, default: 0 },
+	float_minimum_order_amount: { type: Number, default: 0 },
 	id: Number,
 	identification: {
 		company_name: { type: String, default: "" },
@@ -39,14 +39,14 @@ const shopSchema = new mongoose.Schema({
 	latitude: Number,
 	longitude: Number,
 	license: {
-		business_license_image: String,
-		catering_service_license_image: String,
+		business_license_image: { type: String, default: "" },
+		catering_service_license_image: { type: String, default: "" },
 	},
 	name: {
         type: String,
         required: true 
     },
-	opening_hours: Array,
+	opening_hours: { type: Array, default: ["08:30/20:30"] },
 	phone: {
         type: String,
         required: true 

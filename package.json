@@ -31,6 +31,7 @@
     "express-session": "^1.15.2",
     "express-winston": "^2.3.0",
     "formidable": "^1.1.1",
+    "gm": "^1.23.0",
     "marked": "^0.3.6",
     "moment": "^2.18.1",
     "mongodb": "^2.2.25",

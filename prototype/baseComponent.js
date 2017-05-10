@@ -1,4 +1,5 @@
 import fetch from 'node-fetch';
+import Ids from '../models/ids'
 
 export default class BaseComponent {
 	constructor(){
@@ -33,7 +34,6 @@ export default class BaseComponent {
 			})
 		}
 		let responseJson;
-		console.log(url)
 		try {
 			const response = await fetch(url, requestConfig);
 			if (resType === 'TEXT') {
@@ -47,4 +47,15 @@ export default class BaseComponent {
 		}
 		return responseJson
 	}
+	//获取id列表
+	async getId(type){
+		try{
+			const idData = await Ids.findOne();
+			idData[type] ++ ;
+			await idData.save();
+			return idData[type]
+		}catch(err){
+			throw new Error(err)
+		}
+	}	
 }
