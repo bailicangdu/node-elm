@@ -8,7 +8,6 @@ class Shop extends AddressComponent{
 	constructor(){
 		super()
 		this.addShop = this.addShop.bind(this);
-		this.uploadShopImg = this.uploadShopImg.bind(this);
 	}
 	async addShop(req, res, next){
 		let restaurant_id;
@@ -33,6 +32,8 @@ class Shop extends AddressComponent{
 					throw new Error('必须填写联系电话');
 				}else if(!fields.latitude || !fields.longitude){
 					throw new Error('商店位置信息错误');
+				}else if(!fields.image_path){
+					throw new Error('必须上传商铺图片');
 				}
 			}catch(err){
 				console.log('前台参数出错');
@@ -157,22 +158,6 @@ class Shop extends AddressComponent{
 				})
 			}
 		})
-	}
-	async uploadShopImg(req, res, next){
-		try{
-			const path = await this.uploadImg(req, 'shop');
-			res.send({
-				status: 1,
-				image_path: path
-			})
-		}catch(err){
-			console.log('后台写入图片出错');
-			res.send({
-				type: 'ERROR_PATH',
-				message: '上传头像失败',
-				status: 0,
-			})
-		}
 	}
 }
 

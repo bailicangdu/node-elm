@@ -10,7 +10,6 @@ class Food extends BaseComponent{
 		this.addFood = this.addFood.bind(this);
 		this.getCategory = this.getCategory.bind(this);
 		this.addCategory = this.addCategory.bind(this);
-		this.uploadFoodImg = this.uploadFoodImg.bind(this);
 	}
 	async getCategory(req, res, next){
 		const restaurant_id = req.params.restaurant_id;
@@ -20,7 +19,6 @@ class Food extends BaseComponent{
 				status: 1,
 				category_list,
 			})
-
 		}catch(err){
 			console.log('获取餐馆食品种类失败');
 			res.send({
@@ -32,18 +30,33 @@ class Food extends BaseComponent{
 	}
 	async addCategory(req, res, next){
 		const form = new formidable.IncomingForm();
-		let category_id;
-		try{
-			category_id = await this.getId('category_id');
-		}catch(err){
-			console.log('获取category_id失败');
-			res.send({
-				type: 'ERROR_DATA',
-				message: '获取数据失败'
-			})
-			return
-		}
 		form.parse(req, async (err, fields, files) => {
+			try{
+				if (!fields.name) {
+					throw new Error('必须填写食品类型名称');
+				}else if(!fields.restaurant_id){
+					throw new Error('餐馆ID错误');
+				}
+			}catch(err){
+				console.log('前台参数错误');
+				res.send({
+					status: 0,
+					type: 'ERROR_PARAMS',
+					message: err.message
+				})
+				return
+			}
+			let category_id;
+			try{
+				category_id = await this.getId('category_id');
+			}catch(err){
+				console.log('获取category_id失败');
+				res.send({
+					type: 'ERROR_DATA',
+					message: '获取数据失败'
+				})
+				return
+			}
 			const foodObj = {
 				name: fields.name,
 				description: fields.description, 
@@ -68,8 +81,184 @@ class Food extends BaseComponent{
 		})
 	}
 	async addFood(req, res, next){
-		res.send({a: 2})
-		const newFood = 
+		const form = new formidable.IncomingForm();
+		form.parse(req, async (err, fields, files) => {
+			console.log(fields)
+			try{
+				if (!fields.name) {
+					throw new Error('必须填写食品名称');
+				}else if(!fields.image_path){
+					throw new Error('必须上传食品图片');
+				}else if(!fields.specs.length){
+					throw new Error('至少填写一种规格');
+				}else if(!fields.category_id){
+					throw new Error('食品类型ID错误');
+				}else if(!fields.restaurant_id){
+					throw new Error('餐馆ID错误');
+				}
+			}catch(err){
+				console.log('前台参数错误');
+				res.send({
+					status: 0,
+					type: 'ERROR_PARAMS',
+					message: err.message
+				})
+				return
+			}
+			let category;
+			try{
+				category = await FoodModel.findOne({id: fields.category_id});
+			}catch(err){
+				console.log('获取食品类型失败');
+				res.send({
+					status: 0,
+					type: 'ERROR_DATA',
+					message: '添加食品失败'
+				})
+				return
+			}
+			let item_id;
+			try{
+				item_id = await this.getId('item_id');
+			}catch(err){
+				console.log('获取item_id失败');
+				res.send({
+					status: 0,
+					type: 'ERROR_DATA',
+					message: '添加食品失败'
+				})
+				return
+			}
+			const rating_count = Math.ceil(Math.random()*1000);
+			const month_sales = Math.ceil(Math.random()*1000);
+			const tips = rating_count + "评价 月售" + month_sales + "份";
+			const newFood = {
+				name: fields.name,
+				description: fields.description,
+				image_path: fields.image_path,
+				activity: null,
+				attributes: [],
+				restaurant_id: fields.restaurant_id,
+				category_id: fields.category_id,
+				satisfy_rate: Math.ceil(Math.random()*1000),
+				satisfy_count: Math.ceil(Math.random()*1000),
+				item_id,
+				rating: (Math.random()*5).toFixed(1),
+				rating_count,
+				month_sales,
+				tips,
+				specfoods: [],
+				specifications: [],
+			}
+			if (fields.activity) {
+				newFood.activity = {
+					image_text_color: 'f1884f',
+					icon_color: 'f07373',
+					image_text: fields.activity,
+				}
+			}
+			if (fields.attributes.length) {
+				fields.attributes.forEach(item => {
+					let attr;
+					switch(item){
+						case '新': 
+							attr = {
+								icon_color: '5ec452',
+								icon_name: '新'
+							}
+							break;
+						case '招牌': 
+							attr = {
+								icon_color: 'f07373',
+								icon_name: '招牌'
+							}
+							break;
+					}
+					newFood.attributes.push(attr);
+				})
+			}
+			if (fields.specs.length < 2) {
+
+				let food_id, sku_id;
+				try{
+					sku_id = await this.getId('sku_id');
+					food_id = await this.getId('food_id');
+				}catch(err){
+					console.log('获取sku_id、food_id失败');
+					res.send({
+						status: 0,
+						type: 'ERROR_DATA',
+						message: '添加食品失败'
+					})
+					return
+				}
+				newFood.specfoods.push({
+					packing_fee: fields.specs[0].packing_fee,
+					price: fields.specs[0].price,
+					specs: [],
+					name: fields.name,
+					item_id,
+					sku_id,
+					food_id,
+					restaurant_id: fields.restaurant_id,
+					recent_rating: (Math.random()*5).toFixed(1),
+					recent_popularity: Math.ceil(Math.random()*1000),
+				})
+			}else{
+				newFood.specifications.push({
+					values: [],
+					name: "规格"
+				})
+				for (let i = 0; i < fields.specs.length; i++) {
+					let food_id, sku_id;
+					try{
+						sku_id = await this.getId('sku_id');
+						food_id = await this.getId('food_id');
+					}catch(err){
+						console.log('获取sku_id、food_id失败');
+						res.send({
+							status: 0,
+							type: 'ERROR_DATA',
+							message: '添加食品失败'
+						})
+						return
+					}
+					newFood.specfoods.push({
+						packing_fee: fields.specs[i].packing_fee,
+						price: fields.specs[i].price,
+						specs: [{
+							name: "规格",
+							value: fields.specs[i].specs
+						}],
+						name: fields.name,
+						item_id,
+						sku_id,
+						food_id,
+						restaurant_id: fields.restaurant_id,
+						recent_rating: (Math.random()*5).toFixed(1),
+						recent_popularity: Math.ceil(Math.random()*1000),
+					})
+					newFood.specifications[0].values.push(fields.specs[i].specs);
+				}
+			}
+			try{
+				category.foods.push(newFood);
+				category.markModified('foods');
+				await category.save();
+				res.send({
+					status: 1,
+					foodDetail: category,
+				});
+			}catch(err){
+				console.log('保存食品到数据库失败', err);
+				res.send({
+					status: 0,
+					type: 'ERROR_DATA',
+					message: '添加食品失败'
+				})
+			}
+		})
+		const aa = 
 		{
 			description: "大家喜欢吃，才叫真好吃。",
 			is_selected: true,
@@ -79,57 +268,37 @@ class Food extends BaseComponent{
 			restaurant_id: 3,
 			foods: [
 				{
-					rating: 4.3,
-					restaurant_id: 154078098,
-					description: "",
-					month_sales: 262,
-					rating_count: 86,
-					tips: "86评价 月售262份",
-					image_path: "8c4faa8342498a301c464711b6d8a8bcjpeg",
-					item_id: "165472716078",
 					name: "招牌豪大大鸡排（特大）",
-					satisfy_count: 80,
-					satisfy_rate: 93,
-					category_id: 513873481,
+					description: "",
+					image_path: "8c4faa8342498a301c464711b6d8a8bcjpeg",
 					activity: null,
 					attributes: [ ],
+					restaurant_id: 154078098,
+					category_id: 513873481,
+					satisfy_rate: 93,
+					satisfy_count: 80,
+					item_id: "165472716078",
+					rating: 4.3,
+					rating_count: 86,
+					month_sales: 262,
+					tips: "86评价 月售262份",
 					specfoods: [
 						{
-							
-							sku_id: "191809493294",
-							name: "招牌豪大大鸡排（特大）",
-							restaurant_id: 154078098,
-							food_id: 577587396,
 							packing_fee: 0,
-							recent_rating: 4.3,
 							price: 16,
-							item_id: "165472716078",
-							checkout_mode: 1,
-							stock: 9862,
 							specs: [
 								{
 									name: "规格",
 									value: "招牌豪大大鸡排（特大）"
 								}
 							],
-							is_essential: false,
+							name: "招牌豪大大鸡排（特大）",
+							item_id: "165472716078",
+							sku_id: "191809493294",
+							food_id: 577587396,
+							restaurant_id: 154078098,
+							recent_rating: 4.3,
 							recent_popularity: 131,
-							sold_out: false,
-							promotion_stock: -1,
-							original_price: null,
-							pinyin_name: "zhaopaihaodadajipai（teda）",
-						},
-					],
-					attrs: [
-						{
-							values: [
-								"原味",
-								"甘梅",
-								"咖喱",
-								"孜然",
-								"番茄酱"
-							],
-							name: "口味"
 						},
 					],
 					specifications: [
@@ -141,30 +310,8 @@ class Food extends BaseComponent{
 							name: "规格"
 						}
 					],
-					is_essential: false,
-					server_utc: 1494479869,
-					is_featured: 0,
-					pinyin_name: "zhaopaihaodadajipai（teda）",
-					limitation: { },
-					display_times: [ ],
 				}
 			]
-		}
-	}
-
-	async uploadFoodImg(req, res, next){
-		try{
-			let path = await this.uploadImg(req, 'food');
-			res.send({
-				status: 1,
-				image_path: path
-			})
-		}catch(err){
-			res.send({
-				type: 'ERROR_PATH',
-				message: '上传头像失败',
-				status: 0,
-			})
 		}
 	}
 }

@@ -15,40 +15,30 @@ const foodSchema = new Schema({
 			rating: {type: Number, default: 0},
 			is_featured: {type: Number, default: 0},
 			restaurant_id: {type: Number, isRequired: true},
-			pinyin_name: String,
+			pinyin_name: {type: String, default: ''},
 			display_times: {type: Array, default: []},
 			category_id: {type: Number, isRequired: true},
-			attrs: [
-				{
-					values: [String],
-					name: String
-				}
-			],
+			attrs: {type: Array, default: []},
 			description: {type: String, default: ""},
 			month_sales: {type: Number, default: 0},
 			rating_count: {type: Number, default: 0},
 			tips: String,
 			image_path: String,
-			specifications: [
-				{
-					values: [String],
-					name: String
-				}
-			],
-			server_utc: {type: Number, default: 0},
+			specifications: [Schema.Types.Mixed],
+			server_utc: {type: Date, default: Date.now()},
 			is_essential: {type: Boolean, default: false},
 			attributes: {type: Array, default: []},
 			item_id: {type: Number, isRequired: true},
-			limitation: {type: Schema.Types.Mixed, default: {}},
+			limitation: Schema.Types.Mixed,
 			name: {type: String, isRequired: true},
 			satisfy_count: {type: Number, default: 0},
-			activity: String,
+			activity: Schema.Types.Mixed,
 			satisfy_rate: {type: Number, default: 0},
 			specfoods: [{
 				original_price: {type: Number, default: 0},
 				sku_id: {type: Number, isRequired: true},
 				name: {type: String, isRequired: true},
-				pinyin_name: String,
+				pinyin_name: {type: String, default: ""},
 				restaurant_id: {type: Number, isRequired: true},
 				food_id: {type: Number, isRequired: true},
 				packing_fee: {type: Number, default: 0},
