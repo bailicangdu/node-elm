@@ -46,14 +46,25 @@ export default class BaseComponent {
 				responseJson = await response.json();
 			}
 		} catch (error) {
-			console.error(error)
+			console.log('获取http数据失败');
 			throw new Error(error)
 		}
 		return responseJson
 	}
 	//获取id列表
 	async getId(type){
-		const typeList = ['orderId', 'userId', 'addressId', 'cartId', 'imgId'];
+		const typeList = [
+			'restaurant_id',
+			'food_id',
+			'orderId',
+			'user_id',
+			'address_id',
+			'cart_id',
+			'img_id',
+			'category_id',
+			'item_id',
+			'sku_id',
+		];
 		if (!typeList.includes(type)) {
 			console.log('id类型错误');
 			throw new Error('id类型错误');
@@ -65,6 +76,7 @@ export default class BaseComponent {
 			await idData.save();
 			return idData[type]
 		}catch(err){
+			console.log('获取ID数据失败');
 			throw new Error(err)
 		}
 	}
@@ -74,15 +86,15 @@ export default class BaseComponent {
 			const form = formidable.IncomingForm();
 			form.uploadDir = './public/img/' + type;
 			form.parse(req, async (err, fields, files) => {
-				let imgId;
+				let img_id;
 				try{
-					imgId = await this.getId('imgId');
+					img_id = await this.getId('img_id');
 				}catch(err){
 					console.log('获取图片id失败');
 					fs.unlink(files.file.path)
 					reject(err);
 				}
-				const imgUrl = new Date().getTime().toString() + imgId;
+				const imgUrl = (new Date().getTime() + Math.ceil(Math.random()*10000)).toString(16) + img_id;
 				const extname = path.extname(files.file.name);
 				const repath = './public/img/' + type + '/' + imgUrl + extname;
 				try{

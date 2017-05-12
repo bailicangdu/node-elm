@@ -1,6 +1,6 @@
 'use strict';
 
-import ShopModel from '../../models/shopping/shop';
+import ShopModel from '../../models/shopping/shop'
 import AddressComponent from '../../prototype/addressComponent'
 import formidable from 'formidable'
 
@@ -11,10 +11,11 @@ class Shop extends AddressComponent{
 		this.uploadShopImg = this.uploadShopImg.bind(this);
 	}
 	async addShop(req, res, next){
-		let shopId;
+		let restaurant_id;
 		try{
-			shopId = await this.getId('shopId');
+			restaurant_id = await this.getId('restaurant_id');
 		}catch(err){
+			console.log('获取商店id失败');
 			res.send({
 				type: 'ERROR_DATA',
 				message: '获取数据失败'
@@ -34,7 +35,9 @@ class Shop extends AddressComponent{
 					throw new Error('商店位置信息错误');
 				}
 			}catch(err){
+				console.log('前台参数出错');
 				res.send({
+					status: 0,
 					type: 'ERROR_PARAMS',
 					message: err.message
 				})
@@ -47,7 +50,7 @@ class Shop extends AddressComponent{
 				description: fields.description || '',
 				float_delivery_fee: fields.float_delivery_fee || 0,
 				float_minimum_order_amount: fields.float_minimum_order_amount || 0,
-				id: shopId,
+				id: restaurant_id,
 				is_premium: fields.is_premium || false,
 				is_new: fields.new || false,
 				latitude: 31.056997,
@@ -138,18 +141,32 @@ class Shop extends AddressComponent{
 					name: "开发票"
 				})
 			}
-			res.send(newShop)
-			return
+			try{
+				const shop = new ShopModel(newShop);
+				await shop.save();
+				res.send({
+					status: 1,
+					shopDetail: newShop
+				})
+			}catch(err){
+				console.log('商铺写入数据库失败');
+				res.send({
+					status: 0,
+					type: 'ERROR_SERVER',
+					message: '添加商铺失败',
+				})
+			}
 		})
 	}
 	async uploadShopImg(req, res, next){
 		try{
-			let path = await this.uploadImg(req, 'shop');
+			const path = await this.uploadImg(req, 'shop');
 			res.send({
 				status: 1,
 				image_path: path
 			})
 		}catch(err){
+			console.log('后台写入图片出错');
 			res.send({
 				type: 'ERROR_PATH',
 				message: '上传头像失败',
