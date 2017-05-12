@@ -1,6 +1,6 @@
 # Project
 
-此项目是 [vue2-elm](https://github.com/bailicangdu/vue2-elm) 的后台系统，保持和官网一致的API接口。
+此项目是 [vue2-elm](https://github.com/bailicangdu/vue2-elm) 的后台系统，保持和官网一致的API接口。同时构建一个对应的后台管理系统 [vue2-manage](https://github.com/bailicangdu/back-manage) 。
 
 
 
