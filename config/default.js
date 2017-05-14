@@ -2,7 +2,7 @@
 
 module.exports = {
 	port: 8001,
-	url: 'mongodb://cangdu.org:27017/elm',
+	url: 'mongodb://localhost:27017/elm',
 	session: {
 		name: 'elm',
 		secret: 'elm',

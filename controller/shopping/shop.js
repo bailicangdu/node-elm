@@ -8,6 +8,7 @@ class Shop extends AddressComponent{
 	constructor(){
 		super()
 		this.addShop = this.addShop.bind(this);
+		this.getRestaurants = this.getRestaurants.bind(this);
 	}
 	async addShop(req, res, next){
 		let restaurant_id;
@@ -158,6 +159,36 @@ class Shop extends AddressComponent{
 				})
 			}
 		})
+	}
+	async getRestaurants(req, res, next){
+		const {
+			latitude,
+			longitude,
+			offset = 0,
+			limit = 20,
+			keyword,
+			restaurant_category_id,
+			order_by,
+			extras,
+			delivery_mode,
+			restaurant_category_ids,
+		} = req.query;
+		try{
+			if (!latitude) {
+				throw new Error('latitude参数错误')
+			}else if(!longitude){
+				throw new Error('longitude参数错误');
+			}
+		}catch(err){
+			res.send({
+				status: 0,
+				type: 'ERROR_PARAMS',
+				message: err.message
+			})
+			return
+		}
+		const restaurants = await ShopModel.find().limit(Number(limit)).skip(Number(offset));
+		res.send(restaurants)
 	}
 }
 

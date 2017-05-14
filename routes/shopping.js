@@ -9,6 +9,7 @@ const router = express.Router();
 
 router.post('/addshop', Shop.addShop);
 router.post('/addimg/:type', baseHandle.uploadImg);
+router.get('/restaurants', Shop.getRestaurants)
 router.post('/addfood', Food.addFood);
 router.get('/getcategory/:restaurant_id', Food.getCategory);
 router.post('/addcategory', Food.addCategory);

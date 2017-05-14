@@ -1,17 +1,10 @@
 'use strict';
 
 import mongoose from 'mongoose';
+import cityData from '../../InitData/cities'
 
 const citySchema = new mongoose.Schema({
-	id: Number,
-	name: String,
-	abbr: String,
-	area_code: String,
-	sort: Number,
-	latitude: Number,
-	longitude: Number,
-	is_map: Boolean,
-	pinyin: String,
+	data: {}
 });
 
 citySchema.statics.cityGuess = function(name){
@@ -19,7 +12,7 @@ citySchema.statics.cityGuess = function(name){
 		const firtWord = name.substr(0,1).toUpperCase();
 		try{
 			const city = await this.findOne();
-			Object.entries(city._doc).forEach(item => {
+			Object.entries(city.data).forEach(item => {
 				if(item[0] == firtWord){
 					item[1].forEach(cityItem => {
 						if (cityItem.pinyin == name) {
@@ -42,7 +35,7 @@ citySchema.statics.cityHot = function (){
 	return new Promise(async (resolve, reject) => {
 		try{
 			const city = await this.findOne();
-			resolve(city._doc.hotCities)
+			resolve(city.data.hotCities)
 		}catch(err){
 			reject({
 				name: 'ERROR_DATA',
@@ -57,7 +50,7 @@ citySchema.statics.cityGroup = function (){
 	return new Promise(async (resolve, reject) => {
 		try{
 			const city = await this.findOne();
-			const cityObj = city._doc;
+			const cityObj = city.data;
 			delete(cityObj._id)
 			delete(cityObj.hotCities)
 			resolve(cityObj)
@@ -75,7 +68,7 @@ citySchema.statics.getCityById = function(id){
 	return new Promise(async (resolve, reject) => {
 		try{
 			const city = await this.findOne();
-			Object.entries(city._doc).forEach(item => {
+			Object.entries(city.data).forEach(item => {
 				if(item[0] !== '_id' && item[0] !== 'hotCities'){
 					item[1].forEach(cityItem => {
 						if (cityItem.id == id) {
@@ -95,5 +88,12 @@ citySchema.statics.getCityById = function(id){
 }
 
 const Cities = mongoose.model('Cities', citySchema);
+
+
+Cities.findOne((err, data) => {
+	if (!data) {
+		Cities.create({data: cityData});
+	}
+});
 
 export default Cities

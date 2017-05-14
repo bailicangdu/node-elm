@@ -2,6 +2,7 @@
 
 import home from './home';
 import v1 from './v1'
+import v2 from './v2'
 import shopping from './shopping'
 
 export default app => {
@@ -10,5 +11,6 @@ export default app => {
 	});
 	app.use('/home', home);
 	app.use('/v1', v1);
+	app.use('/v2', v2);
 	app.use('/shopping', shopping);
 }
