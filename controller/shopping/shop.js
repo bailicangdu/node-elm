@@ -188,7 +188,24 @@ class Shop extends AddressComponent{
 			return
 		}
 		const restaurants = await ShopModel.find().limit(Number(limit)).skip(Number(offset));
-		res.send(restaurants)
+		const from = latitude + ',' + longitude;
+		let to = '';
+		restaurants.forEach((item, index) => {
+			const spStr = (index == restaurants.length -1) ? '':';';
+			to += item.latitude + ',' + item.longitude + spStr;
+		})
+		try{
+			const distance = await this.getDistance(from, to)
+			res.send(distance)
+
+		}catch(err){
+			console.log('设置商铺距离信息失败');
+			res.send({
+				status: 0,
+				type: 'ERROR_DATA',
+				message: '获取信息失败'
+			})
+		}
 	}
 }
 

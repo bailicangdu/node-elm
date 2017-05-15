@@ -35,6 +35,7 @@ class AddressComponent extends BaseComponent {
 	 			cityInfo.city = cityInfo.city.replace(/市$/, '');
 	 			return cityInfo
 	 		}else{
+	 			console.log('定位失败');
 	 			throw new Error('定位失败');
 	 		}
  			
@@ -54,12 +55,28 @@ class AddressComponent extends BaseComponent {
 			if (resObj.status == 0) {
 				return resObj
 			}else{
+				console.log('搜索位置信息失败')
 				throw new Error('搜索位置信息失败');
 			}
 		}catch(err){
 			throw new Error(err);
 		}
 	}
+	//测量距离
+	async getDistance(from, to){
+		try{
+			const res = await this.fetch('http://apis.map.qq.com/ws/distance/v1/', {
+				key: this.key,
+				from,
+				to,
+			})
+			return res
+		}catch(err){
+			console.log('获取位置距离失败')
+			throw new Error('获取位置距离失败');
+		}
+	}
+
 }
 
 export default AddressComponent
