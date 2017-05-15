@@ -8,7 +8,7 @@ class Entry {
 	}
 	async getEntry(req, res, next){
 		try{
-			const entries = await EntryModel.find();
+			const entries = await EntryModel.find({}, '-_id');
 			res.send(entries);
 		}catch(err){
 			console.log('获取数据失败');

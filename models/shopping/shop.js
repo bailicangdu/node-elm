@@ -14,13 +14,16 @@ const shopSchema = new mongoose.Schema({
 	delivery_mode: {
 		color: String,
 		id: Number,
-		is_solid: { type: Boolean, default: true },
+		is_solid: Boolean,
 		text: String
 	},
 	description: { type: String, default: "" },
+	order_lead_time: { type: String, default: "" },
+	distance: { type: String, default: "" },
 	float_delivery_fee: { type: Number, default: 0 },
 	float_minimum_order_amount: { type: Number, default: 0 },
 	id: Number,
+	category: String,
 	identification: {
 		company_name: { type: String, default: "" },
 		identificate_agency: { type: String, default: "" },

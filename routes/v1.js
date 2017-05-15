@@ -7,6 +7,7 @@ const router = express.Router();
 
 router.get('/cities', CityHandle.getCity);
 router.get('/cities/:id', CityHandle.getCityById);
-router.get('/pois', SearchPlace.search)
+router.get('/exactaddress', CityHandle.getExactAddress);
+router.get('/pois', SearchPlace.search);
 
 export default router

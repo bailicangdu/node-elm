@@ -3,6 +3,7 @@
 import ShopModel from '../../models/shopping/shop'
 import AddressComponent from '../../prototype/addressComponent'
 import formidable from 'formidable'
+import CategoryHandle from './category'
 
 class Shop extends AddressComponent{
 	constructor(){
@@ -55,8 +56,8 @@ class Shop extends AddressComponent{
 				id: restaurant_id,
 				is_premium: fields.is_premium || false,
 				is_new: fields.new || false,
-				latitude: 31.056997,
-				longitude: 121.396113,
+				latitude: fields.latitude,
+				longitude: fields.longitude,
 				opening_hours: [opening_hours],
 				phone: fields.phone,
 				promotion_info: fields.promotion_info || "欢迎光临，用餐高峰请提前下单，谢谢",
@@ -65,6 +66,7 @@ class Shop extends AddressComponent{
 				recent_order_num: Math.ceil(Math.random()*1000),
 				status: Math.round(Math.random()),
 				image_path: fields.image_path,
+				category: fields.category,
 				piecewise_agent_fee: {
 					tips: "配送费约¥" + (fields.float_delivery_fee || 0),
 				},
@@ -146,6 +148,7 @@ class Shop extends AddressComponent{
 			try{
 				const shop = new ShopModel(newShop);
 				await shop.save();
+				CategoryHandle.addCategory(fields.category)
 				res.send({
 					status: 1,
 					shopDetail: newShop
@@ -160,6 +163,7 @@ class Shop extends AddressComponent{
 			}
 		})
 	}
+	//获取餐馆列表
 	async getRestaurants(req, res, next){
 		const {
 			latitude,
@@ -180,6 +184,7 @@ class Shop extends AddressComponent{
 				throw new Error('longitude参数错误');
 			}
 		}catch(err){
+			console.log('latitude,longitude参数错误');
 			res.send({
 				status: 0,
 				type: 'ERROR_PARAMS',
@@ -187,23 +192,25 @@ class Shop extends AddressComponent{
 			})
 			return
 		}
-		const restaurants = await ShopModel.find().limit(Number(limit)).skip(Number(offset));
+		const restaurants = await ShopModel.find({}, '-_id').limit(Number(limit)).skip(Number(offset));
 		const from = latitude + ',' + longitude;
 		let to = '';
 		restaurants.forEach((item, index) => {
-			const spStr = (index == restaurants.length -1) ? '':';';
-			to += item.latitude + ',' + item.longitude + spStr;
+			const slpitStr = (index == restaurants.length -1) ? '' : '|';
+			to += item.latitude + ',' + item.longitude + slpitStr;
 		})
 		try{
-			const distance = await this.getDistance(from, to)
-			res.send(distance)
-
+			const positionArr = await this.getDistance(from, to)
+			restaurants.map((item, index) => {
+				return Object.assign(item, positionArr[index])
+			})
+			res.send(restaurants)
 		}catch(err){
-			console.log('设置商铺距离信息失败');
+			console.log('从addressComoponent获取数据后处理失败');
 			res.send({
 				status: 0,
 				type: 'ERROR_DATA',
-				message: '获取信息失败'
+				message: '获取数据失败'
 			})
 		}
 	}
