@@ -14,7 +14,9 @@ http://cangdu.org:8001/v1/cities
  [http://cangdu.org:8001/v1/cities?type=guess](http://cangdu.org:8001/v1/cities?type=guess)
 
 #### 请求方式: 
-> GET
+```
+GET
+```
 
 #### 请求参数：
 
@@ -41,14 +43,17 @@ http://cangdu.org:8001/v1/cities
 ### 2.获取所选城市信息
 
 #### 请求URL：
-
-> /v1/cities/:id
+```
+/v1/cities/:id
+```
 
 #### 示例：
->  [http://cangdu.org:8001/v1/cities/1](http://cangdu.org:8001/v1/cities/1)
+[http://cangdu.org:8001/v1/cities/1](http://cangdu.org:8001/v1/cities/1)
 
 #### 请求方式：
->  GET
+```
+GET
+```
 
 #### 请求参数：
 
@@ -74,13 +79,17 @@ http://cangdu.org:8001/v1/cities
 ### 3.搜索地址
 
 #### 请求URL：
->  /v1/pois
+```
+/v1/pois
+```
 
 #### 示例：
->  [http://cangdu.org:8001/v1/pois?city_id=1&keyword=迪士尼&type=search](http://cangdu.org:8001/v1/pois?city_id=1&keyword=%E8%BF%AA%E5%A3%AB%E5%B0%BC&type=search)
+[http://cangdu.org:8001/v1/pois?city_id=1&keyword=迪士尼&type=search](http://cangdu.org:8001/v1/pois?city_id=1&keyword=%E8%BF%AA%E5%A3%AB%E5%B0%BC&type=search)
 
 #### 请求方式：
-> GET
+```
+GET
+```
 
 #### 请求参数：
 
