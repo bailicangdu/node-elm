@@ -1,26 +1,32 @@
+# node-elm 接口文档
+
 域名: http://cangdu.org
 
 端口：8001
 
 
-## 1.获取城市列表
+### 1、获取城市列表
 
-### 请求URL:  
->**/v1/cities**
+#### 请求URL:  
+```
+http://cangdu.org:8001/v1/cities
+```
 
-### 示例：
+#### 示例：
  [http://cangdu.org:8001/v1/cities?type=guess](http://cangdu.org:8001/v1/cities?type=guess)
 
-### 请求方式: 
->**GET**
+#### 请求方式: 
+```
+GET
+```
 
-### 请求参数
+#### 请求参数：
 
 |参数|是否必选|类型|说明|
 |:-----|:-------:|:-----|:-----|
-|type      |Y       |string  |类型  guess：定位城市，  hot：热门城市， group：所有城市 |
+|type      |Y       |string  |guess：定位城市，  hot：热门城市， group：所有城市 |
 
-### 返回示例
+#### 返回示例：
 
 ```javascript
 {
@@ -36,24 +42,28 @@
 }
 ```
 
-## 2.获取所选城市信息
+### 2、获取所选城市信息
 
-### 请求URL
-> **/v1/cities/:id**
+#### 请求URL：
+```
+http://cangdu.org:8001/v1/cities/:id
+```
 
-### 示例：
->  [http://cangdu.org:8001/v1/cities/1](http://cangdu.org:8001/v1/cities/1)
+#### 示例：
+[http://cangdu.org:8001/v1/cities/1](http://cangdu.org:8001/v1/cities/1)
 
-### 请求方式
->**GET**
+#### 请求方式：
+```
+GET
+```
 
-### 请求参数
+#### 请求参数：
 
 |参数|是否必选|类型|说明|
 |:-----|:-------:|:-----|:-----|
 |id      |Y       |int   |城市id |
 
-### 返回示例
+#### 返回示例：
 ```javascript
 {
   id: 1,
@@ -68,18 +78,22 @@
 }
 ```
 
-## 3.搜索地址
+### 3、搜索地址
 
-### 请求URL
->  **/v1/pois**
+#### 请求URL：
+```
+http://cangdu.org:8001/v1/pois
+```
 
-### 示例：
->  [http://cangdu.org:8001/v1/pois?city_id=1&keyword=迪士尼&type=search](http://cangdu.org:8001/v1/pois?city_id=1&keyword=%E8%BF%AA%E5%A3%AB%E5%B0%BC&type=search)
+#### 示例：
+[http://cangdu.org:8001/v1/pois?city_id=1&keyword=迪士尼&type=search](http://cangdu.org:8001/v1/pois?city_id=1&keyword=%E8%BF%AA%E5%A3%AB%E5%B0%BC&type=search)
 
-### 请求方式
-> **GET**
+#### 请求方式：
+```
+GET
+```
 
-### 请求参数
+#### 请求参数：
 
 |参数|是否必选|类型|说明|
 |:-----|:-------:|:-----|:-----|
@@ -87,7 +101,7 @@
 |keyword      |Y       |string   |搜索关键词 |
 |type      |N       |string   |搜索类型，默认为search |
 
-**返回示例**
+#### 返回示例：
 
 ```javascript
 [
@@ -105,6 +119,6 @@
         longitude: 121.69279,
         geohash: "31.18183,121.69279"
     },
-    ...  //共10个数据
+    ...  //共10条数据
 ]
 ```
