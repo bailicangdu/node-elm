@@ -77,7 +77,7 @@ npm run dev
 
 # API接口文档
 
-[接口文档](https://github.com/bailicangdu/node-elm/issues/3)
+**[接口文档](https://github.com/bailicangdu/node-elm/blob/master/API.md)**
 
 
 
