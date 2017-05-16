@@ -41,7 +41,7 @@ categorySchema.statics.addCategory = async function (type){
 		return
 	}catch(err){
 		console.log('保存cetegroy失败');
-		throw new Error('保存cetegroy失败')
+		throw new Error(err)
 	}
 }
 

@@ -37,7 +37,7 @@ class AddressComponent extends BaseComponent {
 	 			return cityInfo
 	 		}else{
 	 			console.log('定位失败');
-	 			throw new Error('定位失败');
+	 			throw new Error(err);
 	 		}
  			
  		}catch(err){
@@ -57,7 +57,7 @@ class AddressComponent extends BaseComponent {
 				return resObj
 			}else{
 				console.log('搜索位置信息失败')
-				throw new Error('搜索位置信息失败');
+				throw new Error(err);
 			}
 		}catch(err){
 			throw new Error(err);
@@ -75,19 +75,24 @@ class AddressComponent extends BaseComponent {
 			if(res.status == 0){
 				const positionArr = []; 
 				res.result.forEach(item => {
+					const timevalue = parseInt(item.duration.value) + 1200;
+					let durationtime = Math.ceil(timevalue%3600/60) + '分钟';
+					if(Math.floor(timevalue/3600)){
+						durationtime = Math.floor(timevalue/3600) + '小时' + durationtime;
+					}
 					positionArr.push({
 						distance: item.distance.text,
-						order_lead_time: item.duration.text,
+						order_lead_time: durationtime,
 					})
 				})
 				return positionArr
 			}else{
 				console.log('调用百度地图测距失败');
-				throw new Error('调用百度地图测距失败');
+				throw new Error(err);
 			}
 		}catch(err){
 			console.log('获取位置距离失败')
-			throw new Error('获取位置距离失败');
+			throw new Error(err);
 		}
 	}
 	//通过ip地址获取精确位置
@@ -102,11 +107,11 @@ class AddressComponent extends BaseComponent {
 				return res
 			}else{
 				console.log('获取具体位置信息失败');
-				throw new Error('获取具体位置信息失败');
+				throw new Error(err);
 			}
 		}catch(err){
 			console.log('geocoder获取定位失败')
-			throw new Error('geocoder获取定位失败');
+			throw new Error(err);
 		}
 	}
 	//通过geohash获取精确位置
@@ -120,11 +125,11 @@ class AddressComponent extends BaseComponent {
 				return res
 			}else{
 				console.log('通过获geohash取具体位置失败');
-				throw new Error('通过geohash获取具体位置失败');
+				throw new Error(err);
 			}
 		}catch(err){
 			console.log('getpois获取定位失败')
-			throw new Error('getpois获取定位失败');
+			throw new Error(err);
 		}
 	}
 }

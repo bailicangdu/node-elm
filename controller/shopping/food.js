@@ -258,61 +258,6 @@ class Food extends BaseComponent{
 				})
 			}
 		})
-		const aa = 
-		{
-			description: "大家喜欢吃，才叫真好吃。",
-			is_selected: true,
-			icon_url: "5da3872d782f707b4c82ce4607c73d1ajpeg",
-			name: "热销榜",
-			id: 1,
-			restaurant_id: 3,
-			foods: [
-				{
-					name: "招牌豪大大鸡排（特大）",
-					description: "",
-					image_path: "8c4faa8342498a301c464711b6d8a8bcjpeg",
-					activity: null,
-					attributes: [ ],
-					restaurant_id: 154078098,
-					category_id: 513873481,
-					satisfy_rate: 93,
-					satisfy_count: 80,
-					item_id: "165472716078",
-					rating: 4.3,
-					rating_count: 86,
-					month_sales: 262,
-					tips: "86评价 月售262份",
-					specfoods: [
-						{
-							packing_fee: 0,
-							price: 16,
-							specs: [
-								{
-									name: "规格",
-									value: "招牌豪大大鸡排（特大）"
-								}
-							],
-							name: "招牌豪大大鸡排（特大）",
-							item_id: "165472716078",
-							sku_id: "191809493294",
-							food_id: 577587396,
-							restaurant_id: 154078098,
-							recent_rating: 4.3,
-							recent_popularity: 131,
-						},
-					],
-					specifications: [
-						{
-							values: [
-								"招牌豪大大鸡排（特大）",
-								"默认"
-							],
-							name: "规格"
-						}
-					],
-				}
-			]
-		}
 	}
 }
 

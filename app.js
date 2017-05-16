@@ -65,7 +65,7 @@ router(app);
 // }));
 
 app.use((err, req, res, next) => {
-	res.send('未找到当前路由');
+	res.status(404).send('未找到当前路由');
 });
 
 
