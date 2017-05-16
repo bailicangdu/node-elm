@@ -22,7 +22,7 @@ GET
 
 |参数|是否必选|类型|说明|
 |:-----|:-------:|:-----|:-----|
-|type      |Y       |string  |类型  guess：定位城市，  hot：热门城市， group：所有城市 |
+|type      |Y       |string  |guess：定位城市，  hot：热门城市， group：所有城市 |
 
 #### 返回示例：
 
@@ -44,7 +44,7 @@ GET
 
 #### 请求URL：
 ```
-/v1/cities/:id
+http://cangdu.org:8001/v1/cities/:id
 ```
 
 #### 示例：
@@ -80,7 +80,7 @@ GET
 
 #### 请求URL：
 ```
-/v1/pois
+http://cangdu.org:8001/v1/pois
 ```
 
 #### 示例：
