@@ -1,6 +1,6 @@
 # Project
 
-此项目是前端项目 [vue2-elm](https://github.com/bailicangdu/vue2-elm) 的后台系统，保持和官网一致的API接口。并具有对应的后台管理系统 [vue2-manage](https://github.com/bailicangdu/back-manage) 。
+此项目是前端项目 [vue2-elm](https://github.com/bailicangdu/vue2-elm) 的后台系统，保持和官网一致的API接口。并提供了对应的后台管理系统 [vue2-manage](https://github.com/bailicangdu/back-manage) 。
 
 
 
@@ -77,7 +77,7 @@ npm run dev
 
 # API接口文档
 
-### [接口文档](https://github.com/bailicangdu/node-elm/blob/master/API.md)
+## [接口文档](https://github.com/bailicangdu/node-elm/blob/master/API.md)
 
 
 ### License
