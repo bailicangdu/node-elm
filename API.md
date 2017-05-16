@@ -6,7 +6,9 @@
 ### 1.获取城市列表
 
 #### 请求URL:  
-> [http://cangdu.org:8001/v1/cities]
+```
+http://cangdu.org:8001/v1/cities
+```
 
 #### 示例：
  [http://cangdu.org:8001/v1/cities?type=guess](http://cangdu.org:8001/v1/cities?type=guess)
