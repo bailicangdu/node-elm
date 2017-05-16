@@ -54,7 +54,7 @@
 |:-----|:-------:|:-----|:-----|
 |id      |Y       |int   |城市id |
 
-### 返回示例
+#### 返回示例：
 ```javascript
 {
   id: 1,
@@ -69,18 +69,18 @@
 }
 ```
 
-## 3.搜索地址
+### 3.搜索地址
 
-### 请求URL
->  **/v1/pois**
+#### 请求URL：
+>  /v1/pois
 
-### 示例：
+#### 示例：
 >  [http://cangdu.org:8001/v1/pois?city_id=1&keyword=迪士尼&type=search](http://cangdu.org:8001/v1/pois?city_id=1&keyword=%E8%BF%AA%E5%A3%AB%E5%B0%BC&type=search)
 
-### 请求方式
-> **GET**
+#### 请求方式：
+> GET
 
-### 请求参数
+#### 请求参数：
 
 |参数|是否必选|类型|说明|
 |:-----|:-------:|:-----|:-----|
@@ -88,7 +88,7 @@
 |keyword      |Y       |string   |搜索关键词 |
 |type      |N       |string   |搜索类型，默认为search |
 
-**返回示例**
+#### 返回示例：
 
 ```javascript
 [
