@@ -92,7 +92,12 @@ export default class BaseComponent {
 			}catch(err){
 				console.log('获取图片id失败');
 				fs.unlink(files.file.path)
-				reject(err);
+				res.send({
+					status: 0,
+					type: 'ERROR_GET_ID',
+					message: '获取图片id失败',
+				})
+				return 
 			}
 			const imgUrl = (new Date().getTime() + Math.ceil(Math.random()*10000)).toString(16) + img_id;
 			const extname = path.extname(files.file.name);
@@ -105,7 +110,11 @@ export default class BaseComponent {
 					if(err){
 						console.log('改写图片尺寸失败');
 						fs.unlink(repath);
-						reject(err);
+						res.send({
+							status: 0,
+							type: 'ERROR_GET_SIZE',
+							message: '改写图片尺寸失败',
+						})
 					}else{
 						const path = repath.replace(/^\.\/public/, '');
 						res.send({
@@ -117,7 +126,11 @@ export default class BaseComponent {
 			}catch(err){
 				console.log('改写图片路径失败');
 				fs.unlink(files.file.path)
-				reject(err);
+				res.send({
+					status: 0,
+					type: 'ERROR_USE_GM',
+					message: '切图失败',
+				})
 			}
 		});
 	}	
