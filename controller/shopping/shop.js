@@ -157,6 +157,7 @@ class Shop extends AddressComponent{
 				CategoryHandle.addCategory(fields.category)
 				res.send({
 					status: 1,
+					sussess: '添加餐馆成功',
 					shopDetail: newShop
 				})
 			}catch(err){
