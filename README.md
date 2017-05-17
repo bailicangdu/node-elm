@@ -12,7 +12,9 @@
 
 >  或者您可以 "follow" 一下，我会不断开源更多的有趣的项目
 
->  开发环境 macOS 10.12.4  nodejs 6.10.2
+>  开发环境 macOS 10.12.4  nodejs 6.10.0
+
+>  部署环境 阿里云 CentOS 7.2 64位
 
 >  传送门：[前端项目地址](https://github.com/bailicangdu/vue2-elm) [后台管理系统地址](https://github.com/bailicangdu/back-manage)  [原生APP项目地址](https://github.com/bailicangdu/RN-elm)
 
