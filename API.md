@@ -18,6 +18,8 @@
 
 [5、食品分类列表](#5食品分类列表)
 
+[6、获取商铺列表](#6获取商铺列表)
+
 [6、上传图片](#6上传图片)
 
 [7、添加餐馆](#7添加餐馆)
@@ -229,6 +231,117 @@ GET
 ]
 ```
 
+### 6、获取商铺列表
+
+#### 请求URL：
+```
+http://cangdu.org:8001/shopping/restaurants
+```
+
+#### 示例：
+[http://cangdu.org:8001/shopping/restaurants](http://cangdu.org:8001/shopping/restaurants)
+
+#### 请求方式：
+```
+GET
+```
+
+#### 参数类型：
+
+|参数|是否必选|类型|说明|
+|:-----|:-------:|:-----|:-----|
+|latitude      |Y       |string  |纬度|
+|longitude      |Y       |string  |经度|
+|offset      |N       |int |跳过多少条数据，默认0|
+|limit      |N      |int |请求数据的数量，默认20|
+|restaurant_category_id      |N      |int |餐馆分类id|
+|order_by      |N       |int |排序方式id： 1：起送价、2：配送速度、3:评分、4: 智能排序(默认)、5:距离最近、6:销量最高|
+|delivery_mode      |N      |array |配送方式id|
+|support_ids      |N      |array |餐馆支持特权的id|
+|restaurant_category_ids      |N      |array |餐馆分类id|
+
+
+#### 返回示例：
+
+```javascript
+[
+  {
+    id: 1,
+    is_in_serving: true,
+    description: "0元早餐0起送，每天都有新花样。",
+    title: "预订早餐",
+    link: "",
+    image_url: "/d/49/7757ff22e8ab28e7dfa5f7e2c2692jpeg.jpeg",
+    icon_url: "",
+    title_color: "",
+    __v: 0
+  },
+  {
+    id: 65,
+    is_in_serving: true,
+    description: "",
+    title: "土豪推荐",
+    image_url: "/d/49/7757ff22e8ab28e7dfa5f7e2c2692jpeg.jpeg",
+    link: "",
+    icon_url: "",
+    title_color: "",
+    __v: 0
+  },
+  ... 共n条数据
+]
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 ### 6、上传图片
 
 #### 请求URL:  
@@ -254,7 +367,7 @@ POST
 ```javascript
 {
   status: 1,
-  image_path: /img/shop/15bfafa418322.jpeg
+  image_path: '/img/shop/15bfafa418322.jpeg'
 }
 ```
 
