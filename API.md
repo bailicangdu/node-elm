@@ -806,7 +806,8 @@ POST
 ```javascript
 {
   status: 1,
-  image_path: '/img/shop/15bfafa418322.jpeg'
+  image_path: '/img/shop/15bfafa418322.jpeg'  
+  // 对应的全部地址为： http://cangdu.org:8001/img/shop/15bfafa418322.jpeg
 }
 ```
 

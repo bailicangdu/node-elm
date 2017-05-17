@@ -4,6 +4,7 @@ import ShopModel from '../../models/shopping/shop'
 import AddressComponent from '../../prototype/addressComponent'
 import formidable from 'formidable'
 import CategoryHandle from './category'
+import Rating from '../ugc/rating'
 
 class Shop extends AddressComponent{
 	constructor(){
@@ -157,6 +158,7 @@ class Shop extends AddressComponent{
 				const shop = new ShopModel(newShop);
 				await shop.save();
 				CategoryHandle.addCategory(fields.category)
+				Rating.initData(restaurant_id);
 				res.send({
 					status: 1,
 					sussess: '添加餐馆成功',
@@ -323,6 +325,30 @@ class Shop extends AddressComponent{
 				status: 0,
 				type: 'ERROR_DATA',
 				message: '搜索餐馆数据失败'
+			})
+		}
+	}
+	//获取餐馆详情
+	async getRestaurantDetail(req, res, next){
+		const restaurant_id = req.params.restaurant_id;
+		if (!restaurant_id || !Number(restaurant_id)) {
+			console.log('获取餐馆详情参数ID错误');
+			res.send({
+				status: 0,
+				type: 'ERROR_PARAMS',
+				message: '餐馆ID参数错误',
+			})
+			return
+		}
+		try{
+			const restaurant = await ShopModel.findOne({id: restaurant_id}, '-_id');
+			res.send(restaurant)
+		}catch(err){
+			console.log('获取餐馆详情失败', err);
+			res.send({
+				status: 0,
+				type: 'GET_DATA_ERROR',
+				message: '获取餐馆详情失败'
 			})
 		}
 	}

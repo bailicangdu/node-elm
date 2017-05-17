@@ -34,7 +34,9 @@ cd node-elm
 
 npm install
 
-npm run dev (需开启本地mongodb，如果没有安装mongodb，可以运行 npm run online 连接线上mongodb)
+npm run dev (需开启本地mongodb)
+如果没有安装mongodb，可以运行 npm run online 连接线上mongodb
+
 
 访问: http://localhost:8001
 
@@ -54,10 +56,10 @@ npm run dev (需开启本地mongodb，如果没有安装mongodb，可以运行 n
 - [x] 测距
 - [x] 搜索美食，餐馆
 - [x] 餐馆排序
+- [x] 评价列表
+- [x] 食品详情
+- [x] 商家详情
 - [ ] 购物车功能
-- [ ] 评价
-- [ ] 食品详情
-- [ ] 商家详情
 - [ ] 登录、注册
 - [ ] 修改密码
 - [ ] 用户信息
