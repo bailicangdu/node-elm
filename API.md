@@ -239,14 +239,14 @@ http://cangdu.org:8001/shopping/restaurants
 ```
 
 #### 示例：
-[http://cangdu.org:8001/shopping/restaurants](http://cangdu.org:8001/shopping/restaurants)
+[http://cangdu.org:8001/shopping/restaurants?latitude=31.22967&longitude=121.4762](http://cangdu.org:8001/shopping/restaurants?latitude=31.22967&longitude=121.4762)
 
 #### 请求方式：
 ```
 GET
 ```
 
-#### 参数类型：
+#### 参数类型：query
 
 |参数|是否必选|类型|说明|
 |:-----|:-------:|:-----|:-----|
