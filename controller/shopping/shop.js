@@ -38,6 +38,8 @@ class Shop extends AddressComponent{
 					throw new Error('商店位置信息错误');
 				}else if(!fields.image_path){
 					throw new Error('必须上传商铺图片');
+				}else if(!fields.category){
+					throw new Error('必须上传食品种类');
 				}
 			}catch(err){
 				console.log('前台参数出错');

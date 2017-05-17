@@ -18,7 +18,9 @@
 
 [5、食品分类列表](#5食品分类列表)
 
-[6、添加餐馆](#6添加餐馆)
+[6、上传图片](#6上传图片)
+
+[7、添加餐馆](#7添加餐馆)
 
 
 
@@ -227,7 +229,37 @@ GET
 ]
 ```
 
-### 6、添加餐馆
+### 6、上传图片
+
+#### 请求URL:  
+```
+http://cangdu.org:8001/v1/addimg/:type
+```
+
+#### 示例：
+
+#### 请求方式: 
+```
+POST
+```
+
+#### 参数类型：param
+
+|参数|是否必选|类型|说明|
+|:-----|:-------:|:-----|:-----|
+|type      |Y       |string  |shop：商铺图片，  food：食品图片， avatar：头像 |
+
+#### 返回示例：
+
+```javascript
+{
+  status: 1,
+  image_path: /img/shop/15bfafa418322.jpeg
+}
+```
+
+
+### 7、添加餐馆
 
 #### 请求URL：
 ```
@@ -242,19 +274,21 @@ http://cangdu.org:8001/shopping/addshop
 POST
 ```
 
-#### 类型：query
+#### 参数类型：query
 
 |参数|是否必选|类型|说明|
 |:-----|:-------:|:-----|:-----|
 |name      |Y       |string   | 餐馆名称 |
 |address      |Y       |string   | 餐馆地址 |
+|phone      |Y       |int   |联系电话 |
 |latitude      |Y       |string   | 纬度 |
 |longitude      |Y       |string   | 经度 |
-|description      |N      |string   | 餐馆介绍 |
-|phone      |Y       |int   |联系电话 |
-|promotion_info      |N       |string   | 店铺标语 |
+|category      |Y      |string   |食品分类 |
+|image_path      |Y       |string   |店铺图片地址 |
 |float_delivery_fee      |Y       |int   | 运费|
 |float_minimum_order_amount      |Y       | init   | 起送价 |
+|description      |N      |string   | 餐馆介绍 |
+|promotion_info      |N       |string   | 店铺标语 |
 |is_premium      |N       |boolean   | 品牌商铺,默认false |
 |delivery_mode      |N       |boolean   | 支持蜂鸟专送，默认false |
 |new      |N      |boolean   |新开店铺，默认false|
@@ -263,11 +297,9 @@ POST
 |piao      |N       |boolean   |开发票，默认false|
 |startTime      |N       |string   |开始营业时间 |
 |endTime      |N       |string   |停止营业时间 |
-|image_path      |Y       |string   |店铺图片地址 |
 |business_license_image      |N       |string   |营业执照图片地址 |
 |catering_service_license_image      |N       |string   |餐饮服务许可证图片地址 |
 |catering_service_license_image      |N       |string   |餐饮服务许可证图片地址 |
-|category      |Y      |string   |食品分类 |
 |activities      |N      |array   | 商铺活动：示例：[{icon_name:'新', name:'新用户立减', description: ''}]|
 
 #### 返回示例：
