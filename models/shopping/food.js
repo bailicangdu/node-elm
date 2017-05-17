@@ -10,6 +10,7 @@ const foodSchema = new Schema({
 	name: {type: String, isRequired: true},
 	id:  {type: Number, isRequired: true},
 	restaurant_id: {type: Number, isRequired: true},
+	type: {type: Number, default: 1},
 	foods: [
 		{
 			rating: {type: Number, default: 0},
