@@ -16,6 +16,7 @@
 
 [4、根据经纬度详细定位](#4根据经纬度详细定位)
 
+[5、食品分类列表](#5食品分类列表)
 
 ## 接口列表：
 
@@ -34,7 +35,7 @@ http://cangdu.org:8001/v1/cities
 GET
 ```
 
-#### 请求参数：
+#### 参数类型：query
 
 |参数|是否必选|类型|说明|
 |:-----|:-------:|:-----|:-----|
@@ -71,7 +72,7 @@ http://cangdu.org:8001/v1/cities/:id
 GET
 ```
 
-#### 请求参数：
+#### 参数类型：param
 
 |参数|是否必选|类型|说明|
 |:-----|:-------:|:-----|:-----|
@@ -107,7 +108,7 @@ http://cangdu.org:8001/v1/pois
 GET
 ```
 
-#### 请求参数：
+#### 参数类型：query
 
 |参数|是否必选|类型|说明|
 |:-----|:-------:|:-----|:-----|
@@ -152,7 +153,7 @@ http://cangdu.org:8001/v2/pois/:geohash
 GET
 ```
 
-#### 请求参数：
+#### 参数类型：param
 
 |参数|是否必选|类型|说明|
 |:-----|:-------:|:-----|:-----|
@@ -169,4 +170,54 @@ GET
   longitude: "121.4762",
   name: "黄浦区上海人民广场"
 }
+```
+
+### 5、食品分类列表
+
+#### 请求URL：
+```
+http://cangdu.org:8001/v2/index_entry
+```
+
+#### 示例：
+[http://cangdu.org:8001/v2/index_entry](http://cangdu.org:8001/v2/index_entry)
+
+#### 请求方式：
+```
+GET
+```
+
+#### 参数类型：
+
+|参数|是否必选|类型|说明|
+|:-----|:-------:|:-----|:-----|
+
+#### 返回示例：
+
+```javascript
+[
+  {
+    id: 1,
+    is_in_serving: true,
+    description: "0元早餐0起送，每天都有新花样。",
+    title: "预订早餐",
+    link: "",
+    image_url: "/d/49/7757ff22e8ab28e7dfa5f7e2c2692jpeg.jpeg",
+    icon_url: "",
+    title_color: "",
+    __v: 0
+  },
+  {
+    id: 65,
+    is_in_serving: true,
+    description: "",
+    title: "土豪推荐",
+    image_url: "/d/49/7757ff22e8ab28e7dfa5f7e2c2692jpeg.jpeg",
+    link: "",
+    icon_url: "",
+    title_color: "",
+    __v: 0
+  },
+  ... 共n条数据
+]
 ```
