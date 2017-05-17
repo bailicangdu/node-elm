@@ -20,9 +20,19 @@
 
 [6、获取商铺列表](#6获取商铺列表)
 
-[6、上传图片](#6上传图片)
+[7、搜索餐馆](#7搜索餐馆)
 
-[7、添加餐馆](#7添加餐馆)
+[8、获取所有商铺分类列表](#8获取所有商铺分类列表)
+
+[9、获取配送方式](#9获取配送方式)
+
+[10、商家属性活动列表](#10商家属性活动列表)
+
+[11、餐馆详情](#11餐馆详情)
+
+[12、上传图片](#12上传图片)
+
+[13、添加餐馆](#13添加餐馆)
 
 
 
@@ -266,83 +276,512 @@ GET
 ```javascript
 [
   {
+    name: "肯德基",
+    address: "上海市宝山区淞宝路155弄18号星月国际商务广场1层",
     id: 1,
-    is_in_serving: true,
-    description: "0元早餐0起送，每天都有新花样。",
-    title: "预订早餐",
-    link: "",
-    image_url: "/d/49/7757ff22e8ab28e7dfa5f7e2c2692jpeg.jpeg",
-    icon_url: "",
-    title_color: "",
-    __v: 0
-  },
+    latitude: 31.38098,
+    longitude: 121.50146,
+    location: [
+      121.50146,
+      31.38098
+    ],
+    phone: "1232313124324",
+    category: "快餐便当/简餐",
+    supports: [
+      {
+        description: "已加入“外卖保”计划，食品安全有保障",
+        icon_color: "999999",
+        icon_name: "保",
+        id: 7,
+        name: "外卖保",
+        _id: "591bec73c2bbc84a6328a1e5"
+      },
+      {
+        description: "准时必达，超时秒赔",
+        icon_color: "57A9FF",
+        icon_name: "准",
+        id: 9,
+        name: "准时达",
+        _id: "591bec73c2bbc84a6328a1e4"
+      },
+      {
+        description: "该商家支持开发票，请在下单时填写好发票抬头",
+        icon_color: "999999",
+        icon_name: "票",
+        id: 4,
+        name: "开发票",
+        _id: "591bec73c2bbc84a6328a1e3"
+      }
+    ],
+    status: 0,
+    recent_order_num: 615,
+    rating_count: 389,
+    rating: 1.6,
+    promotion_info: "他依然有人有人有人有人有人",
+    piecewise_agent_fee: {
+      tips: "配送费约¥5"
+    },
+    opening_hours: [
+      "8:30/20:30"
+    ],
+    license: {
+      catering_service_license_image: "",
+      business_license_image: ""
+    },
+    is_new: true,
+    is_premium: true,
+    image_path: "/img/shop/15c1513a00615.jpg",
+    identification: {
+      registered_number: "",
+      registered_address: "",
+      operation_period: "",
+      licenses_scope: "",
+      licenses_number: "",
+      licenses_date: "",
+      legal_person: "",
+      identificate_date: null,
+      identificate_agency: "",
+      company_name: ""
+    },
+    float_minimum_order_amount: 20,
+    float_delivery_fee: 5,
+    distance: "19.5公里",
+    order_lead_time: "40分钟",
+    description: "好吃的",
+    delivery_mode: {
+      color: "57A9FF",
+      id: 1,
+      is_solid: true,
+      text: "蜂鸟专送"
+    },
+    activities: [
+      {
+        icon_name: "减",
+        name: "满减优惠",
+        description: "满30减5，满60减8",
+        icon_color: "f07373",
+        id: 1,
+        _id: "591bec73c2bbc84a6328a1e7"
+      },
+      {
+        icon_name: "特",
+        name: "优惠大酬宾",
+        description: "是对冯绍峰的上市房地产",
+        icon_color: "EDC123",
+        id: 2,
+        _id: "591bec73c2bbc84a6328a1e6"
+      }
+    ],
+  }
+  ... 共20条数据
+]
+```
+
+
+### 7、搜索餐馆
+
+#### 请求URL：
+```
+http://cangdu.org:8001/v4/restaurants
+```
+
+#### 示例：
+[http://cangdu.org:8001/v4/restaurants?geohash=31.22967,121.4762&keyword=肯德基](http://cangdu.org:8001/v4/restaurants?geohash=31.22967,121.4762&keyword=肯德基)
+
+#### 请求方式：
+```
+GET
+```
+
+#### 参数类型：query
+
+|参数|是否必选|类型|说明|
+|:-----|:-------:|:-----|:-----|
+|geohash      |Y       |string  |经纬度|
+|keyword      |Y       |string  |关键词|
+
+#### 返回示例：
+
+```javascript
+[
   {
-    id: 65,
-    is_in_serving: true,
-    description: "",
-    title: "土豪推荐",
-    image_url: "/d/49/7757ff22e8ab28e7dfa5f7e2c2692jpeg.jpeg",
-    link: "",
-    icon_url: "",
-    title_color: "",
-    __v: 0
-  },
+    name: "肯德基",
+    address: "上海市宝山区淞宝路155弄18号星月国际商务广场1层",
+    id: 1,
+    latitude: 31.38098,
+    longitude: 121.50146,
+    location: [
+      121.50146,
+      31.38098
+    ],
+    phone: "1232313124324",
+    category: "快餐便当/简餐",
+    supports: [
+      {
+        description: "已加入“外卖保”计划，食品安全有保障",
+        icon_color: "999999",
+        icon_name: "保",
+        id: 7,
+        name: "外卖保",
+        _id: "591bec73c2bbc84a6328a1e5"
+      },
+      {
+        description: "准时必达，超时秒赔",
+        icon_color: "57A9FF",
+        icon_name: "准",
+        id: 9,
+        name: "准时达",
+        _id: "591bec73c2bbc84a6328a1e4"
+      },
+      {
+        description: "该商家支持开发票，请在下单时填写好发票抬头",
+        icon_color: "999999",
+        icon_name: "票",
+        id: 4,
+        name: "开发票",
+        _id: "591bec73c2bbc84a6328a1e3"
+      }
+    ],
+    status: 0,
+    recent_order_num: 615,
+    rating_count: 389,
+    rating: 1.6,
+    promotion_info: "他依然有人有人有人有人有人",
+    piecewise_agent_fee: {
+      tips: "配送费约¥5"
+    },
+    opening_hours: [
+      "8:30/20:30"
+    ],
+    license: {
+      catering_service_license_image: "",
+      business_license_image: ""
+    },
+    is_new: true,
+    is_premium: true,
+    image_path: "/img/shop/15c1513a00615.jpg",
+    identification: {
+      registered_number: "",
+      registered_address: "",
+      operation_period: "",
+      licenses_scope: "",
+      licenses_number: "",
+      licenses_date: "",
+      legal_person: "",
+      identificate_date: null,
+      identificate_agency: "",
+      company_name: ""
+    },
+    float_minimum_order_amount: 20,
+    float_delivery_fee: 5,
+    distance: "19.5公里",
+    order_lead_time: "40分钟",
+    description: "好吃的",
+    delivery_mode: {
+      color: "57A9FF",
+      id: 1,
+      is_solid: true,
+      text: "蜂鸟专送"
+    },
+    activities: [
+      {
+        icon_name: "减",
+        name: "满减优惠",
+        description: "满30减5，满60减8",
+        icon_color: "f07373",
+        id: 1,
+        _id: "591bec73c2bbc84a6328a1e7"
+      },
+      {
+        icon_name: "特",
+        name: "优惠大酬宾",
+        description: "是对冯绍峰的上市房地产",
+        icon_color: "EDC123",
+        id: 2,
+        _id: "591bec73c2bbc84a6328a1e6"
+      }
+    ],
+  }
   ... 共n条数据
 ]
 ```
 
 
+### 8、获取所有商铺分类列表
+
+#### 请求URL：
+```
+http://cangdu.org:8001/shopping/v2/restaurant/category
+```
+
+#### 示例：
+[http://cangdu.org:8001/shopping/v2/restaurant/category](http://cangdu.org:8001/shopping/v2/restaurant/category)
+
+#### 请求方式：
+```
+GET
+```
+
+#### 参数类型：query
+
+|参数|是否必选|类型|说明|
+|:-----|:-------:|:-----|:-----|
+|latitude      |N       |string   |纬度 |
+|longitude      |N       |string   |经度 |
+
+#### 返回示例：
+
+```javascript
+[
+  {
+    count: 0,
+    id: 248,
+    image_url: "0e07558e305abfb2618ae760142222f9png",
+    level: 1,
+    name: "鲜花蛋糕",
+    sub_categories: [
+      {
+        count: 0,
+        id: 248,
+        image_url: "3edf3f4ef8ed1d300896c5b9178685ebpng",
+        level: 1,
+        name: "全部鲜花蛋糕",
+        _id: "591af9a4c434cf6a823d63d8"
+      },
+      {
+        count: 0,
+        id: 251,
+        image_url: "cf598de7338b4bf9dd2924736c4ec9d2png",
+        level: 2,
+        name: "鲜花",
+        _id: "591af9a4c434cf6a823d63d7"
+      },
+      {
+        count: 0,
+        id: 249,
+        image_url: "ac94b005c97ef158282326cb49389893png",
+        level: 2,
+        name: "蛋糕",
+        _id: "591af9a4c434cf6a823d63d6"
+      },
+      {
+        count: 0,
+        id: 250,
+        image_url: "512232422a83e25a2c0a5588b7b6e730png",
+        level: 2,
+        name: "面包",
+        _id: "591af9a4c434cf6a823d63d5"
+      }
+    ],
+  }
+  ...共n条数据
+]
+```
 
 
+### 9、获取配送方式
+
+#### 请求URL：
+```
+http://cangdu.org:8001/shopping/v1/restaurants/delivery_modes
+```
+
+#### 示例：
+[http://cangdu.org:8001/shopping/v1/restaurants/delivery_modes](http://cangdu.org:8001/shopping/v1/restaurants/delivery_modes)
+
+#### 请求方式：
+```
+GET
+```
+
+#### 参数类型：query
+
+|参数|是否必选|类型|说明|
+|:-----|:-------:|:-----|:-----|
+|latitude      |N       |string   |纬度 |
+|longitude      |N       |string   |经度 |
+
+#### 返回示例：
+
+```javascript
+[
+  {
+    color: "57A9FF",
+    id: 1,
+    is_solid: true,
+    text: "蜂鸟专送",
+    __v: 0
+  }
+]
+```
+
+### 10、商家属性活动列表
+
+#### 请求URL：
+```
+http://cangdu.org:8001/shopping/v1/restaurants/activity_attributes
+```
+
+#### 示例：
+[http://cangdu.org:8001/shopping/v1/restaurants/activity_attributes](http://cangdu.org:8001/shopping/v1/restaurants/activity_attributes)
+
+#### 请求方式：
+```
+GET
+```
+
+#### 参数类型：query
+
+|参数|是否必选|类型|说明|
+|:-----|:-------:|:-----|:-----|
+|latitude      |N       |string   |纬度 |
+|longitude      |N       |string   |经度 |
+
+#### 返回示例：
+
+```javascript
+[
+  {
+    description: "可使用支付宝、微信、手机QQ进行在线支付",
+    icon_color: "FF4E00",
+    icon_name: "付",
+    id: 3,
+    name: "在线支付",
+    ranking_weight: 2,
+    __v: 0
+  },
+  ...共n条数据
+]
+```
 
 
+### 11、餐馆详情
+
+#### 请求URL：
+```
+http://cangdu.org:8001/shopping/restaurant/:shopid
+```
+
+#### 示例：
+[http://cangdu.org:8001/shopping/restaurant/1](http://cangdu.org:8001/shopping/restaurant/1)
+
+#### 请求方式：
+```
+GET
+```
+
+#### 参数类型：param
+
+|参数|是否必选|类型|说明|
+|:-----|:-------:|:-----|:-----|
+|shopid      |Y       |int   |餐馆id |
 
 
+#### 返回示例：
+
+```javascript
+{
+  name: "肯德基",
+  address: "上海市宝山区淞宝路155弄18号星月国际商务广场1层",
+  id: 1,
+  latitude: 31.38098,
+  longitude: 121.50146,
+  location: [
+    121.50146,
+    31.38098
+  ],
+  phone: "1232313124324",
+  category: "快餐便当/简餐",
+  supports: [
+    {
+      description: "已加入“外卖保”计划，食品安全有保障",
+      icon_color: "999999",
+      icon_name: "保",
+      id: 7,
+      name: "外卖保",
+      _id: "591bec73c2bbc84a6328a1e5"
+    },
+    {
+      description: "准时必达，超时秒赔",
+      icon_color: "57A9FF",
+      icon_name: "准",
+      id: 9,
+      name: "准时达",
+      _id: "591bec73c2bbc84a6328a1e4"
+    },
+    {
+      description: "该商家支持开发票，请在下单时填写好发票抬头",
+      icon_color: "999999",
+      icon_name: "票",
+      id: 4,
+      name: "开发票",
+      _id: "591bec73c2bbc84a6328a1e3"
+    }
+  ],
+  status: 0,
+  recent_order_num: 615,
+  rating_count: 389,
+  rating: 1.6,
+  promotion_info: "他依然有人有人有人有人有人",
+  piecewise_agent_fee: {
+    tips: "配送费约¥5"
+  },
+  opening_hours: [
+    "8:30/20:30"
+  ],
+  license: {
+    catering_service_license_image: "",
+    business_license_image: ""
+  },
+  is_new: true,
+  is_premium: true,
+  image_path: "/img/shop/15c1513a00615.jpg",
+  identification: {
+    registered_number: "",
+    registered_address: "",
+    operation_period: "",
+    licenses_scope: "",
+    licenses_number: "",
+    licenses_date: "",
+    legal_person: "",
+    identificate_date: null,
+    identificate_agency: "",
+    company_name: ""
+  },
+  float_minimum_order_amount: 20,
+  float_delivery_fee: 5,
+  distance: "19.5公里",
+  order_lead_time: "40分钟",
+  description: "好吃的",
+  delivery_mode: {
+    color: "57A9FF",
+    id: 1,
+    is_solid: true,
+    text: "蜂鸟专送"
+  },
+  activities: [
+    {
+      icon_name: "减",
+      name: "满减优惠",
+      description: "满30减5，满60减8",
+      icon_color: "f07373",
+      id: 1,
+      _id: "591bec73c2bbc84a6328a1e7"
+    },
+    {
+      icon_name: "特",
+      name: "优惠大酬宾",
+      description: "是对冯绍峰的上市房地产",
+      icon_color: "EDC123",
+      id: 2,
+      _id: "591bec73c2bbc84a6328a1e6"
+    }
+  ],
+}
+```
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-### 6、上传图片
+### 12、上传图片
 
 #### 请求URL:  
 ```
@@ -372,7 +811,7 @@ POST
 ```
 
 
-### 7、添加餐馆
+### 13、添加餐馆
 
 #### 请求URL：
 ```
