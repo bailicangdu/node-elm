@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "dev": "NODE_ENV=development supervisor --harmony index.js",
+    "online": "NODE_ENV=online supervisor --harmony index.js",
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "NODE_ENV=production pm2 start index.js --node-args='--harmony' --name 'node-elm'",
     "stop": "NODE_ENV=production pm2 stop index.js --name 'node-elm'",

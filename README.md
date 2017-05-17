@@ -16,7 +16,7 @@
 
 >  部署环境 阿里云 CentOS 7.2 64位
 
->  传送门：[前端项目地址](https://github.com/bailicangdu/vue2-elm) [后台管理系统地址](https://github.com/bailicangdu/back-manage)  [原生APP项目地址](https://github.com/bailicangdu/RN-elm)
+>  传送门：[前端项目地址](https://github.com/bailicangdu/vue2-elm)  、 [后台管理系统地址](https://github.com/bailicangdu/back-manage)  、 [原生APP项目地址](https://github.com/bailicangdu/RN-elm)
 
 
 ## 技术栈
@@ -34,9 +34,7 @@ cd node-elm
 
 npm install
 
-开启 mongodb
-
-npm run dev 
+npm run dev (需开启本地mongodb，如果没有安装mongodb，可以运行 npm run online 连接线上mongodb)
 
 访问: http://localhost:8001
 
