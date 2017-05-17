@@ -7,7 +7,7 @@
     "dev": "NODE_ENV=development supervisor --harmony index.js",
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "NODE_ENV=production pm2 start index.js --node-args='--harmony' --name 'node-elm'",
-    "stop": "NODE_ENV=production pm2 stop index.js --node-args='--harmony' --name 'node-elm'",
+    "stop": "NODE_ENV=production pm2 stop index.js --name 'node-elm'",
     "restart": "NODE_ENV=production pm2 restart index.js --node-args='--harmony' --name 'node-elm'"
   },
   "repository": {
@@ -38,7 +38,7 @@
     "mongoose": "^4.9.3",
     "node-fetch": "^1.6.3",
     "pinyin": "^2.8.3",
-    "pm2": "^2.4.3",
+    "pm2": "^2.4.6",
     "sha1": "^1.1.1",
     "supervisor": "^0.12.0",
     "winston": "^2.3.1"
