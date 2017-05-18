@@ -21,7 +21,7 @@
 
 ## 技术栈
 
-nodejs + express + mongodb + mongoose + es6/7 + mocha + bluebird + bootstrap
+nodejs + express + mongodb + mongoose + es6/7 + mocha + bluebird + element-ui
 
 
 ## 项目运行
@@ -51,13 +51,13 @@ npm run dev (需开启本地mongodb，如果没有安装mongodb，可以运行 n
 - [x] 上传图片
 - [x] 添加商铺
 - [x] 添加食品
-- [x] 测距
+- [x] 测量距离
 - [x] 搜索美食，餐馆
 - [x] 餐馆排序
 - [x] 评价列表
 - [x] 食品详情
 - [x] 商家详情
-- [ ] 购物车功能
+- [x] 购物车功能
 - [ ] 登录、注册
 - [ ] 修改密码
 - [ ] 用户信息

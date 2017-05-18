@@ -36,10 +36,8 @@ class AddressComponent extends BaseComponent {
 	 			cityInfo.city = cityInfo.city.replace(/市$/, '');
 	 			return cityInfo
 	 		}else{
-	 			console.log('定位失败');
-	 			throw new Error(err);
+	 			throw new Error('定位失败');
 	 		}
- 			
  		}catch(err){
  			throw new Error(err);
  		}
@@ -56,15 +54,14 @@ class AddressComponent extends BaseComponent {
 			if (resObj.status == 0) {
 				return resObj
 			}else{
-				console.log('搜索位置信息失败')
-				throw new Error(err);
+				throw new Error('搜索位置信息失败');
 			}
 		}catch(err){
 			throw new Error(err);
 		}
 	}
 	//测量距离
-	async getDistance(from, to){
+	async getDistance(from, to, type){
 		try{
 			const res = await this.fetch('http://api.map.baidu.com/routematrix/v2/driving', {
 				ak: this.baidukey,
@@ -73,9 +70,10 @@ class AddressComponent extends BaseComponent {
 				destinations: to,
 			})
 			if(res.status == 0){
-				const positionArr = []; 
+				const positionArr = [];
+				let timevalue;
 				res.result.forEach(item => {
-					const timevalue = parseInt(item.duration.value) + 1200;
+					timevalue = parseInt(item.duration.value) + 1200;
 					let durationtime = Math.ceil(timevalue%3600/60) + '分钟';
 					if(Math.floor(timevalue/3600)){
 						durationtime = Math.floor(timevalue/3600) + '小时' + durationtime;
@@ -85,10 +83,13 @@ class AddressComponent extends BaseComponent {
 						order_lead_time: durationtime,
 					})
 				})
-				return positionArr
+				if (type == 'tiemvalue') {
+					return timevalue
+				}else{
+					return positionArr
+				}
 			}else{
-				console.log('调用百度地图测距失败');
-				throw new Error(err);
+				throw new Error('调用百度地图测距失败');
 			}
 		}catch(err){
 			console.log('获取位置距离失败')
@@ -106,8 +107,7 @@ class AddressComponent extends BaseComponent {
 			if (res.status == 0) {
 				return res
 			}else{
-				console.log('获取具体位置信息失败');
-				throw new Error(err);
+				throw new Error('获取具体位置信息失败');
 			}
 		}catch(err){
 			console.log('geocoder获取定位失败')
@@ -124,8 +124,7 @@ class AddressComponent extends BaseComponent {
 			if (res.status == 0) {
 				return res
 			}else{
-				console.log('通过获geohash取具体位置失败');
-				throw new Error(err);
+				throw new Error('通过获geohash取具体位置失败');
 			}
 		}catch(err){
 			console.log('getpois获取定位失败')
