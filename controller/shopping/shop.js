@@ -2,6 +2,7 @@
 
 import ShopModel from '../../models/shopping/shop'
 import AddressComponent from '../../prototype/addressComponent'
+import Food from './food'
 import formidable from 'formidable'
 import CategoryHandle from './category'
 import Rating from '../ugc/rating'
@@ -159,6 +160,7 @@ class Shop extends AddressComponent{
 				await shop.save();
 				CategoryHandle.addCategory(fields.category)
 				Rating.initData(restaurant_id);
+				Food.initData(restaurant_id);
 				res.send({
 					status: 1,
 					sussess: '添加餐馆成功',

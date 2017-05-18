@@ -6,10 +6,43 @@ import formidable from 'formidable'
 
 class Food extends BaseComponent{
 	constructor(){
-		super()
+		super();
+		this.defaultData = [{
+			name: '热销榜',
+			description: '大家喜欢吃，才叫真好吃。', 
+			icon_url: "5da3872d782f707b4c82ce4607c73d1ajpeg",
+			is_selected: true,
+			type: 1,
+		}, {
+			name: '优惠',
+			description: '美味又实惠, 大家快来抢!', 
+			icon_url: "4735c4342691749b8e1a531149a46117jpeg",
+			type: 1,
+		}]
+		this.initData = this.initData.bind(this);
 		this.addFood = this.addFood.bind(this);
 		this.getCategory = this.getCategory.bind(this);
 		this.addCategory = this.addCategory.bind(this);
+	}
+	async initData(restaurant_id){
+		this.defaultData.forEach(async (item) => {
+			let category_id;
+			try{
+				category_id = await this.getId('category_id');
+			}catch(err){
+				console.log('获取category_id失败');
+				throw new Error(err);
+			}
+			const Category = {...item, id: category_id, restaurant_id};
+			const newFood = new FoodModel(Category);
+			try{
+				await newFood.save();
+				console.log('初始化食品数据成功');
+			}catch(err){
+				console.log('初始化食品数据失败');
+				throw new Error(err);
+			}
+		})
 	}
 	async getCategory(req, res, next){
 		const restaurant_id = req.params.restaurant_id;
@@ -271,7 +304,7 @@ class Food extends BaseComponent{
 			return
 		}
 		try{
-			const menu = await FoodModel.find({restaurant_id}, '-_id');
+			const menu = await FoodModel.find({restaurant_id, $where: function(){return this.foods.length}}, '-_id');
 			res.send(menu);
 		}catch(err){
 			console.log('获取食品数据失败', err);

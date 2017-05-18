@@ -45,7 +45,7 @@ rateSchema.index({restaurant_id: 1});
 
 rateSchema.statics.initData = async function (restaurant_id){
 	try{
-		const data = await this.findOne();
+		const data = await this.findOne({restaurant_id});
 		if (!data) {
 			const newRating = {
 				restaurant_id,
