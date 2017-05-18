@@ -102,7 +102,7 @@ class Food extends BaseComponent{
 				await newFood.save();
 				res.send({
 					status: 1,
-					message: '添加食品种类成功',
+					success: '添加食品种类成功',
 				})
 			}catch(err){
 				console.log('保存数据失败');
@@ -281,7 +281,7 @@ class Food extends BaseComponent{
 				await category.save();
 				res.send({
 					status: 1,
-					foodDetail: category,
+					success: '添加食品成功',
 				});
 			}catch(err){
 				console.log('保存食品到数据库失败', err);

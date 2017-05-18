@@ -21,6 +21,8 @@
 [11、餐馆详情](#11餐馆详情)<br/>
 [12、上传图片](#12上传图片)<br/>
 [13、添加餐馆](#13添加餐馆)<br/>
+[14、添加食品种类](#14添加食品种类)<br/>
+[15、添加食品](#15添加食品)<br/>
 
 
 
@@ -849,5 +851,74 @@ POST
 {
   status: 1,
   sussess: '添加餐馆成功',
+}
+```
+
+### 14、添加食品种类
+
+#### 请求URL：
+```
+http://cangdu.org:8001/shopping/addcategory
+```
+
+#### 示例：
+
+
+#### 请求方式：
+```
+POST
+```
+
+#### 参数类型：query
+
+|参数|是否必选|类型|说明|
+|:-----|:-------:|:-----|:-----|
+|name      |Y       |string   | 种类 |
+|description      |Y       |string   | 描述 |
+|restaurant_id      |Y       |int   | 餐馆id |
+
+#### 返回示例：
+
+```javascript
+{
+  status: 1,
+  sussess: '添加食品种类成功',
+}
+```
+
+### 15、添加食品
+
+#### 请求URL：
+```
+http://cangdu.org:8001/shopping/addfood
+```
+
+#### 示例：
+
+
+#### 请求方式：
+```
+POST
+```
+
+#### 参数类型：query
+
+|参数|是否必选|类型|说明|
+|:-----|:-------:|:-----|:-----|
+|restaurant_id      |Y       |int   | 餐馆ID |
+|category_id      |Y       |int   | 分类ID |
+|name      |Y       |string   | 食品名称 |
+|image_path      |Y       |string   | 图片地址 |
+|specs      |Y       |array   | 规格： [{specs: '默认',packing_fee: 0,price: 20,}]|
+|description      |N       |string   |描述 |
+|activity      |N      |string   |活动 |
+|attributes      |N       |array   |特点：[{value: '新',label: '新品'}] |
+
+#### 返回示例：
+
+```javascript
+{
+  status: 1,
+  sussess: '添加食品成功',
 }
 ```
