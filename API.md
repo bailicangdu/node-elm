@@ -23,6 +23,7 @@
 [13、添加餐馆](#13添加餐馆)<br/>
 [14、添加食品种类](#14添加食品种类)<br/>
 [15、添加食品](#15添加食品)<br/>
+[16、获取食品列表](#16获取食品列表)<br/>
 
 
 
@@ -921,4 +922,107 @@ POST
   status: 1,
   sussess: '添加食品成功',
 }
+```
+
+### 16、获取食品列表
+
+#### 请求URL：
+```
+http://cangdu.org:8001/shopping/v2/menu
+```
+
+#### 示例：
+
+[http://cangdu.org:8001/shopping/v2/menu?restaurant_id=3](http://cangdu.org:8001/shopping/v2/menu?restaurant_id=3)
+
+
+#### 请求方式：
+```
+GET
+```
+
+#### 参数类型：query
+
+|参数|是否必选|类型|说明|
+|:-----|:-------:|:-----|:-----|
+|restaurant_id      |Y       |int   | 餐馆ID |
+
+
+#### 返回示例：
+
+```javascript
+
+[
+  {
+    name: "热销榜",
+    description: "大家喜欢吃，才叫真好吃。",
+    id: 1,
+    restaurant_id: 3,
+    foods: [
+      {
+        name: "好似懂非",
+        image_path: "/img/food/15c1ab95e7620.jpg",
+        activity: {
+          image_text_color: "f1884f",
+          icon_color: "f07373",
+          image_text: "实行政策支持支持支持"
+        },
+        restaurant_id: 3,
+        category_id: 1,
+        item_id: 1,
+        tips: "626评价 月售713份",
+        _id: "591d5ea243f73a7dbdc97c6b",
+        specfoods: [
+          {
+            name: "好似懂非",
+            item_id: 1,
+            sku_id: 1,
+            food_id: 1,
+            restaurant_id: 3,
+            _id: "591d5ea243f73a7dbdc97c6c",
+            specs: [ ],
+            stock: 1000,
+            checkout_mode: 1,
+            is_essential: false,
+            recent_popularity: 941,
+            sold_out: false,
+            price: 21,
+            promotion_stock: -1,
+            recent_rating: 0.6,
+            packing_fee: 1,
+            pinyin_name: "",
+            original_price: 0
+          }
+        ],
+        satisfy_rate: 79,
+        satisfy_count: 461,
+        attributes: [
+          {
+            icon_color: "5ec452",
+            icon_name: "新"
+          },
+          {
+            icon_color: "f07373",
+            icon_name: "招牌"
+          }
+        ],
+        is_essential: false,
+        server_utc: "2017-05-18T08:37:10.963Z",
+        specifications: [ ],
+        rating_count: 626,
+        month_sales: 713,
+        description: "中小城镇创新政策中",
+        attrs: [ ],
+        display_times: [ ],
+        pinyin_name: "",
+        is_featured: 0,
+        rating: 3.2
+      }
+    ],
+    type: 1,
+    icon_url: "5da3872d782f707b4c82ce4607c73d1ajpeg",
+    is_selected: true,
+    __v: 1
+  },
+]
 ```
