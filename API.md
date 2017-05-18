@@ -24,6 +24,12 @@
 [14、添加食品种类](#14添加食品种类)<br/>
 [15、添加食品](#15添加食品)<br/>
 [16、获取食品列表](#16获取食品列表)<br/>
+[17、获取评价信息](#17获取评价信息)<br/>
+[18、获取评价分数](#18获取评价分数)<br/>
+[19、获取评价分类](#19获取评价分类)<br/>
+[20、加入购物车](#20加入购物车)<br/>
+[21、获取备注信息](#21获取备注信息)<br/>
+[22、获取收获地址列表](#22获取收获地址列表)<br/>
 
 
 
@@ -1024,5 +1030,313 @@ GET
     is_selected: true,
     __v: 1
   },
+]
+```
+
+
+### 17、获取评价信息
+
+#### 请求URL：
+```
+http://cangdu.org:8001/ugc/v2/restaurants/:restaurant_id/ratings
+```
+
+#### 示例：
+
+[http://cangdu.org:8001/ugc/v2/restaurants/3/ratings?offset=0&limit=10](http://cangdu.org:8001/ugc/v2/restaurants/3/ratings?offset=0&limit=10)
+
+
+#### 请求方式：
+```
+GET
+```
+
+#### 参数类型：query, param
+
+|参数|是否必选|类型|说明|
+|:-----|:-------:|:-----|:-----|
+|restaurant_id      |Y       |int   | 餐馆ID |
+|tag_name      |N       |string   | 评价类型，默认全部 |
+|offset      |N       |int   | 跳过数据条数 |
+|limit      |N      |int   | 单次获取数据条数 |
+
+
+#### 返回示例：
+
+```javascript
+
+[
+  {
+  rated_at: "2017-02-10",
+  rating_star: 5,
+  rating_text: "",
+  time_spent_desc: "按时送达",
+  _id: "591d5e5643f73a7dbdc97c66",
+  username: "4*******b",
+  tags: [ ],
+  item_ratings: [
+    {
+      food_id: 508807792,
+      food_name: "超级至尊比萨-铁盘",
+      _id: "591d5e5643f73a7dbdc97c68",
+      is_valid: 1,
+      image_hash: "dc864033625905f0a15a2d181d53a425jpeg"
+    },
+    {
+      food_id: 508808743,
+      food_name: "韩式浓情风味鸡（标准份）",
+      _id: "591d5e5643f73a7dbdc97c67",
+      is_valid: 1,
+      image_hash: "074e0e203f613deff4e456c31e4177d1jpeg"
+    }
+  ],
+  highlights: [ ],
+  avatar: ""
+  },
+]
+```
+
+### 18、获取评价分数
+
+#### 请求URL：
+```
+http://cangdu.org:8001/ugc/v2/restaurants/:restaurant_id/ratings/scores
+```
+
+#### 示例：
+
+[http://cangdu.org:8001/ugc/v2/restaurants/3/ratings/scores](http://cangdu.org:8001/ugc/v2/restaurants/3/ratings/scores)
+
+
+#### 请求方式：
+```
+GET
+```
+
+#### 参数类型： param
+
+|参数|是否必选|类型|说明|
+|:-----|:-------:|:-----|:-----|
+|restaurant_id      |Y       |int   | 餐馆ID |
+
+
+#### 返回示例：
+
+```javascript
+
+{
+compare_rating: 0.76869,
+deliver_time: 40,
+food_score: 4.76378,
+order_rating_amount: 473,
+overall_score: 4.72836,
+service_score: 4.69295
+}
+
+```
+
+### 19、获取评价分类
+
+#### 请求URL：
+```
+http://cangdu.org:8001/ugc/v2/restaurants/:restaurant_id/ratings/tags
+```
+
+#### 示例：
+
+[http://cangdu.org:8001/ugc/v2/restaurants/3/ratings/tags](http://cangdu.org:8001/ugc/v2/restaurants/3/ratings/tags)
+
+
+#### 请求方式：
+```
+GET
+```
+
+#### 参数类型： param
+
+|参数|是否必选|类型|说明|
+|:-----|:-------:|:-----|:-----|
+|restaurant_id      |Y       |int   | 餐馆ID |
+
+
+#### 返回示例：
+
+```javascript
+
+[
+  {
+    name: "全部",
+    _id: "591d5e5643f73a7dbdc97c52",
+    unsatisfied: false,
+    count: 473
+  },
+]
+
+```
+
+### 20、加入购物车
+
+#### 请求URL：
+```
+http://cangdu.org:8001/v1/carts/checkout
+```
+
+#### 示例：
+
+#### 请求方式：
+```
+POST
+```
+
+#### 参数类型： param
+
+|参数|是否必选|类型|说明|
+|:-----|:-------:|:-----|:-----|
+|restaurant_id      |Y       |int   | 餐馆ID |
+|geohash      |Y       |string   | 经纬度 |
+|entities      |Y       |array   | 购物车数据[{attrs:[],extra:{},id:食品id,name:食品名称,packing_fee:打包费,price:价格,quantity:数量,sku_id:规格id,specs:规格,stock:存量,}] |
+
+
+#### 返回示例：
+
+```javascript
+
+{
+  cart: {
+    id: 1,
+    groups: [],
+    extra: this.extra,
+    deliver_amount,
+    deliver_time: '',
+    discount_amount: '',
+    dist_info: '',
+    is_address_too_far: false,
+    is_deliver_by_fengniao: !!restaurant.delivery_mode,
+    is_online_paid: 1,
+    is_ontime_available: 0,
+    must_new_user: 0,
+    must_pay_online: 0,
+    ontime_status: 0,
+    ontime_unavailable_reason: '',
+    original_total: total,
+    phone: restaurant.phone,
+    promise_delivery_time: 0,
+    restaurant_id,
+    restaurant_info: restaurant,
+    restaurant_minimum_order_amount: restaurant.float_minimum_order_amount,
+    restaurant_name_for_url: '',
+    restaurant_status: 1,
+    service_fee_explanation: 0,
+    total,
+    user_id: 1,
+  },
+  delivery_reach_time,
+  invoice,
+  sig: "8d65fd81cb962c1f64cd162c6ac5728f",
+  current_address: {},
+  payments,
+  deliver_times: [],
+  deliver_times_v2: [],
+  merchant_coupon_info: {},
+  number_of_meals: {},
+  discount_rule: {},
+  hongbao_info: {},
+  is_support_coupon: false,
+  is_support_ninja: 1,
+}
+
+```
+
+
+### 21、获取备注信息
+
+#### 请求URL：
+```
+http://cangdu.org:8001/v1/carts/:cart_id/remarks
+```
+
+#### 示例：
+
+[http://cangdu.org:8001/v1/carts/3/remarks](http://cangdu.org:8001/v1/carts/3/remarks)
+
+
+#### 请求方式：
+```
+GET
+```
+
+#### 参数类型： param
+
+|参数|是否必选|类型|说明|
+|:-----|:-------:|:-----|:-----|
+|cart_id      |Y       |int   | 购物车id |
+
+
+#### 返回示例：
+
+```javascript
+
+{
+  remarks: [
+    [
+    "不要辣",
+    "少点辣",
+    "多点辣"
+    ],
+  ],
+}
+
+```
+
+
+### 22、获取收获地址列表
+
+#### 请求URL：
+```
+http://cangdu.org:8001/v1/carts/:user_id/addresses
+```
+
+#### 示例：
+
+[http://cangdu.org:8001/v1/carts/1/addresses](http://cangdu.org:8001/v1/carts/1/addresses)
+
+
+#### 请求方式：
+```
+GET
+```
+
+#### 参数类型： param
+
+|参数|是否必选|类型|说明|
+|:-----|:-------:|:-----|:-----|
+|user_id      |Y       |int   | 用户id |
+
+
+#### 返回示例：
+
+```javascript
+
+[
+  {
+    id: 297740202,
+    address: "桂平路680号33幢",
+    phone: "13683220505",
+    is_valid: 1,
+    created_at: "2017-03-31T15:10:25+0800",
+    phone_bk: "",
+    name: "1231",
+    st_geohash: "wtw2dfyxb62",
+    address_detail: "123123",
+    poi_type: 0,
+    sex: 1,
+    city_id: 1,
+    tag: "家",
+    agent_fee: 3,
+    deliver_amount: 20,
+    is_deliverable: true,
+    phone_had_bound: true,
+    is_brand_member: false
+  }
 ]
 ```
