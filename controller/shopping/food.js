@@ -25,7 +25,7 @@ class Food extends BaseComponent{
 		this.addCategory = this.addCategory.bind(this);
 	}
 	async initData(restaurant_id){
-		this.defaultData.forEach(async (item) => {
+		for (let i = 0; i < this.defaultData.length; i++) {
 			let category_id;
 			try{
 				category_id = await this.getId('category_id');
@@ -33,7 +33,8 @@ class Food extends BaseComponent{
 				console.log('获取category_id失败');
 				throw new Error(err);
 			}
-			const Category = {...item, id: category_id, restaurant_id};
+			const defaultData = this.defaultData[i];
+			const Category = {...defaultData, id: category_id, restaurant_id};
 			const newFood = new FoodModel(Category);
 			try{
 				await newFood.save();
@@ -42,7 +43,7 @@ class Food extends BaseComponent{
 				console.log('初始化食品数据失败');
 				throw new Error(err);
 			}
-		})
+		}
 	}
 	async getCategory(req, res, next){
 		const restaurant_id = req.params.restaurant_id;
@@ -173,7 +174,7 @@ class Food extends BaseComponent{
 				attributes: [],
 				restaurant_id: fields.restaurant_id,
 				category_id: fields.category_id,
-				satisfy_rate: Math.ceil(Math.random()*1000),
+				satisfy_rate: Math.ceil(Math.random()*100),
 				satisfy_count: Math.ceil(Math.random()*1000),
 				item_id,
 				rating: (Math.random()*5).toFixed(1),
