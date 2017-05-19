@@ -4,8 +4,8 @@ module.exports = {
 	port: 8001,
 	url: 'mongodb://localhost:27017/elm',
 	session: {
-		name: 'elm',
-		secret: 'elm',
+		name: 'SID',
+		secret: 'SID',
 		cookie: {
 			httpOnly: true,
 		    secure:   false,

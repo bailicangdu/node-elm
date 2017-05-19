@@ -8,6 +8,7 @@ import Address from '../controller/v1/address'
 import Remark from '../controller/v1/remark'
 import BaseComponent from '../prototype/baseComponent'
 import Captchas from '../controller/v1/captchas'
+import User from '../controller/v2/user'
 const baseHandle = new BaseComponent();
 const router = express.Router();
 
@@ -20,5 +21,8 @@ router.post('/carts/checkout', Carts.checkout);
 router.get('/carts/:cart_id/addresses', Address.getAddress);
 router.get('/carts/:cart_id/remarks', Remark.getRemarks);
 router.post('/captchas', Captchas.getCaptchas);
+router.get('/user', User.getInfo);
+router.post('/changepassword', User.chanegPassword);
 
+ 
 export default router
