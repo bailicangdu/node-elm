@@ -1602,11 +1602,12 @@ http://cangdu.org:8001/v1/users/:user_id/addresses/:address_id
 DELETE
 ```
 
-#### 参数类型：
+#### 参数类型：param
 
 |参数|是否必选|类型|说明|
 |:-----|:-------:|:-----|:-----|
-
+|user_id      |Y       |int   | 用户id |
+|address_id      |Y       |int   | 收获地址id |
 
 #### 返回示例：
 
