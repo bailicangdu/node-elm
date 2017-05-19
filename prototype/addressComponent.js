@@ -43,7 +43,7 @@ class AddressComponent extends BaseComponent {
  		}
 	}
 	//搜索地址
-	async searchPlace(keyword, cityName){
+	async searchPlace(keyword, cityName, type = 'search'){
 		try{
 			const resObj = await this.fetch('http://apis.map.qq.com/ws/place/v1/search', {
 				key: this.tencentkey,

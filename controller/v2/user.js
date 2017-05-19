@@ -59,8 +59,8 @@ class User extends BaseComponent {
 					const newUser = {username, password: newpassword, user_id};
 					const newUserInfo = {username, user_id, id: user_id};
 					UserModel.create(newUser);
-					UserInfoModel.create(newUserInfo);
-					const userinfo = await UserInfoModel.findOne({user_id}, '-_id');
+					const createUser = new UserInfoModel(newUserInfo);
+					const userinfo = await createUser.save();
 					req.session.user_id = user_id;
 					res.send(userinfo);
 				}else if (user.password.toString() !== newpassword.toString()) {

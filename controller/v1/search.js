@@ -2,7 +2,7 @@
 
 import AddressComponent from '../../prototype/addressComponent';
 import Cities from '../../models/v1/cities';
-
+import CityHandle from './cities'
 
 class SearchPlace extends AddressComponent{
 	constructor(){
@@ -10,17 +10,29 @@ class SearchPlace extends AddressComponent{
 		this.search = this.search.bind(this)
 	}
 	async search(req, res, next){
-		const {type = 'search', city_id, keyword} = req.query;
-		if (isNaN(city_id) || !keyword) {
+		let {type = 'search', city_id, keyword} = req.query;
+		if (!keyword) {
 			res.send({
 				name: 'ERROR_QUERY_TYPE',
 				message: '参数错误',
 			})
 			return
+		}else if(isNaN(city_id)){
+			try{
+				const cityname = await CityHandle.getCityName(req);
+				const cityInfo = await Cities.cityGuess(cityname);
+				city_id = cityInfo.id;
+			}catch(err){
+				console.log('搜索地址时，获取定位城失败')
+				res.send({
+					name: 'ERROR_GET_POSITION',
+					message: '获取数据失败',
+				})
+			}
 		}
 		try{
 			const cityInfo = await Cities.getCityById(city_id);
-			const resObj = await this.searchPlace(keyword, cityInfo.name);
+			const resObj = await this.searchPlace(keyword, cityInfo.name, type);
 			const cityList = [];
 			resObj.data.forEach((item, index) => {
 				cityList.push({

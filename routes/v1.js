@@ -18,10 +18,12 @@ router.get('/exactaddress', CityHandle.getExactAddress);
 router.get('/pois', SearchPlace.search);
 router.post('/addimg/:type', baseHandle.uploadImg);
 router.post('/carts/checkout', Carts.checkout);
-router.get('/carts/:cart_id/addresses', Address.getAddress);
 router.get('/carts/:cart_id/remarks', Remark.getRemarks);
 router.post('/captchas', Captchas.getCaptchas);
 router.get('/user', User.getInfo);
+router.get('/users/:user_id/addresses', Address.getAddress);
+router.post('/users/:user_id/addresses', Address.addAddress);
+router.delete('/users/:user_id/addresses/:address_id', Address.deleteAddress);
 
  
 export default router
