@@ -15,6 +15,7 @@ class Captchas {
         const base64 = p.getBase64();
         res.cookie('cap', cap, { maxAge: 300000, httpOnly: true });
         res.send({
+            status: 1,
         	code: 'data:image/png;base64,' + base64
         });
 	}

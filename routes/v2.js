@@ -10,6 +10,7 @@ router.get('/index_entry', Entry.getEntry);
 router.get('/pois/:geohash', CityHandle.pois);
 router.post('/login', User.login);
 router.get('/signout', User.signout);
+router.post('/changepassword', User.chanegPassword);
 
 
 export default router

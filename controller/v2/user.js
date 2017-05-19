@@ -110,6 +110,7 @@ class User extends BaseComponent {
 	async signout(req, res, next){
 		req.session.user_id = null;
 		res.send({
+			status: 1,
 			message: '退出成功'
 		})
 	}
@@ -177,7 +178,7 @@ class User extends BaseComponent {
 					user.save();
 					res.send({
 						status: 1,
-						success: '密码修改生效',
+						success: '密码修改成功',
 					})
 				}
 			}catch(err){

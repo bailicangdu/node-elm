@@ -30,6 +30,11 @@
 [20、加入购物车](#20加入购物车)<br/>
 [21、获取备注信息](#21获取备注信息)<br/>
 [22、获取收获地址列表](#22获取收获地址列表)<br/>
+[23、获取验证码](#23获取验证码)<br/>
+[24、获取用户信息](#24获取用户信息)<br/>
+[25、登录](#25登录)<br/>
+[26、退出](#26退出)<br/>
+[27、修改密码](#27修改密码)<br/>
 
 
 
@@ -1339,4 +1344,200 @@ GET
     is_brand_member: false
   }
 ]
+```
+
+### 23、获取验证码
+
+#### 请求URL：
+```
+http://cangdu.org:8001/v1/captchas
+```
+
+#### 示例：
+
+
+#### 请求方式：
+```
+POST
+```
+
+#### 参数类型：
+
+|参数|是否必选|类型|说明|
+|:-----|:-------:|:-----|:-----|
+
+
+#### 返回示例：
+
+```javascript
+
+{
+  status: 1,
+  code: base64
+}
+```
+
+
+### 24、获取用户信息
+
+#### 请求URL：
+```
+http://cangdu.org:8001/v1/user
+```
+
+#### 示例：
+
+
+#### 请求方式：
+```
+GET
+```
+
+#### 参数类型：
+
+|参数|是否必选|类型|说明|
+|:-----|:-------:|:-----|:-----|
+
+
+#### 返回示例：
+
+```javascript
+
+{
+  username: "1",
+  user_id: 2,
+  id: 2,
+  point: 0,
+  mobile: "",
+  is_mobile_valid: true,
+  is_email_valid: false,
+  is_active: 1,
+  gift_amount: 3,
+  email: "",
+  delivery_card_expire_days: 0,
+  current_invoice_id: 0,
+  current_address_id: 0,
+  brand_member_new: 0,
+  balance: 0,
+  avatar: "/img/default/default.jpg",
+  __v: 0
+}
+```
+
+### 25、登录
+
+#### 请求URL：
+```
+http://cangdu.org:8001/v2/login
+```
+
+#### 示例：
+
+
+#### 请求方式：
+```
+POST
+```
+
+#### 参数类型：
+
+|参数|是否必选|类型|说明|
+|:-----|:-------:|:-----|:-----|
+|username      |Y       |string   | 用户名 |
+|password      |Y       |string  | 密码 |
+|captcha_code      |Y       |string   | 验证码 |
+
+
+
+#### 返回示例：
+
+```javascript
+
+{
+  username: "1",
+  user_id: 2,
+  id: 2,
+  point: 0,
+  mobile: "",
+  is_mobile_valid: true,
+  is_email_valid: false,
+  is_active: 1,
+  gift_amount: 3,
+  email: "",
+  delivery_card_expire_days: 0,
+  current_invoice_id: 0,
+  current_address_id: 0,
+  brand_member_new: 0,
+  balance: 0,
+  avatar: "/img/default/default.jpg",
+  __v: 0
+}
+```
+
+### 26、退出
+
+#### 请求URL：
+```
+http://cangdu.org:8001/v2/signout
+```
+
+#### 示例：
+
+
+#### 请求方式：
+```
+GET
+```
+
+#### 参数类型：
+
+|参数|是否必选|类型|说明|
+|:-----|:-------:|:-----|:-----|
+
+
+#### 返回示例：
+
+```javascript
+
+{
+  status: 1,
+  message: '退出成功'
+}
+```
+
+
+### 27、修改密码
+
+#### 请求URL：
+```
+http://cangdu.org:8001/v2/changepassword
+```
+
+#### 示例：
+
+
+#### 请求方式：
+```
+POST
+```
+
+#### 参数类型：
+
+|参数|是否必选|类型|说明|
+|:-----|:-------:|:-----|:-----|
+|username      |Y       |string   | 用户名 |
+|oldpassWord      |Y       |string  | 旧密码 |
+|newpassword      |Y       |string   | 新密码 |
+|confirmpassword      |Y       |string   | 确认密码 |
+|captcha_code      |Y       |string   | 验证码 |
+
+
+#### 返回示例：
+
+```javascript
+
+{
+  status: 1,
+  success: '密码修改成功',
+}
 ```

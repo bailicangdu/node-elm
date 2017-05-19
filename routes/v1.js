@@ -22,7 +22,6 @@ router.get('/carts/:cart_id/addresses', Address.getAddress);
 router.get('/carts/:cart_id/remarks', Remark.getRemarks);
 router.post('/captchas', Captchas.getCaptchas);
 router.get('/user', User.getInfo);
-router.post('/changepassword', User.chanegPassword);
 
  
 export default router
