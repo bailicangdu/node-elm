@@ -35,6 +35,8 @@
 [25、登录](#25登录)<br/>
 [26、退出](#26退出)<br/>
 [27、修改密码](#27修改密码)<br/>
+[28、增加收获地址](#28增加收获地址)<br/>
+[29、删除收获地址](#29删除收获地址)<br/>
 
 
 
@@ -1298,12 +1300,12 @@ GET
 
 #### 请求URL：
 ```
-http://cangdu.org:8001/v1/carts/:user_id/addresses
+http://cangdu.org:8001/v1/users/:user_id/addresses
 ```
 
 #### 示例：
 
-[http://cangdu.org:8001/v1/carts/1/addresses](http://cangdu.org:8001/v1/carts/1/addresses)
+[http://cangdu.org:8001/v1/users/1/addresses](http://cangdu.org:8001/v1/users/1/addresses)
 
 
 #### 请求方式：
@@ -1539,5 +1541,79 @@ POST
 {
   status: 1,
   success: '密码修改成功',
+}
+```
+
+### 28、增加收获地址
+
+#### 请求URL：
+```
+http://cangdu.org:8001/v1/users/:user_id/addresses
+```
+
+#### 示例：
+
+
+#### 请求方式：
+```
+POST
+```
+
+#### 参数类型：param, query
+
+|参数|是否必选|类型|说明|
+|:-----|:-------:|:-----|:-----|
+|user_id      |Y       |int   | 用户id |
+|address      |Y       |string   | 地址 |
+|address_detail      |Y       |string  | 地址详情 |
+|geohash      |Y       |string   | 经纬度 |
+|name      |Y       |string   | 收货人姓名 |
+|phone      |Y       |string   | 电话号码 |
+|tag      |Y       |string   | 标签 |
+|sex      |Y       |int   | 性别， 1:男，2:女 |
+|poi_type      |N       |int   | 类型，默认：0 |
+|phone_bk      |Y       |string   | 备注电话 |
+|tag_type      |Y       |int   | 标签类型，2:家，3:学校，4:公司 |
+
+
+#### 返回示例：
+
+```javascript
+
+{
+  status: 1,
+  success: '添加地址成功',
+}
+```
+
+
+### 29、删除收获地址
+
+#### 请求URL：
+```
+http://cangdu.org:8001/v1/users/:user_id/addresses/:address_id
+```
+
+#### 示例：
+
+
+#### 请求方式：
+```
+DELETE
+```
+
+#### 参数类型：
+
+|参数|是否必选|类型|说明|
+|:-----|:-------:|:-----|:-----|
+
+
+#### 返回示例：
+
+```javascript
+
+{
+  status: 1,
+  success: '删除地址成功',
 }
 ```
