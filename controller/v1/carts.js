@@ -4,6 +4,7 @@ import AddressComponent from '../../prototype/addressComponent'
 import formidable from 'formidable'
 import PaymentsModel from '../../models/v1/payments'
 import ShopModel from '../../models/shopping/shop'
+import CartModel from '../../models/v1/cart'
 
 class Carts extends AddressComponent{
 	constructor(){
@@ -11,7 +12,7 @@ class Carts extends AddressComponent{
 		this.extra = [{
 			description: '',
 			name: '餐盒',
-			price: 2,
+			price: 0,
 			quantity: 1,
 			type: 0,
 		}]
@@ -67,6 +68,9 @@ class Carts extends AddressComponent{
 			let deliver_amount = 0; //食品价格
 			entities[0].map(item => {
 				deliver_amount += item.price * item.quantity;
+				if (item.packing_fee) {
+					this.extra.price += item.packing_fee*item.quantity;
+				}
 				if (item.specs[0]) {
 					return item.name = item.name + '-' + item.specs[0];
 				}
@@ -87,49 +91,38 @@ class Carts extends AddressComponent{
 				}
 			})
 			const checkoutInfo = {
+				id: cart_id,
 				cart: {
 					id: cart_id,
 					groups: entities,
 					extra: this.extra,
 					deliver_amount,
-					deliver_time: '',
-					discount_amount: '',
-					dist_info: '',
-					is_address_too_far: false,
 					is_deliver_by_fengniao: !!restaurant.delivery_mode,
-					is_online_paid: 1,
-					is_ontime_available: 0,
-					must_new_user: 0,
-					must_pay_online: 0,
-					ontime_status: 0,
-					ontime_unavailable_reason: '',
 					original_total: total,
 					phone: restaurant.phone,
-					promise_delivery_time: 0,
 					restaurant_id,
 					restaurant_info: restaurant,
 					restaurant_minimum_order_amount: restaurant.float_minimum_order_amount,
-					restaurant_name_for_url: '',
-					restaurant_status: 1,
-					service_fee_explanation: 0,
 					total,
 					user_id: UID,
 				},
 				delivery_reach_time,
 				invoice,
-				sig: "8d65fd81cb962c1f64cd162c6ac5728f",
-				current_address: {},
+				sig: Math.ceil(Math.random()*1000000).toString(),
 				payments,
-				deliver_times: [],
-				deliver_times_v2: [],
-				merchant_coupon_info: {},
-				number_of_meals: {},
-				discount_rule: {},
-				hongbao_info: {},
-				is_support_coupon: false,
-				is_support_ninja: 1,
 			}
-			res.send(checkoutInfo)	
+			try{
+				const newCart = new CartModel(checkoutInfo);
+				const cart = await newCart.save();
+				res.send(cart)
+			}catch(err){
+				console.log('保存购物车数据失败');
+				res.send({
+					status: 0,
+					type: 'ERROR_TO_SAVE_CART',
+					message: '加入购物车失败'
+				})
+			}
 		})
 	}
 }

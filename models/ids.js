@@ -5,7 +5,7 @@ import mongoose from 'mongoose'
 const idsSchema = new mongoose.Schema({
 	restaurant_id: Number,
 	food_id: Number,
-	orderId: Number,
+	order_id: Number,
 	user_id: Number,
 	address_id: Number,
 	cart_id: Number,
@@ -22,7 +22,7 @@ Ids.findOne((err, data) => {
 		const newIds = new Ids({
 			restaurant_id: 0,
 			food_id: 0,
-			orderId: 0,
+			order_id: 0,
 			user_id: 0,
 			address_id: 0,
 			cart_id: 0,
