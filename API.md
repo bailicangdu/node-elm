@@ -29,14 +29,14 @@
 [19、获取评价分类](#19获取评价分类)<br/>
 [20、加入购物车](#20加入购物车)<br/>
 [21、获取备注信息](#21获取备注信息)<br/>
-[22、获取收获地址列表](#22获取收获地址列表)<br/>
+[22、获取收货地址列表](#22获取收货地址列表)<br/>
 [23、获取验证码](#23获取验证码)<br/>
 [24、获取用户信息](#24获取用户信息)<br/>
 [25、登录](#25登录)<br/>
 [26、退出](#26退出)<br/>
 [27、修改密码](#27修改密码)<br/>
-[28、增加收获地址](#28增加收获地址)<br/>
-[29、删除收获地址](#29删除收获地址)<br/>
+[28、增加收货地址](#28增加收货地址)<br/>
+[29、删除收货地址](#29删除收货地址)<br/>
 [30、下单](#30下单)<br/>
 [31、订单列表](#31订单列表)<br/>
 [32、订单详情](#32订单详情)<br/>
@@ -1303,7 +1303,7 @@ GET
 ```
 
 
-### 22、获取收获地址列表
+### 22、获取收货地址列表
 
 #### 请求URL：
 ```
@@ -1551,7 +1551,7 @@ POST
 }
 ```
 
-### 28、增加收获地址
+### 28、增加收货地址
 
 #### 请求URL：
 ```
@@ -1594,7 +1594,7 @@ POST
 ```
 
 
-### 29、删除收获地址
+### 29、删除收货地址
 
 #### 请求URL：
 ```
@@ -1614,7 +1614,7 @@ DELETE
 |参数|是否必选|类型|说明|
 |:-----|:-------:|:-----|:-----|
 |user_id      |Y       |int   | 用户id |
-|address_id      |Y       |int   | 收获地址id |
+|address_id      |Y       |int   | 收货地址id |
 
 #### 返回示例：
 
@@ -1623,5 +1623,457 @@ DELETE
 {
   status: 1,
   success: '删除地址成功',
+}
+```
+
+
+### 30、下单
+
+#### 请求URL：
+```
+http://cangdu.org:8001/v1/users/:user_id/carts/:cart_id/orders
+```
+
+#### 示例：
+
+#### 请求方式：
+```
+POST
+```
+
+#### 参数类型： param, query
+
+|参数|是否必选|类型|说明|
+|:-----|:-------:|:-----|:-----|
+|user_id      |Y       |int   | 用户ID |
+|cart_id      |Y       |int   | 购物车ID |
+|address_id      |Y       |int   | 收货地址ID |
+|restaurant_id      |Y       |int   | 餐馆ID |
+|geohash      |N       |string   | 经纬度 |
+|description      |N       |string   | 备注 |
+|entities      |Y       |array   | 购物车数据[{attrs:[],extra:{},id:食品id,name:食品名称,packing_fee:打包费,price:价格,quantity:数量,sku_id:规格id,specs:规格,stock:存量,}] |
+
+
+#### 返回示例：
+
+```javascript
+
+{
+  status: 1,
+  success: '下单成功，请及时付款',
+  need_validation: false,
+}
+
+```
+
+
+
+### 31、订单列表
+
+#### 请求URL：
+```
+http://cangdu.org:8001/bos/v2/users/:user_id/orders
+```
+
+#### 示例：
+
+[http://cangdu.org:8001/bos/v2/users/3/orders?limit=10&offset=0](http://cangdu.org:8001/bos/v2/users/3/orders?limit=10&offset=0)
+
+
+#### 请求方式：
+```
+GET
+```
+
+#### 参数类型： param, query
+
+|参数|是否必选|类型|说明|
+|:-----|:-------:|:-----|:-----|
+|user_id      |Y       |int   | 用户id |
+|limit      |N       |int   | 获取数据数量 |
+|offset      |N       |int   | 跳过数据条数 |
+
+
+#### 返回示例：
+
+```javascript
+
+[
+  {
+    restaurant_id: 6,
+    restaurant_image_url: "/img/shop/15c19349ebe12.jpg",
+    restaurant_name: "sdf",
+    formatted_created_at: "2017-05-21 42:34",
+    order_time: 1495298554692,
+    time_pass: 55315,
+    total_amount: 21,
+    total_quantity: 1,
+    unique_id: 16,
+    id: 16,
+    user_id: 3,
+    address_id: 6,
+    __v: 0,
+    top_show: 0,
+    timeline_node: {
+      in_processing: 0,
+      actions: [ ]
+    },
+    status_code: 0,
+    status_bar: {
+      color: "f60",
+      image_type: "",
+      sub_title: "15分钟内支付",
+      title: "支付超时"
+    },
+    restaurant_type: 0,
+    remind_reply_count: 0,
+    rated_point: 0,
+    pay_remain_seconds: 0,
+    operation_upload_photo: 0,
+    operation_rebuy: 2,
+    operation_rate: 0,
+    operation_pay: 0,
+    operation_confirm: 0,
+    is_pindan: 0,
+    is_new_pay: 1,
+    is_deletable: 1,
+    is_brand: 0,
+    basket: {
+      pindan_map: [ ],
+      packing_fee: {
+        price: 0,
+        quantity: 1,
+        name: "餐盒",
+        category_id: 1
+      },
+      group: [
+        [
+          {
+          name: "fsefsf",
+          price: 21,
+          quantity: 1,
+          _id: "592071f966867336d7f8bce6",
+          specs: [
+          ""
+          ],
+          new_specs: [ ],
+          attrs: [ ]
+          }
+        ]
+      ],
+      extra: [ ],
+      deliver_fee: {
+      quantity: 1,
+      price: 4,
+      name: "配送费",
+      category_id: 2
+      },
+      abandoned_extra: [ ]
+    }
+  },
+]
+```
+
+
+### 32、订单详情
+
+#### 请求URL：
+```
+http://cangdu.org:8001/bos/v1/users/:user_id/orders/:order_id/snapshot
+```
+
+#### 示例：
+
+[http://cangdu.org:8001/bos/v1/users/3/orders/1/snapshot](http://cangdu.org:8001/bos/v1/users/3/orders/1/snapshot)
+
+
+#### 请求方式：
+```
+GET
+```
+
+#### 参数类型： param
+
+|参数|是否必选|类型|说明|
+|:-----|:-------:|:-----|:-----|
+|user_id      |Y       |int   | 用户id |
+|order_id      |Y       |int   | 订单id |
+
+#### 返回示例：
+
+```javascript
+
+{
+  isNew: false,
+  _doc: {
+    __v: 0,
+    basket: {
+      abandoned_extra: [ ],
+      deliver_fee: {
+        category_id: 2,
+        name: "配送费",
+        price: 4,
+        quantity: 1
+      },
+      extra: [ ],
+      group: [
+        [
+        {
+          name: "fsefsf",
+          price: 21,
+          quantity: 2,
+          _id: "5920fffc12df813c6643d76b",
+          specs: [
+          ""
+          ],
+          new_specs: [ ],
+          attrs: [ ]
+        },
+        {
+          name: "35345435",
+          price: 21,
+          quantity: 2,
+          _id: "5920fffc12df813c6643d76a",
+          specs: [
+          ""
+          ],
+          new_specs: [ ],
+          attrs: [ ]
+        }
+        ]
+      ],
+      packing_fee: {
+        category_id: 1,
+        name: "餐盒",
+        quantity: 1,
+        price: 4
+      },
+      pindan_map: [ ]
+    },
+    is_brand: 0,
+    is_deletable: 1,
+    is_new_pay: 1,
+    is_pindan: 0,
+    operation_confirm: 0,
+    operation_pay: 0,
+    operation_rate: 0,
+    operation_rebuy: 2,
+    operation_upload_photo: 0,
+    pay_remain_seconds: 0,
+    rated_point: 0,
+    remind_reply_count: 0,
+    restaurant_type: 0,
+    status_bar: {
+      title: "支付超时",
+      sub_title: "15分钟内支付",
+      image_type: "",
+      color: "f60"
+    },
+    status_code: 0,
+    timeline_node: {
+      actions: [ ],
+      in_processing: 0
+    },
+    top_show: 0,
+    address_id: 6,
+    user_id: 3,
+    id: 17,
+    unique_id: 17,
+    total_quantity: 2,
+    total_amount: 88,
+    time_pass: 18959,
+    order_time: 1495334910518,
+    formatted_created_at: "2017-05-21 48:30",
+    restaurant_name: "sdf",
+    restaurant_image_url: "/img/shop/15c19349ebe12.jpg",
+    restaurant_id: 6
+  },
+  addressDetail: "sdfsf",
+  consignee: "ccc",
+  deliver_time: "尽快送达",
+  pay_method: "在线支付",
+  phone: "13323454321"
+}
+```
+
+
+### 33、服务中心
+
+#### 请求URL：
+```
+http://cangdu.org:8001/v3/profile/explain
+```
+
+#### 示例：
+
+[http://cangdu.org:8001/v3/profile/explain](http://cangdu.org:8001/v3/profile/explain)
+
+
+#### 请求方式：
+```
+GET
+```
+
+#### 参数类型： param
+
+|参数|是否必选|类型|说明|
+|:-----|:-------:|:-----|:-----|
+
+#### 返回示例：
+
+```javascript
+
+{
+  
+}
+```
+
+
+### 34、可用红包
+
+#### 请求URL：
+```
+http://cangdu.org:8001/promotion/v2/users/:user_id/hongbaos
+```
+
+#### 示例：
+
+[http://cangdu.org:8001/promotion/v2/users/3/hongbaos?limit=20&offset=0](http://cangdu.org:8001/promotion/v2/users/3/hongbaos?limit=20&offset=0)
+
+
+#### 请求方式：
+```
+GET
+```
+
+#### 参数类型： param, query
+
+|参数|是否必选|类型|说明|
+|:-----|:-------:|:-----|:-----|
+|user_id      |Y       |int   | 用户id |
+|limit      |N       |int   | 获取数据数量 |
+|offset      |N       |int   | 跳过数据条数 |
+
+
+#### 返回示例：
+
+```javascript
+
+[
+  {
+    id: 7160761341773,
+    sn: "201705211244186655961161757573",
+    user_id: 186655961,
+    amount: 2,
+    sum_condition: 40,
+    name: "分享红包",
+    phone: "13681711254",
+    begin_date: "2017-05-21",
+    end_date: "2017-05-23",
+    status: 0,
+    present_status: 1,
+    share_status: 0,
+    description_map: {
+      phone: "限收货手机号为 13681711254",
+      online_paid_only: "限在线支付使用",
+      validity_delta: "剩3日",
+      validity_periods: "2017-05-23到期",
+      sum_condition: "满 40 元可用"
+    },
+    __v: 0
+  },
+]
+```
+
+
+### 35、过期红包
+
+#### 请求URL：
+```
+http://cangdu.org:8001/promotion/v2/users/:user_id/expired_hongbaos
+```
+
+#### 示例：
+
+[http://cangdu.org:8001/promotion/v2/users/3/expired_hongbaos?limit=20&offset=0](http://cangdu.org:8001/promotion/v2/users/3/expired_hongbaos?limit=20&offset=0)
+
+
+#### 请求方式：
+```
+GET
+```
+
+#### 参数类型： param, query
+
+|参数|是否必选|类型|说明|
+|:-----|:-------:|:-----|:-----|
+|user_id      |Y       |int   | 用户id |
+|limit      |N       |int   | 获取数据数量 |
+|offset      |N       |int   | 跳过数据条数 |
+
+
+#### 返回示例：
+
+```javascript
+
+[
+  {
+    id: 7160761341773,
+    sn: "201705211244186655961161757573",
+    user_id: 186655961,
+    amount: 2,
+    sum_condition: 40,
+    name: "分享红包",
+    phone: "13681711254",
+    begin_date: "2017-05-21",
+    end_date: "2017-05-23",
+    status: 0,
+    present_status: 4,
+    share_status: 0,
+    description_map: {
+      phone: "限收货手机号为 13681711254",
+      online_paid_only: "限在线支付使用",
+      validity_delta: "剩3日",
+      validity_periods: "2017-05-23到期",
+      sum_condition: "满 40 元可用"
+    },
+    __v: 0
+  },
+]
+```
+
+
+
+### 36、兑换红包
+
+#### 请求URL：
+```
+http://cangdu.org:8001/v1/users/:user_id/hongbao/exchange
+```
+
+#### 示例：
+
+
+#### 请求方式：
+```
+POST
+```
+
+#### 参数类型： param, query
+
+|参数|是否必选|类型|说明|
+|:-----|:-------:|:-----|:-----|
+|user_id      |Y       |int   | 用户id |
+|exchange_code      |Y       |int   | 兑换码 |
+|captcha_code      |Y       |int   | 验证码 |
+
+
+#### 返回示例：
+
+```javascript
+{
+  status: 0,
+  type: 'NOT_ALLOWD_API',
+  message: '无效的兑换码'
 }
 ```

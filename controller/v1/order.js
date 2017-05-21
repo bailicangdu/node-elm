@@ -93,6 +93,8 @@ class Order extends BaseComponent{
 			try{
 				await OrderModel.create(orderObj);
 				res.send({
+					status: 1,
+					success: '下单成功，请及时付款',
 					need_validation: false,
 				})
 			}catch(err){
