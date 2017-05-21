@@ -10,6 +10,7 @@ import BaseComponent from '../prototype/baseComponent'
 import Captchas from '../controller/v1/captchas'
 import User from '../controller/v2/user'
 import Order from '../controller/v1/order'
+import Hongbao from '../controller/promotion/hongbao'
 const baseHandle = new BaseComponent();
 const router = express.Router();
 
@@ -26,6 +27,7 @@ router.get('/users/:user_id/addresses', Address.getAddress);
 router.post('/users/:user_id/addresses', Address.addAddress);
 router.delete('/users/:user_id/addresses/:address_id', Address.deleteAddress);
 router.post('/users/:user_id/carts/:cart_id/orders', Order.postOrder);
+router.post('/users/:user_id/hongbao/exchange', Hongbao.exchange);
 
 
  

@@ -48,6 +48,13 @@ class Hongbao extends BaseComponent{
 			})
 		}
 	}
+	async exchange(req, res, next){
+		res.send({
+			status: 0,
+			type: 'NOT_ALLOWD_API',
+			message: '无效的兑换码'
+		})
+	}	
 }
 
 export default new Hongbao()

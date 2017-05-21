@@ -7,6 +7,7 @@ import v3 from './v3'
 import v4 from './v4'
 import ugc from './ugc'
 import bos from './bos'
+import member from './member'
 import shopping from './shopping'
 import promotion from './promotion'
 
@@ -21,6 +22,7 @@ export default app => {
 	app.use('/v4', v4);
 	app.use('/ugc', ugc);
 	app.use('/bos', bos);
+	app.use('/member', member);
 	app.use('/shopping', shopping);
 	app.use('/promotion', promotion);
 }
