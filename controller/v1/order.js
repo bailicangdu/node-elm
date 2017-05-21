@@ -5,6 +5,7 @@ import formidable from 'formidable'
 import OrderModel from '../../models/bos/order'
 import CartModel from '../../models/v1/cart'
 import timestamp from 'time-stamp'
+import AddressModel from '../../models/v1/address'
 
 class Order extends BaseComponent{
 	constructor(){
@@ -47,10 +48,10 @@ class Order extends BaseComponent{
 				})
 				return 
 			}
-			let cart;
+			let cartDetail;
 			let order_id;
 			try{
-				cart = await CartModel.findOne({id: cart_id});
+				cartDetail = await CartModel.findOne({id: cart_id});
 				order_id = await this.getId('order_id');
 			}catch(err){
 				console.log('获取数据失败', err);
@@ -65,22 +66,24 @@ class Order extends BaseComponent{
 				basket: {
 					group: entities,
 					packing_fee: {
-						name: cart.cart.extra[0].name,
-						price: cart.cart.extra[0].price,
-						quantity: cart.cart.extra[0].quantity,
+						name: cartDetail.cart.extra[0].name,
+						price: cartDetail.cart.extra[0].price,
+						quantity: cartDetail.cart.extra[0].quantity,
 					}
 				},
-				restaurant_id: cart.cart.restaurant_id,
-				restaurant_image_url: cart.cart.restaurant_info.image_path,
-				restaurant_name:  cart.cart.restaurant_info.name,
-				formatted_created_at: new Date().getTime(),
+				restaurant_id: cartDetail.cart.restaurant_id,
+				restaurant_image_url: cartDetail.cart.restaurant_info.image_path,
+				restaurant_name:  cartDetail.cart.restaurant_info.name,
+				formatted_created_at: timestamp('YYYY-MM-DD mm:ss'),
+				order_time: new Date().getTime(),
+				time_pass: 900,
 				status_bar: {
 					color: 'f60',
 					image_type: '',
 					sub_title: '15分钟内支付',
-					title: '等待支付',
+					title: '',
 				},
-				total_amount: cart.cart.total,
+				total_amount: cartDetail.cart.total,
 				total_quantity: entities[0].length,
 				unique_id: order_id,
 				id: order_id,
@@ -123,7 +126,18 @@ class Order extends BaseComponent{
 			return 
 		}
 		try{
-			const orders = await OrderModel.find({user_id}, '-_id').limit(Number(limit)).skip(Number(offset));
+			const orders = await OrderModel.find({user_id}).limit(Number(limit)).skip(Number(offset));
+			const timeNow = new Date().getTime();
+			orders.map(item => {
+				if (timeNow - item.order_time < 900000) {
+					item.status_bar.title = '等待支付';
+				}else{
+					item.status_bar.title = '支付超时';
+				}
+				item.time_pass = Math.ceil((timeNow - item.order_time)/1000);
+				item.save()
+				return item
+			})
 			res.send(orders);
 		}catch(err){
 			console.log('获取订单列表失败', err);
@@ -131,6 +145,37 @@ class Order extends BaseComponent{
 				status: 0,
 				type: 'ERROR_GET_ORDER_LIST',
 				message: '获取订单列表失败'
+			})
+		}
+	}
+	async getDetail(req, res, next){
+		const {user_id, order_id} = req.params;
+		try{
+			if (!user_id || !Number(user_id)) {
+				throw new Error('user_id参数错误')
+			}else if(!order_id || !Number(order_id)){
+				throw new Error('order_id参数错误')
+			}
+		}catch(err){
+			console.log(err.message);
+			res.send({
+				status: 0,
+				type: 'GET_ERROR_PARAM',
+				message: err.message,
+			})
+			return
+		}
+		try{
+			const order = await OrderModel.findOne({id: order_id}, '-_id');
+			const addressDetail = await AddressModel.findOne({id: order.address_id});
+			const orderDetail = {...order, ...{addressDetail: addressDetail.address, consignee: addressDetail.name, deliver_time: '尽快送达', pay_method: '在线支付', phone: addressDetail.phone}};
+			res.send(orderDetail)
+		}catch(err){
+			console.log('获取订单信息失败', err);
+			res.send({
+				status: 0,
+				type: 'ERROR_TO_GET_ORDER_DETAIL',
+				message: '获取订单信息失败'
 			})
 		}
 	}

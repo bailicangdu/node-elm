@@ -42,6 +42,8 @@ const orderSchema = new Schema({
 		pindan_map: []
 	},
 	formatted_created_at: String,
+	order_time: Number,
+	time_pass: Number,
 	id: Number,
 	is_brand: {type: Number, default: 0},
 	is_deletable: {type: Number, default: 1},
