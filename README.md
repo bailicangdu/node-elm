@@ -2,8 +2,6 @@
 
 此项目是前端项目 [vue2-elm](https://github.com/bailicangdu/vue2-elm) 的后台系统，保持和官网一致的API接口。并提供了对应的后台管理系统 [vue2-manage](https://github.com/bailicangdu/back-manage) 。
 
-__注：此项目只用做nodejs的学习，请不要用于商业用途，正常下单请选择饿了么官方客户端。__
-
 
 # 说明
 
@@ -16,6 +14,8 @@ __注：此项目只用做nodejs的学习，请不要用于商业用途，正常
 >  开发环境 macOS 10.12.4  nodejs 6.10.0
 
 >  部署环境 阿里云 CentOS 7.2 64位
+
+>  此项目只用做nodejs的学习，请不要用于商业用途，正常下单请选择饿了么官方客户端。
 
 >  传送门：[前端项目地址](https://github.com/bailicangdu/vue2-elm)  、 [后台管理系统地址](https://github.com/bailicangdu/back-manage)  、 [原生APP项目地址](https://github.com/bailicangdu/RN-elm)
 
