@@ -7,7 +7,8 @@ import Category from '../controller/shopping/category'
 const router = express.Router();
 
 router.post('/addshop', Shop.addShop);
-router.get('/restaurants', Shop.getRestaurants)
+router.get('/restaurants', Shop.getRestaurants);
+router.get('/allrestaurants', Shop.getShopCount);
 router.post('/addfood', Food.addFood);
 router.get('/getcategory/:restaurant_id', Food.getCategory);
 router.post('/addcategory', Food.addCategory);

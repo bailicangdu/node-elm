@@ -68,7 +68,7 @@ class Shop extends AddressComponent{
 				opening_hours: [opening_hours],
 				phone: fields.phone,
 				promotion_info: fields.promotion_info || "欢迎光临，用餐高峰请提前下单，谢谢",
-				rating: (Math.random()*5).toFixed(1),
+				rating: (3 + Math.random()*2).toFixed(1),
 				rating_count: Math.ceil(Math.random()*1000),
 				recent_order_num: Math.ceil(Math.random()*1000),
 				status: Math.round(Math.random()),
@@ -351,6 +351,22 @@ class Shop extends AddressComponent{
 				status: 0,
 				type: 'GET_DATA_ERROR',
 				message: '获取餐馆详情失败'
+			})
+		}
+	}
+	async getShopCount(req, res, next){
+		try{
+			const count = await ShopModel.count();
+			res.send({
+				status: 1,
+				count,
+			})
+		}catch(err){
+			console.log('获取餐馆数量失败', err);
+			res.send({
+				status: 0,
+				type: 'ERROR_TO_GET_COUNT',
+				message: '获取餐馆数量失败'
 			})
 		}
 	}

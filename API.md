@@ -810,15 +810,15 @@ POST
 
 |参数|是否必选|类型|说明|
 |:-----|:-------:|:-----|:-----|
-|type      |Y       |string  |shop：商铺图片，  food：食品图片， avatar：头像 |
+|type      |Y       |string  |shop：商铺图片，food：食品图片，avatar：头像 |
 
 #### 返回示例：
 
 ```javascript
 {
   status: 1,
-  image_path: '/img/shop/15bfafa418322.jpeg'  
-  // 对应的全部地址为： http://cangdu.org:8001/img/shop/15bfafa418322.jpeg
+  image_path: '15bfafa418322.jpeg'  
+  // 图片保存至七牛，图片全部地址为， http://images.cangdu.org/15bfafa418322.jpeg
 }
 ```
 
@@ -953,7 +953,7 @@ http://cangdu.org:8001/shopping/v2/menu
 
 #### 示例：
 
-[http://cangdu.org:8001/shopping/v2/menu?restaurant_id=3](http://cangdu.org:8001/shopping/v2/menu?restaurant_id=3)
+[http://cangdu.org:8001/shopping/v2/menu?restaurant_id=1](http://cangdu.org:8001/shopping/v2/menu?restaurant_id=1)
 
 
 #### 请求方式：
@@ -1057,7 +1057,7 @@ http://cangdu.org:8001/ugc/v2/restaurants/:restaurant_id/ratings
 
 #### 示例：
 
-[http://cangdu.org:8001/ugc/v2/restaurants/3/ratings?offset=0&limit=10](http://cangdu.org:8001/ugc/v2/restaurants/3/ratings?offset=0&limit=10)
+[http://cangdu.org:8001/ugc/v2/restaurants/1/ratings?offset=0&limit=10](http://cangdu.org:8001/ugc/v2/restaurants/1/ratings?offset=0&limit=10)
 
 
 #### 请求方式：
@@ -1119,7 +1119,7 @@ http://cangdu.org:8001/ugc/v2/restaurants/:restaurant_id/ratings/scores
 
 #### 示例：
 
-[http://cangdu.org:8001/ugc/v2/restaurants/3/ratings/scores](http://cangdu.org:8001/ugc/v2/restaurants/3/ratings/scores)
+[http://cangdu.org:8001/ugc/v2/restaurants/1/ratings/scores](http://cangdu.org:8001/ugc/v2/restaurants/1/ratings/scores)
 
 
 #### 请求方式：
@@ -1158,7 +1158,7 @@ http://cangdu.org:8001/ugc/v2/restaurants/:restaurant_id/ratings/tags
 
 #### 示例：
 
-[http://cangdu.org:8001/ugc/v2/restaurants/3/ratings/tags](http://cangdu.org:8001/ugc/v2/restaurants/3/ratings/tags)
+[http://cangdu.org:8001/ugc/v2/restaurants/1/ratings/tags](http://cangdu.org:8001/ugc/v2/restaurants/1/ratings/tags)
 
 
 #### 请求方式：
@@ -1271,7 +1271,7 @@ http://cangdu.org:8001/v1/carts/:cart_id/remarks
 
 #### 示例：
 
-[http://cangdu.org:8001/v1/carts/3/remarks](http://cangdu.org:8001/v1/carts/3/remarks)
+[http://cangdu.org:8001/v1/carts/1/remarks](http://cangdu.org:8001/v1/carts/1/remarks)
 
 
 #### 请求方式：
@@ -1677,7 +1677,7 @@ http://cangdu.org:8001/bos/v2/users/:user_id/orders
 
 #### 示例：
 
-[http://cangdu.org:8001/bos/v2/users/3/orders?limit=10&offset=0](http://cangdu.org:8001/bos/v2/users/3/orders?limit=10&offset=0)
+[http://cangdu.org:8001/bos/v2/users/1/orders?limit=10&offset=0](http://cangdu.org:8001/bos/v2/users/1/orders?limit=10&offset=0)
 
 
 #### 请求方式：
@@ -1784,7 +1784,7 @@ http://cangdu.org:8001/bos/v1/users/:user_id/orders/:order_id/snapshot
 
 #### 示例：
 
-[http://cangdu.org:8001/bos/v1/users/3/orders/1/snapshot](http://cangdu.org:8001/bos/v1/users/3/orders/1/snapshot)
+[http://cangdu.org:8001/bos/v1/users/1/orders/1/snapshot](http://cangdu.org:8001/bos/v1/users/1/orders/1/snapshot)
 
 
 #### 请求方式：
@@ -1938,7 +1938,7 @@ http://cangdu.org:8001/promotion/v2/users/:user_id/hongbaos
 
 #### 示例：
 
-[http://cangdu.org:8001/promotion/v2/users/3/hongbaos?limit=20&offset=0](http://cangdu.org:8001/promotion/v2/users/3/hongbaos?limit=20&offset=0)
+[http://cangdu.org:8001/promotion/v2/users/1/hongbaos?limit=20&offset=0](http://cangdu.org:8001/promotion/v2/users/1/hongbaos?limit=20&offset=0)
 
 
 #### 请求方式：
@@ -1995,7 +1995,7 @@ http://cangdu.org:8001/promotion/v2/users/:user_id/expired_hongbaos
 
 #### 示例：
 
-[http://cangdu.org:8001/promotion/v2/users/3/expired_hongbaos?limit=20&offset=0](http://cangdu.org:8001/promotion/v2/users/3/expired_hongbaos?limit=20&offset=0)
+[http://cangdu.org:8001/promotion/v2/users/1/expired_hongbaos?limit=20&offset=0](http://cangdu.org:8001/promotion/v2/users/1/expired_hongbaos?limit=20&offset=0)
 
 
 #### 请求方式：
