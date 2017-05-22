@@ -3,13 +3,18 @@ import Ids from '../models/ids'
 import formidable from 'formidable'
 import path from 'path'
 import fs from 'fs'
-import gm from 'gm'
+// import gm from 'gm'
+import qiniu from 'qiniu'
+qiniu.conf.ACCESS_KEY = 'Ep714TDrVhrhZzV2VJJxDYgGHBAX-KmU1xV1SQdS';
+qiniu.conf.SECRET_KEY = 'XNIW2dNffPBdaAhvm9dadBlJ-H6yyCTIJLxNM_N6';
+
 
 export default class BaseComponent {
 	constructor(){
 		this.idList = ['restaurant_id', 'food_id', 'order_id', 'user_id', 'address_id', 'cart_id', 'img_id', 'category_id', 'item_id', 'sku_id'];
 		this.imgTypeList = ['shop', 'food', 'avatar','default'];
 		this.uploadImg = this.uploadImg.bind(this)
+
 	}
 	async fetch(url = '', data = {}, type = 'GET', resType = 'JSON'){
 		type = type.toUpperCase();
@@ -99,32 +104,40 @@ export default class BaseComponent {
 				})
 				return 
 			}
-			const imgUrl = (new Date().getTime() + Math.ceil(Math.random()*10000)).toString(16) + img_id;
+			const imgName = (new Date().getTime() + Math.ceil(Math.random()*10000)).toString(16) + img_id;
 			const extname = path.extname(files.file.name);
-			const repath = './public/img/' + type + '/' + imgUrl + extname;
+			const repath = './public/img/' + type + '/' + imgName + extname;
 			try{
+				const key = imgName + extname;
 				await fs.rename(files.file.path, repath);
-				gm(repath)
-				.resize(400, 400, '!')
-				.write(repath, async (err) => {
-					if(err){
-						console.log('改写图片尺寸失败');
-						fs.unlink(repath);
-						res.send({
-							status: 0,
-							type: 'ERROR_GET_SIZE',
-							message: '改写图片尺寸失败',
-						})
-					}else{
-						const path = repath.replace(/^\.\/public/, '');
-						res.send({
-							status: 1,
-							image_path: path
-						})
-					} 
+				const token = this.uptoken('node-elm', key);
+				const qiniuImg = await this.uploadFile(token.toString(), key, repath);
+				fs.unlink(repath);
+				res.send({
+					status: 1,
+					image_path: qiniuImg
 				})
+				// gm(repath)
+				// .resize(400, 400, '!')
+				// .write(repath, async (err) => {
+				// 	if(err){
+				// 		console.log('改写图片尺寸失败');
+				// 		fs.unlink(repath);
+				// 		res.send({
+				// 			status: 0,
+				// 			type: 'ERROR_GET_SIZE',
+				// 			message: '改写图片尺寸失败',
+				// 		})
+				// 	}else{
+				// 		const path = repath.replace(/^\.\/public/, '');
+				// 		res.send({
+				// 			status: 1,
+				// 			image_path: path
+				// 		})
+				// 	} 
+				// })
 			}catch(err){
-				console.log('改写图片路径失败');
+				console.log('改写图片路径失败', err);
 				fs.unlink(files.file.path)
 				res.send({
 					status: 0,
@@ -133,5 +146,23 @@ export default class BaseComponent {
 				})
 			}
 		});
+	}
+	uptoken(bucket, key){
+		var putPolicy = new qiniu.rs.PutPolicy(bucket+":"+key);
+  		return putPolicy.token();
+	}
+	uploadFile(uptoken, key, localFile){
+		return new Promise((resolve, reject) => {
+			var extra = new qiniu.io.PutExtra();
+		    qiniu.io.putFile(uptoken, key, localFile, extra, function(err, ret) {
+			    if(!err) {  
+			    	resolve(ret.key)
+			    } else {
+			    	console.log('图片上传至七牛失败', err);
+			    	reject(err)
+			    }
+		  	});
+
+		})
 	}	
 }

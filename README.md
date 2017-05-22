@@ -2,6 +2,7 @@
 
 此项目是前端项目 [vue2-elm](https://github.com/bailicangdu/vue2-elm) 的后台系统，保持和官网一致的API接口。并提供了对应的后台管理系统 [vue2-manage](https://github.com/bailicangdu/back-manage) 。
 
+__注：此项目只用做nodejs的学习，请不要用于商业用途，正常下单请选择饿了么官方客户端。__
 
 
 # 说明
