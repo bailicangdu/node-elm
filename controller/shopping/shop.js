@@ -374,7 +374,7 @@ class Shop extends AddressComponent{
 		const form = new formidable.IncomingForm();
 		form.parse(req, async (err, fields, files) => {
 			if (err) {
-				console.log('更新商铺信息form出错');
+				console.log('获取商铺信息form出错', err);
 				res.send({
 					status: 0,
 					type: 'ERROR_FORM',
@@ -382,7 +382,7 @@ class Shop extends AddressComponent{
 				})
 				return 
 			}
-			const {name, address, description = "暂无介绍", phone, category, id, latitude, longitude, image_path} = fields;
+			const {name, address, description = "", phone, category, id, latitude, longitude, image_path} = fields;
 			try{
 				if (!name) {
 					throw new Error('餐馆名称错误');
@@ -394,6 +394,8 @@ class Shop extends AddressComponent{
 					throw new Error('餐馆分类错误');
 				}else if(!id || !Number(id)){
 					throw new Error('餐馆ID错误');
+				}else if(!image_path){
+					throw new Error('餐馆图片地址错误');
 				}
 				let newData;
 				if (latitude && longitude) {
@@ -407,13 +409,12 @@ class Shop extends AddressComponent{
 					success: '修改商铺信息成功',
 				})
 			}catch(err){
-				console.log(err.message);
+				console.log(err.message, err);
 				res.send({
 					status: 0,
-					type: 'ERROR_QUERY',
-					message: err.message,
+					type: 'ERROR_UPDATE_RESTAURANT',
+					message: '更新商铺信息失败',
 				})
-				return
 			}
 		})
 	}
