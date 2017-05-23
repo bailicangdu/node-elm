@@ -1,12 +1,13 @@
 'use strict';
 
-import BaseComponent from '../../prototype/baseComponent'
+import AddressComponent from '../../prototype/addressComponent'
 import formidable from 'formidable'
 import UserInfoModel from '../../models/v2/userInfo'
 import UserModel from '../../models/v2/user'
 import crypto from 'crypto'
+import timestamp from 'time-stamp'
 
-class User extends BaseComponent {
+class User extends AddressComponent {
 	constructor(){
 		super()
 		this.login = this.login.bind(this);
@@ -54,10 +55,13 @@ class User extends BaseComponent {
 			const newpassword = this.encryption(password);
 			try{
 				const user = await UserModel.findOne({username});
+				//创建一个新的用户
 				if (!user) {
 					const user_id = await this.getId('user_id');
+					const cityInfo = await this.guessPosition(req);
+					const registe_time = timestamp('YYYY-MM-DD mm:ss');
 					const newUser = {username, password: newpassword, user_id};
-					const newUserInfo = {username, user_id, id: user_id};
+					const newUserInfo = {username, user_id, id: user_id, city: cityInfo.city, registe_time, };
 					UserModel.create(newUser);
 					const createUser = new UserInfoModel(newUserInfo);
 					const userinfo = await createUser.save();
@@ -87,7 +91,7 @@ class User extends BaseComponent {
 	}
 	async getInfo(req, res, next){
 		const user_id = req.session.user_id;
-		if (!user_id) {
+		if (!user_id || !Number(user_id)) {
 			res.send({
 				status: 0,
 				type: 'GET_USER_INFO_FAIELD',
@@ -198,6 +202,36 @@ class User extends BaseComponent {
 	Md5(password){
 		const md5 = crypto.createHash('md5');
 		return md5.update(password).digest('base64');
+	}
+	async getUserList(req, res, next){
+		const {limit = 20, offset = 0} = req.query;
+		try{
+			const users = await UserInfoModel.find({}, '-_id').limit(Number(limit)).skip(Number(offset));
+			res.send(users);
+		}catch(err){
+			console.log('获取用户列表数据失败', err);
+			res.send({
+				status: 0,
+				type: 'GET_DATA_ERROR',
+				message: '获取用户列表数据失败'
+			})
+		}
+	}
+	async getUserCount(req, res, next){
+		try{
+			const count = await UserInfoModel.count();
+			res.send({
+				status: 1,
+				count,
+			})
+		}catch(err){
+			console.log('获取用户数量失败', err);
+			res.send({
+				status: 0,
+				type: 'ERROR_TO_GET_USER_COUNT',
+				message: '获取用户数量失败'
+			})
+		}
 	}
 } 
 

@@ -13,6 +13,8 @@ const userInfoSchema = new Schema({
 	delivery_card_expire_days: {type: Number, default: 0},
 	email: {type: String, default: ''},
 	gift_amount: {type: Number, default: 3},
+	city: String,
+	registe_time: String,
 	id: Number,
 	user_id: Number,
 	is_active: {type: Number, default: 1},
