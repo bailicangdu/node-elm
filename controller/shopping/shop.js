@@ -370,6 +370,79 @@ class Shop extends AddressComponent{
 			})
 		}
 	}
+	async updateshop(req, res, next){
+		const form = new formidable.IncomingForm();
+		form.parse(req, async (err, fields, files) => {
+			if (err) {
+				console.log('更新商铺信息form出错');
+				res.send({
+					status: 0,
+					type: 'ERROR_FORM',
+					message: '表单信息错误',
+				})
+				return 
+			}
+			const {name, address, description = "暂无介绍", phone, category, id, latitude, longitude, image_path} = fields;
+			try{
+				if (!name) {
+					throw new Error('餐馆名称错误');
+				}else if(!address){
+					throw new Error('餐馆地址错误');
+				}else if(!phone){
+					throw new Error('餐馆联系电话错误');
+				}else if(!category){
+					throw new Error('餐馆分类错误');
+				}else if(!id || !Number(id)){
+					throw new Error('餐馆ID错误');
+				}
+				let newData;
+				if (latitude && longitude) {
+					newData = {name, address, description, phone, category, latitude, longitude, image_path}
+				}else{
+					newData = {name, address, description, phone, category, image_path}
+				}
+				await ShopModel.findOneAndUpdate({id}, {$set: newData});
+				res.send({
+					status: 1,
+					success: '修改商铺信息成功',
+				})
+			}catch(err){
+				console.log(err.message);
+				res.send({
+					status: 0,
+					type: 'ERROR_QUERY',
+					message: err.message,
+				})
+				return
+			}
+		})
+	}
+	async deleteResturant(req, res, next){
+		const restaurant_id = req.params.restaurant_id;
+		if (!restaurant_id || !Number(restaurant_id)) {
+			console.log('restaurant_id参数错误');
+			res.send({
+				status: 0,
+				type: 'ERROR_PARAMS',
+				message: 'restaurant_id参数错误',
+			})
+			return 
+		}
+		try{
+			await ShopModel.remove({id: restaurant_id});
+			res.send({
+				status: 1,
+				success: '删除餐馆成功',
+			})
+		}catch(err){
+			console.log('删除餐馆失败', err);
+			res.send({
+				status: 0,
+				type: 'DELETE_RESTURANT_FAILED',
+				message: '删除餐馆失败',
+			})
+		}
+	}
 }
 
 export default new Shop()
