@@ -14,7 +14,7 @@ export default class BaseComponent {
 		this.idList = ['restaurant_id', 'food_id', 'order_id', 'user_id', 'address_id', 'cart_id', 'img_id', 'category_id', 'item_id', 'sku_id'];
 		this.imgTypeList = ['shop', 'food', 'avatar','default'];
 		this.uploadImg = this.uploadImg.bind(this)
-
+		this.qiniu = this.qiniu.bind(this)
 	}
 	async fetch(url = '', data = {}, type = 'GET', resType = 'JSON'){
 		type = type.toUpperCase();
@@ -78,74 +78,53 @@ export default class BaseComponent {
 
 	async uploadImg(req, res, next){
 		const type = req.params.type;
-		if (!this.imgTypeList.includes(type)) {
-			console.log('前台传入参数错误');
+		try{
+			const image_path = await this.qiniu(req, type);
+			res.send({
+				status: 1,
+				image_path,
+			})
+		}catch(err){
+			console.log('上传图片失败', err);
 			res.send({
 				status: 0,
-				type: 'ERROR_PARAMS',
-				message: '参数错误',
+				type: 'ERROR_UPLOAD_IMG',
+				message: '上传图片失败'
 			})
-			return
 		}
-		const form = formidable.IncomingForm();
-		form.uploadDir = './public/img/' + type;
 		
-		form.parse(req, async (err, fields, files) => {
-			let img_id;
-			try{
-				img_id = await this.getId('img_id');
-			}catch(err){
-				console.log('获取图片id失败');
-				fs.unlink(files.file.path)
-				res.send({
-					status: 0,
-					type: 'ERROR_GET_ID',
-					message: '获取图片id失败',
-				})
-				return 
-			}
-			const imgName = (new Date().getTime() + Math.ceil(Math.random()*10000)).toString(16) + img_id;
-			const extname = path.extname(files.file.name);
-			const repath = './public/img/' + type + '/' + imgName + extname;
-			try{
-				const key = imgName + extname;
-				await fs.rename(files.file.path, repath);
-				const token = this.uptoken('node-elm', key);
-				const qiniuImg = await this.uploadFile(token.toString(), key, repath);
-				fs.unlink(repath);
-				res.send({
-					status: 1,
-					image_path: qiniuImg
-				})
-				// gm(repath)
-				// .resize(400, 400, '!')
-				// .write(repath, async (err) => {
-				// 	if(err){
-				// 		console.log('改写图片尺寸失败');
-				// 		fs.unlink(repath);
-				// 		res.send({
-				// 			status: 0,
-				// 			type: 'ERROR_GET_SIZE',
-				// 			message: '改写图片尺寸失败',
-				// 		})
-				// 	}else{
-				// 		const path = repath.replace(/^\.\/public/, '');
-				// 		res.send({
-				// 			status: 1,
-				// 			image_path: path
-				// 		})
-				// 	} 
-				// })
-			}catch(err){
-				console.log('改写图片路径失败', err);
-				fs.unlink(files.file.path)
-				res.send({
-					status: 0,
-					type: 'ERROR_USE_GM',
-					message: '切图失败',
-				})
-			}
-		});
+	}
+	async qiniu(req, type = 'default'){
+		return new Promise((resolve, reject) => {
+			const form = formidable.IncomingForm();
+			form.uploadDir = './public/img/' + type;
+			form.parse(req, async (err, fields, files) => {
+				let img_id;
+				try{
+					img_id = await this.getId('img_id');
+				}catch(err){
+					console.log('获取图片id失败');
+					fs.unlink(files.file.path);
+					reject('获取图片id失败')
+				}
+				const imgName = (new Date().getTime() + Math.ceil(Math.random()*10000)).toString(16) + img_id;
+				const extname = path.extname(files.file.name);
+				const repath = './public/img/' + type + '/' + imgName + extname;
+				try{
+					const key = imgName + extname;
+					await fs.rename(files.file.path, repath);
+					const token = this.uptoken('node-elm', key);
+					const qiniuImg = await this.uploadFile(token.toString(), key, repath);
+					fs.unlink(repath);
+					resolve(qiniuImg)
+				}catch(err){
+					console.log('保存至七牛失败', err);
+					fs.unlink(files.file.path)
+					reject('保存至七牛失败')
+				}
+			});
+
+		})
 	}
 	uptoken(bucket, key){
 		var putPolicy = new qiniu.rs.PutPolicy(bucket+":"+key);

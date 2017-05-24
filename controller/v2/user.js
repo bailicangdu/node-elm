@@ -5,7 +5,7 @@ import formidable from 'formidable'
 import UserInfoModel from '../../models/v2/userInfo'
 import UserModel from '../../models/v2/user'
 import crypto from 'crypto'
-import timestamp from 'time-stamp'
+import dtime from 'time-formater'
 
 class User extends AddressComponent {
 	constructor(){
@@ -13,6 +13,7 @@ class User extends AddressComponent {
 		this.login = this.login.bind(this);
 		this.encryption = this.encryption.bind(this);
 		this.chanegPassword = this.chanegPassword.bind(this);
+		this.updateAvatar = this.updateAvatar.bind(this);
 	}
 	async login(req, res, next){
 		const cap = req.cookies.cap;
@@ -59,7 +60,7 @@ class User extends AddressComponent {
 				if (!user) {
 					const user_id = await this.getId('user_id');
 					const cityInfo = await this.guessPosition(req);
-					const registe_time = timestamp('YYYY-MM-DD mm:ss');
+					const registe_time = dtime().format('YYYY-MM-DD HH:mm');
 					const newUser = {username, password: newpassword, user_id};
 					const newUserInfo = {username, user_id, id: user_id, city: cityInfo.city, registe_time, };
 					UserModel.create(newUser);
@@ -134,7 +135,7 @@ class User extends AddressComponent {
 		}
 	}
 	async signout(req, res, next){
-		req.session.user_id = null;
+		delete req.session.user_id
 		res.send({
 			status: 1,
 			message: '退出成功'
@@ -252,6 +253,40 @@ class User extends AddressComponent {
 				status: 0,
 				type: 'ERROR_TO_GET_USER_COUNT',
 				message: '获取用户数量失败'
+			})
+		}
+	}
+	async updateAvatar(req, res, next){
+		const sid = req.session.user_id;
+		const user_id = req.params.user_id;
+		if (!user_id || !Number(user_id)) {
+			res.send({
+				status: 0,
+				type: 'ERROR_USERID',
+				message: 'user_id参数错误',
+			})
+			return 
+		}else if(Number(sid) !== Number(user_id)){
+			res.send({
+				status: 0,
+				type: 'NEED_LOGIN_IN',
+				message: '登录后才可修改头像',
+			})
+			return 
+		}
+		try{
+			const image_path = await this.qiniu(req);
+			await UserInfoModel.findOneAndUpdate({user_id}, {$set: {avatar: image_path}});
+			res.send({
+				status: 1,
+				image_path,
+			})
+		}catch(err){
+			console.log('上传图片失败', err);
+			res.send({
+				status: 0,
+				type: 'ERROR_UPLOAD_IMG',
+				message: '上传图片失败'
 			})
 		}
 	}

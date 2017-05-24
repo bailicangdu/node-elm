@@ -4,7 +4,7 @@ import BaseComponent from '../../prototype/baseComponent'
 import formidable from 'formidable'
 import OrderModel from '../../models/bos/order'
 import CartModel from '../../models/v1/cart'
-import timestamp from 'time-stamp'
+import dtime from 'time-formater'
 import AddressModel from '../../models/v1/address'
 
 class Order extends BaseComponent{
@@ -62,6 +62,7 @@ class Order extends BaseComponent{
 				})
 				return 
 			}
+			const deliver_fee = {price: cartDetail.cart.deliver_amount};
 			const orderObj = {
 				basket: {
 					group: entities,
@@ -69,12 +70,13 @@ class Order extends BaseComponent{
 						name: cartDetail.cart.extra[0].name,
 						price: cartDetail.cart.extra[0].price,
 						quantity: cartDetail.cart.extra[0].quantity,
-					}
+					},
+					deliver_fee,
 				},
 				restaurant_id: cartDetail.cart.restaurant_id,
 				restaurant_image_url: cartDetail.cart.restaurant_info.image_path,
 				restaurant_name:  cartDetail.cart.restaurant_info.name,
-				formatted_created_at: timestamp('YYYY-MM-DD mm:ss'),
+				formatted_created_at: dtime().format('YYYY-MM-DD HH:mm'),
 				order_time: new Date().getTime(),
 				time_pass: 900,
 				status_bar: {

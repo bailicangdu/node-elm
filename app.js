@@ -8,10 +8,9 @@ import connectMongo from 'connect-mongo';
 import winston from 'winston';
 import expressWinston from 'express-winston';
 import path from 'path';
-
+import history from 'connect-history-api-fallback';
 
 const app = express();
-app.use(express.static('./public'));
 
 app.all('*', (req, res, next) => {
 	res.header("Access-Control-Allow-Origin", req.headers.origin);
@@ -65,6 +64,9 @@ router(app);
 //     ]
 // }));
 
+
+app.use(history());
+app.use(express.static('./public'));
 app.use((err, req, res, next) => {
 	res.status(404).send('未找到当前路由');
 });

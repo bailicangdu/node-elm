@@ -5,7 +5,7 @@ import mongoose from 'mongoose'
 const Schema = mongoose.Schema;
 
 const userInfoSchema = new Schema({
-	avatar: {type: String, default: '/default.jpg'},
+	avatar: {type: String, default: 'default.jpg'},
 	balance: {type: Number, default: 0},
 	brand_member_new: {type: Number, default: 0},
 	current_address_id: {type: Number, default: 0},
