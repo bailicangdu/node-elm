@@ -111,6 +111,28 @@ class User extends AddressComponent {
 			})
 		}
 	}
+	async getInfoById(req, res, next){
+		const user_id = req.params.user_id;
+		if (!user_id || !Number(user_id)) {
+			res.send({
+				status: 0,
+				type: 'GET_USER_INFO_FAIELD',
+				message: '获取用户信息失败',
+			})
+			return 
+		}
+		try{
+			const userinfo = await UserInfoModel.findOne({user_id}, '-_id');
+			res.send(userinfo) 
+		}catch(err){
+			console.log('获取用户信息失败', err);
+			res.send({
+				status: 0,
+				type: 'GET_USER_INFO_FAIELD',
+				message: '获取用户信息失败',
+			})
+		}
+	}
 	async signout(req, res, next){
 		req.session.user_id = null;
 		res.send({

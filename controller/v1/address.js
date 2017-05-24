@@ -12,7 +12,7 @@ class Address extends BaseComponent{
 	}
 	async getAddress(req, res, next){
 		const user_id = req.params.user_id;
-		if (!user_id) {
+		if (!user_id || !Number(user_id)) {
 			res.send({
 				type: 'ERROR_USER_ID',
 				message: 'user_id参数错误',
@@ -36,7 +36,7 @@ class Address extends BaseComponent{
 			const user_id = req.params.user_id;
 			const {address, address_detail, geohash, name, phone, phone_bk, poi_type = 0, sex, tag, tag_type} = fields;
 			try{
-				if (!user_id) {
+				if (!user_id || !Number(user_id)) {
 					throw new Error('用户ID参数错误');
 				}else if(!address){
 					throw new Error('地址信息错误');
@@ -96,7 +96,7 @@ class Address extends BaseComponent{
 	}
 	async deleteAddress(req, res, next){
 		const {user_id, address_id} = req.params;
-		if (!user_id || !address_id) {
+		if (!user_id || !Number(user_id) || !address_id || !Number(address_id)) {
 			res.send({
 				type: 'ERROR_PARAMS',
 				message: '参数错误',
@@ -114,6 +114,26 @@ class Address extends BaseComponent{
 			res.send({
 				type: 'ERROR_DELETE_ADDRESS',
 				message: '删除收获地址失败'
+			})
+		}
+	}
+	async getAddAddressById(req, res, next){
+		const address_id = req.params.address_id;
+		if (!address_id || !Number(address_id)) {
+			res.send({
+				type: 'ERROR_PARAMS',
+				message: '参数错误',
+			})
+			return 
+		}
+		try{
+			const address = await AddressModel.findOne({id: address_id});
+			res.send(address)
+		}catch(err){
+			console.log('获取地址信息失败', err);
+			res.send({
+				type: 'ERROR_GET_ADDRESS',
+				message: '获取地址信息失败'
 			})
 		}
 	}

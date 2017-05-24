@@ -4,7 +4,7 @@ import express from 'express';
 const router = express.Router();
 
 router.get('/', async (req, res) => {
-	res.send('成功开启服务器');
+	res.send('node-elm 后台程序正常启动');
 });
 
 export default router;

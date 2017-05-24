@@ -181,6 +181,47 @@ class Order extends BaseComponent{
 			})
 		}
 	}
+	async getAllOrders(req, res, next){
+		const {restaurant_id, limit = 20, offset = 0} = req.query;
+		try{
+			let filter = {};
+			if (restaurant_id && Number(restaurant_id)) {
+				filter = {restaurant_id}
+			}
+
+			const orders = await OrderModel.find(filter, '-_id').limit(Number(limit)).skip(Number(offset));
+			res.send(orders);
+		}catch(err){
+			console.log('获取订单数据失败', err);
+			res.send({
+				status: 0,
+				type: 'GET_ORDER_DATA_ERROR',
+				message: '获取订单数据失败'
+			})
+		}
+	}
+	async getOrdersCount(req, res, next){
+		const restaurant_id = req.query.restaurant_id;
+		try{
+			let filter = {};
+			if (restaurant_id && Number(restaurant_id)) {
+				filter = {restaurant_id}
+			}
+
+			const count = await OrderModel.find(filter).count();
+			res.send({
+				status: 1,
+				count,
+			})
+		}catch(err){
+			console.log('获取订单数量失败', err);
+			res.send({
+				status: 0,
+				type: 'ERROR_TO_GET_COUNT',
+				message: '获取订单数量失败'
+			})
+		}
+	}
 }
 
 export default new Order()
