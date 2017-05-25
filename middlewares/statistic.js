@@ -11,13 +11,12 @@ class Statistic extends AddressComponent {
 	}
 	async apiRecord(req, res, next){
 		try{
-			const address = await this.guessPosition(req);
+			// const address = await this.guessPosition(req);
 			const statis_id = await this.getId('statis_id')
 			const apiInfo = {
 				date: dtime().format('YYYY-MM-DD'),
 				origin: req.headers.origin,
 				id: statis_id,
-				address: address.city,
 			}
 			StatisModel.create(apiInfo)
 		}catch(err){
