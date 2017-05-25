@@ -4,6 +4,7 @@ import AdminModel from '../../models/admin/admin'
 import BaseComponent from '../../prototype/baseComponent'
 import crypto from 'crypto'
 import formidable from 'formidable'
+import dtime from 'time-formater'
 
 class Admin extends BaseComponent {
 	constructor(){
@@ -23,7 +24,7 @@ class Admin extends BaseComponent {
 				})
 				return
 			}
-			const {user_name, password} = fields;
+			const {user_name, password, status = 1} = fields;
 			try{
 				if (!user_name) {
 					throw new Error('用户名错误')
@@ -43,20 +44,28 @@ class Admin extends BaseComponent {
 			try{
 				const admin = await AdminModel.findOne({user_name})
 				if (!admin) {
-					console.log('该用户不存在');
-					req.session.admin_id = 100000;
+					const adminTip = status == 1 ? '普通管理员' : '超级管理员'
+					const admin_id = await this.getId('admin_id');
+					const newAdmin = {
+						user_name, 
+						password: newpassword, 
+						id: admin_id,
+						create_time: dtime().format('YYYY-MM-DD'),
+						admin: adminTip,
+						status,
+					}
+					await AdminModel.create(newAdmin)
+					req.session.admin_id = admin_id;
 					res.send({
-						status: 0,
-						type: 'USER_DID_NOT_EXIST',
-						message: '该用户不存在',
+						status: 1,
+						success: '注册管理员成功',
 					})
 				}else if(newpassword.toString() != admin.password.toString()){
 					console.log('密码错误');
-					req.session.admin_id = 100000;
 					res.send({
 						status: 0,
 						type: 'ERROR_PASSWORD',
-						message: '密码错误',
+						message: '密码输入错误',
 					})
 				}else{
 					req.session.admin_id = admin.id;
@@ -66,11 +75,11 @@ class Admin extends BaseComponent {
 					})
 				}
 			}catch(err){
-				console.log('登录超级管理员失败', err);
+				console.log('登录管理员失败', err);
 				res.send({
 					status: 0,
 					type: 'LOGIN_ADMIN_FAILED',
-					message: '登录超级管理员失败',
+					message: '登录管理员失败',
 				})
 			}
 		})
@@ -86,7 +95,7 @@ class Admin extends BaseComponent {
 				})
 				return
 			}
-			const {user_name, password} = fields;
+			const {user_name, password, status = 1} = fields;
 			try{
 				if (!user_name) {
 					throw new Error('用户名错误')
@@ -112,22 +121,30 @@ class Admin extends BaseComponent {
 						message: '该用户已经存在',
 					})
 				}else{
+					const adminTip = status == 1 ? '普通管理员' : '超级管理员'
 					const admin_id = await this.getId('admin_id');
 					const newpassword = this.encryption(password);
-					const newAdmin = {user_name, password: newpassword, id: admin_id}
+					const newAdmin = {
+						user_name, 
+						password: newpassword, 
+						id: admin_id,
+						create_time: dtime().format('YYYY-MM-DD'),
+						admin: adminTip,
+						status,
+					}
 					await AdminModel.create(newAdmin)
 					req.session.admin_id = admin_id;
 					res.send({
 						status: 1,
-						message: '注册超级管理员成功',
+						message: '注册管理员成功',
 					})
 				}
 			}catch(err){
-				console.log('注册超级管理员失败', err);
+				console.log('注册管理员失败', err);
 				res.send({
 					status: 0,
 					type: 'REGISTER_ADMIN_FAILED',
-					message: '注册超级管理员失败',
+					message: '注册管理员失败',
 				})
 			}
 		})
@@ -152,6 +169,39 @@ class Admin extends BaseComponent {
 			res.send({
 				status: 0,
 				message: '退出失败'
+			})
+		}
+	}
+	async getAllAdmin(req, res, next){
+		const {limit = 20, offset = 0} = req.query;
+		try{
+			const allAdmin = await AdminModel.find({}, '-_id -password').skip(Number(offset)).limit(Number(limit))
+			res.send({
+				status: 1,
+				data: allAdmin,
+			})
+		}catch(err){
+			console.log('获取超级管理列表失败', err);
+			res.send({
+				status: 0,
+				type: 'ERROR_GET_ADMIN_LIST',
+				message: '获取超级管理列表失败'
+			})
+		}
+	}
+	async getAdminCount(req, res, next){
+		try{
+			const count = await AdminModel.count()
+			res.send({
+				status: 1,
+				count,
+			})
+		}catch(err){
+			console.log('获取管理员数量失败', err);
+			res.send({
+				status: 0,
+				type: 'ERROR_GET_ADMIN_COUNT',
+				message: '获取管理员数量失败'
 			})
 		}
 	}
