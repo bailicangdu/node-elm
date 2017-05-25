@@ -1,5 +1,5 @@
 'use strict';
 
 module.exports = {
-	url: 'mongodb://cangdu.org:27017/elm',
+	url: 'mongodb://localhost:27017/elm',
 }

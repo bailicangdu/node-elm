@@ -35,7 +35,7 @@ cd node-elm
 
 npm install
 
-npm run dev (需开启本地mongodb，如果没有安装mongodb，可以运行 npm run online 连接线上数据库)
+npm run dev (需先开启mongodb)
 
 访问: http://localhost:8001
 
@@ -72,7 +72,7 @@ npm run dev (需开启本地mongodb，如果没有安装mongodb，可以运行 n
 - [x] 会员管理
 - [x] 订单管理
 - [ ] 流量统计
-- [ ] 超级管理员
+- [x] 超级管理员
 - [x] 美化路由(history模式)
 - [ ] 部署上线
 

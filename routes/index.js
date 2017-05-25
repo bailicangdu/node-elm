@@ -8,6 +8,7 @@ import v4 from './v4'
 import ugc from './ugc'
 import bos from './bos'
 import eus from './eus'
+import admin from './admin'
 import member from './member'
 import shopping from './shopping'
 import promotion from './promotion'
@@ -24,6 +25,7 @@ export default app => {
 	app.use('/ugc', ugc);
 	app.use('/bos', bos);
 	app.use('/eus', eus);
+	app.use('/admin', admin);
 	app.use('/member', member);
 	app.use('/shopping', shopping);
 	app.use('/promotion', promotion);
