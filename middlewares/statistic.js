@@ -1,17 +1,16 @@
 'use strict';
 
-import AddressComponent from '../prototype/addressComponent'
+import BaseComponent from '../prototype/baseComponent'
 import StatisModel from '../models/statis/statis'
 import dtime from 'time-formater'
 
-class Statistic extends AddressComponent {
+class Statistic extends BaseComponent {
 	constructor(){
 		super()
 		this.apiRecord = this.apiRecord.bind(this)
 	}
 	async apiRecord(req, res, next){
 		try{
-			// const address = await this.guessPosition(req);
 			const statis_id = await this.getId('statis_id')
 			const apiInfo = {
 				date: dtime().format('YYYY-MM-DD'),

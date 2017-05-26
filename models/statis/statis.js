@@ -8,7 +8,6 @@ const statisSchema = new Schema({
 	date: String,
 	origin: String,
 	id: Number,
-	address: String
 })
 
 statisSchema.index({id: 1})
