@@ -205,6 +205,36 @@ class Admin extends BaseComponent {
 			})
 		}
 	}
+	async getAdminInfo(req, res, next){
+		const admin_id = req.session.admin_id;
+		if (!admin_id || !Number(admin_id)) {
+			console.log('session失效');
+			res.send({
+				status: 0,
+				type: 'ERROR_SESSION',
+				message: '获取管理员信息失败'
+			})
+			return 
+		}
+		try{
+			const info = await AdminModel.findOne({id: admin_id});
+			if (!info) {
+				throw new Error('未找到当前管理员')
+			}else{
+				res.send({
+					status: 1,
+					data: info
+				})
+			}
+		}catch(err){
+			console.log('获取管理员信息失败');
+			res.send({
+				status: 0,
+				type: 'GET_ADMIN_INFO_FAILED',
+				message: '获取管理员信息失败'
+			})
+		}
+	}
 }
 
 export default new Admin()
