@@ -67,6 +67,7 @@ class User extends AddressComponent {
 					const createUser = new UserInfoModel(newUserInfo);
 					const userinfo = await createUser.save();
 					req.session.user_id = user_id;
+					res.cookie('UID', user_id, { maxAge: 31536000000});
 					res.send(userinfo);
 				}else if (user.password.toString() !== newpassword.toString()) {
 					res.send({
@@ -77,6 +78,7 @@ class User extends AddressComponent {
 					return 
 				}else{
 					req.session.user_id = user.user_id;
+					res.cookie('UID', user_id, { maxAge: 31536000000});
 					const userinfo = await UserInfoModel.findOne({user_id: user.user_id}, '-_id');
 					res.send(userinfo) 
 				}
@@ -91,7 +93,7 @@ class User extends AddressComponent {
 		})
 	}
 	async getInfo(req, res, next){
-		const user_id = req.session.user_id;
+		let user_id = req.session.user_id || req.cookies.UID;
 		if (!user_id || !Number(user_id)) {
 			res.send({
 				status: 0,
@@ -135,7 +137,8 @@ class User extends AddressComponent {
 		}
 	}
 	async signout(req, res, next){
-		delete req.session.user_id
+		delete req.session.user_id;
+		res.clearCookie('UID');
 		res.send({
 			status: 1,
 			message: '退出成功'
