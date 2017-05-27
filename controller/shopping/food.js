@@ -123,7 +123,6 @@ class Food extends BaseComponent{
 	async addFood(req, res, next){
 		const form = new formidable.IncomingForm();
 		form.parse(req, async (err, fields, files) => {
-			console.log(fields)
 			try{
 				if (!fields.name) {
 					throw new Error('必须填写食品名称');
