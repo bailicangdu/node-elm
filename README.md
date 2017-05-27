@@ -51,7 +51,7 @@ npm run dev (需先开启mongodb)
 ![](https://github.com/bailicangdu/node-elm/blob/master/ewm.png)
 
 
-[后台管理系统网址请戳这里](http://cangdu.org/manage/)（请用chrome手机模式预览）
+[后台管理系统网址请戳这里](http://cangdu.org/manage/)
 
 
 
