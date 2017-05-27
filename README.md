@@ -47,7 +47,7 @@ npm run dev (需先开启mongodb)
 ### 前端网址
 [查看前端网址请戳这里](http://cangdu.org:8001/)（请用chrome手机模式预览）
 
-### 移动端扫描下方二维码
+###### 移动端扫描下方二维码
 
 ![](https://github.com/bailicangdu/node-elm/blob/master/ewm.png)
 
