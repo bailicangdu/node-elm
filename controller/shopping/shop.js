@@ -44,7 +44,7 @@ class Shop extends AddressComponent{
 					throw new Error('必须上传食品种类');
 				}
 			}catch(err){
-				console.log('前台参数出错');
+				console.log('前台参数出错', err.message);
 				res.send({
 					status: 0,
 					type: 'ERROR_PARAMS',

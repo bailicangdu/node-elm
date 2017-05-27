@@ -136,7 +136,7 @@ class Food extends BaseComponent{
 					throw new Error('餐馆ID错误');
 				}
 			}catch(err){
-				console.log('前台参数错误');
+				console.log('前台参数错误', err.message);
 				res.send({
 					status: 0,
 					type: 'ERROR_PARAMS',

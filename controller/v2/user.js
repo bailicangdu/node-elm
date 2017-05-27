@@ -68,7 +68,6 @@ class User extends AddressComponent {
 					const createUser = new UserInfoModel(newUserInfo);
 					const userinfo = await createUser.save();
 					req.session.user_id = user_id;
-					res.cookie('UID', user_id, { maxAge: 31536000000});
 					res.send(userinfo);
 				}else if (user.password.toString() !== newpassword.toString()) {
 					res.send({
@@ -79,7 +78,6 @@ class User extends AddressComponent {
 					return 
 				}else{
 					req.session.user_id = user.user_id;
-					res.cookie('UID', user.user_id, { maxAge: 31536000000});
 					const userinfo = await UserInfoModel.findOne({user_id: user.user_id}, '-_id');
 					res.send(userinfo) 
 				}
@@ -94,13 +92,13 @@ class User extends AddressComponent {
 		})
 	}
 	async getInfo(req, res, next){
-		let user_id = req.session.user_id || req.cookies.UID;
+		let user_id = req.session.user_id;
 		if (!user_id || !Number(user_id)) {
-			console.log('sessions和cookie失效', req.session.user_id, req.cookies.UID)
+			console.log('获取用户信息sessions失效', user_id)
 			res.send({
 				status: 0,
 				type: 'GET_USER_INFO_FAIELD',
-				message: '获取用户信息失败',
+				message: '通过session获取用户信息失败',
 			})
 			return 
 		}
@@ -108,11 +106,11 @@ class User extends AddressComponent {
 			const userinfo = await UserInfoModel.findOne({user_id}, '-_id');
 			res.send(userinfo) 
 		}catch(err){
-			console.log('获取用户信息失败', err);
+			console.log('通过session获取用户信息失败', err);
 			res.send({
 				status: 0,
 				type: 'GET_USER_INFO_FAIELD',
-				message: '获取用户信息失败',
+				message: '通过session获取用户信息失败',
 			})
 		}
 	}
@@ -123,7 +121,7 @@ class User extends AddressComponent {
 			res.send({
 				status: 0,
 				type: 'GET_USER_INFO_FAIELD',
-				message: '获取用户信息失败',
+				message: '通过用户ID获取用户信息失败',
 			})
 			return 
 		}
@@ -131,17 +129,16 @@ class User extends AddressComponent {
 			const userinfo = await UserInfoModel.findOne({user_id}, '-_id');
 			res.send(userinfo) 
 		}catch(err){
-			console.log('获取用户信息失败', err);
+			console.log('通过用户ID获取用户信息失败', err);
 			res.send({
 				status: 0,
 				type: 'GET_USER_INFO_FAIELD',
-				message: '获取用户信息失败',
+				message: '通过用户ID获取用户信息失败',
 			})
 		}
 	}
 	async signout(req, res, next){
 		delete req.session.user_id;
-		res.clearCookie('UID');
 		res.send({
 			status: 1,
 			message: '退出成功'
