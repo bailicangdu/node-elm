@@ -18,6 +18,7 @@ class User extends AddressComponent {
 	async login(req, res, next){
 		const cap = req.cookies.cap;
 		if (!cap) {
+			console.log('验证码失效')
 			res.send({
 				status: 0,
 				type: 'ERROR_CAPTCHA',
@@ -95,6 +96,7 @@ class User extends AddressComponent {
 	async getInfo(req, res, next){
 		let user_id = req.session.user_id || req.cookies.UID;
 		if (!user_id || !Number(user_id)) {
+			console.log('sessions和cookie失效', req.session.user_id, req.cookies.UID)
 			res.send({
 				status: 0,
 				type: 'GET_USER_INFO_FAIELD',
@@ -117,6 +119,7 @@ class User extends AddressComponent {
 	async getInfoById(req, res, next){
 		const user_id = req.params.user_id;
 		if (!user_id || !Number(user_id)) {
+			console.log('通过ID获取用户信息失败')
 			res.send({
 				status: 0,
 				type: 'GET_USER_INFO_FAIELD',
@@ -147,6 +150,7 @@ class User extends AddressComponent {
 	async chanegPassword(req, res, next){
 		const cap = req.cookies.cap;
 		if (!cap) {
+			console.log('验证码失效')
 			res.send({
 				status: 0,
 				type: 'ERROR_CAPTCHA',
@@ -263,6 +267,7 @@ class User extends AddressComponent {
 		const sid = req.session.user_id;
 		const user_id = req.params.user_id;
 		if (!user_id || !Number(user_id)) {
+			console.log('更新头像，user_id错误', user_id)
 			res.send({
 				status: 0,
 				type: 'ERROR_USERID',
@@ -270,6 +275,7 @@ class User extends AddressComponent {
 			})
 			return 
 		}else if(Number(sid) !== Number(user_id)){
+			console.log('更新头像sid，user_id不一致', sid, user_id)
 			res.send({
 				status: 0,
 				type: 'NEED_LOGIN_IN',
