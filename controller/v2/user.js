@@ -296,7 +296,7 @@ class User extends AddressComponent {
 		cityArr.forEach(item => {
 			filterArr.push(UserInfoModel.find({city: item}).count())
 		})
-		filterArr.push(UserInfoModel.$where('!["北京", "上海", "深圳", "杭州"].includes(this.city)').count())
+		filterArr.push(UserInfoModel.$where('!"北京上海深圳杭州".includes(this.city)').count())
 		Promise.all(filterArr).then(result => {
 			res.send({
 				status: 1,
