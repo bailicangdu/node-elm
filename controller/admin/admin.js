@@ -1,12 +1,12 @@
 'use strict';
 
 import AdminModel from '../../models/admin/admin'
-import BaseComponent from '../../prototype/baseComponent'
+import AddressComponent from '../../prototype/addressComponent'
 import crypto from 'crypto'
 import formidable from 'formidable'
 import dtime from 'time-formater'
 
-class Admin extends BaseComponent {
+class Admin extends AddressComponent {
 	constructor(){
 		super()
 		this.login = this.login.bind(this)
@@ -47,6 +47,7 @@ class Admin extends BaseComponent {
 				if (!admin) {
 					const adminTip = status == 1 ? '普通管理员' : '超级管理员'
 					const admin_id = await this.getId('admin_id');
+					const cityInfo = await this.guessPosition(req);
 					const newAdmin = {
 						user_name, 
 						password: newpassword, 
@@ -54,6 +55,7 @@ class Admin extends BaseComponent {
 						create_time: dtime().format('YYYY-MM-DD'),
 						admin: adminTip,
 						status,
+						city: cityInfo.city
 					}
 					await AdminModel.create(newAdmin)
 					req.session.admin_id = admin_id;
@@ -176,7 +178,7 @@ class Admin extends BaseComponent {
 	async getAllAdmin(req, res, next){
 		const {limit = 20, offset = 0} = req.query;
 		try{
-			const allAdmin = await AdminModel.find({}, '-_id -password').skip(Number(offset)).limit(Number(limit))
+			const allAdmin = await AdminModel.find({}, '-_id -password').sort({id: -1}).skip(Number(offset)).limit(Number(limit))
 			res.send({
 				status: 1,
 				data: allAdmin,

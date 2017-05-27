@@ -12,6 +12,7 @@ const adminSchema = new Schema({
 	admin: {type: String, default: '普通管理员'},
 	status: Number,  //1:普通管理、 2:超级管理员
 	avatar: {type: String, default: 'default.jpg'},
+	city: String,
 })
 
 adminSchema.index({id: 1});

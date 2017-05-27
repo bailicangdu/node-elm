@@ -233,7 +233,7 @@ class User extends AddressComponent {
 	async getUserList(req, res, next){
 		const {limit = 20, offset = 0} = req.query;
 		try{
-			const users = await UserInfoModel.find({}, '-_id').limit(Number(limit)).skip(Number(offset));
+			const users = await UserInfoModel.find({}, '-_id').sort({user_id: -1}).limit(Number(limit)).skip(Number(offset));
 			res.send(users);
 		}catch(err){
 			console.log('获取用户列表数据失败', err);
