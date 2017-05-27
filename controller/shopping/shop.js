@@ -214,7 +214,7 @@ class Shop extends AddressComponent{
 			Object.assign(filter, {category})
 		}
 		//按照距离，评分，销量等排序
-		let sortBy = {id: -1};
+		let sortBy = {};
 		if (Number(order_by)) {
 			switch(Number(order_by)){
 				case 1:
