@@ -45,7 +45,7 @@ class Admin extends AddressComponent {
 			try{
 				const admin = await AdminModel.findOne({user_name})
 				if (!admin) {
-					const adminTip = status == 1 ? '普通管理员' : '超级管理员'
+					const adminTip = status == 1 ? '管理员' : '超级管理员'
 					const admin_id = await this.getId('admin_id');
 					const cityInfo = await this.guessPosition(req);
 					const newAdmin = {
@@ -124,7 +124,7 @@ class Admin extends AddressComponent {
 						message: '该用户已经存在',
 					})
 				}else{
-					const adminTip = status == 1 ? '普通管理员' : '超级管理员'
+					const adminTip = status == 1 ? '管理员' : '超级管理员'
 					const admin_id = await this.getId('admin_id');
 					const newpassword = this.encryption(password);
 					const newAdmin = {
