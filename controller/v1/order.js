@@ -192,6 +192,17 @@ class Order extends BaseComponent{
 			}
 
 			const orders = await OrderModel.find(filter, '-_id').limit(Number(limit)).skip(Number(offset));
+			const timeNow = new Date().getTime();
+			orders.map(item => {
+				if (timeNow - item.order_time < 900000) {
+					item.status_bar.title = '等待支付';
+				}else{
+					item.status_bar.title = '支付超时';
+				}
+				item.time_pass = Math.ceil((timeNow - item.order_time)/1000);
+				item.save()
+				return item
+			})
 			res.send(orders);
 		}catch(err){
 			console.log('获取订单数据失败', err);
