@@ -38,6 +38,7 @@ class Statis {
 	async apiAllCount(req, res, next){
 		try{
 			const count = await StatisModel.count()
+			console.log(count.toString())
 			res.send({
 				status: 1,
 				count,

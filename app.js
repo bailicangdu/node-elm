@@ -9,6 +9,7 @@ import winston from 'winston';
 import expressWinston from 'express-winston';
 import path from 'path';
 import history from 'connect-history-api-fallback';
+// import history from './middlewares/history';
 import Statistic from './middlewares/statistic'
 
 const app = express();

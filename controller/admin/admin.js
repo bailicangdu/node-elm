@@ -11,7 +11,8 @@ class Admin extends BaseComponent {
 		super()
 		this.login = this.login.bind(this)
 		this.register = this.register.bind(this)
-		this.encryption = this.encryption.bind(this);
+		this.encryption = this.encryption.bind(this)
+		this.updateAvatar = this.updateAvatar.bind(this)
 	}
 	async login(req, res, next){
 		const form = new formidable.IncomingForm();
@@ -217,7 +218,7 @@ class Admin extends BaseComponent {
 			return 
 		}
 		try{
-			const info = await AdminModel.findOne({id: admin_id});
+			const info = await AdminModel.findOne({id: admin_id}, '-_id -__v -password');
 			if (!info) {
 				throw new Error('未找到当前管理员')
 			}else{
@@ -232,6 +233,34 @@ class Admin extends BaseComponent {
 				status: 0,
 				type: 'GET_ADMIN_INFO_FAILED',
 				message: '获取管理员信息失败'
+			})
+		}
+	}
+	async updateAvatar(req, res, next){
+		const admin_id = req.params.admin_id;
+		if (!admin_id || !Number(admin_id)) {
+			console.log('admin_id参数错误', admin_id)
+			res.send({
+				status: 0,
+				type: 'ERROR_ADMINID',
+				message: 'admin_id参数错误',
+			})
+			return 
+		}
+
+		try{
+			const image_path = await this.qiniu(req);
+			await AdminModel.findOneAndUpdate({id: admin_id}, {$set: {avatar: image_path}});
+			res.send({
+				status: 1,
+				image_path,
+			})
+		}catch(err){
+			console.log('上传图片失败', err);
+			res.send({
+				status: 0,
+				type: 'ERROR_UPLOAD_IMG',
+				message: '上传图片失败'
 			})
 		}
 	}

@@ -290,6 +290,33 @@ class User extends AddressComponent {
 			})
 		}
 	}
+	async getUserCity(req, res, next){
+		const cityArr = ['北京', '上海', '深圳', '杭州'];
+		const filterArr = [];
+		cityArr.forEach(item => {
+			filterArr.push(UserInfoModel.find({city: item}).count())
+		})
+		filterArr.push(UserInfoModel.$where('!["北京", "上海", "深圳", "杭州"].includes(this.city)').count())
+		Promise.all(filterArr).then(result => {
+			res.send({
+				status: 1,
+				user_city: {
+					beijing: result[0],
+					shanghai: result[1],
+					shenzhen: result[2],
+					hangzhou: result[3],
+					qita: result[4],
+				}
+			})
+		}).catch(err => {
+			console.log('获取用户分布城市数据失败', err);
+			res.send({
+				status: 0,
+				type: 'ERROR_GET_USER_CITY',
+				message: '获取用户分布城市数据失败'
+			})
+		})
+	}
 } 
 
 export default new User()

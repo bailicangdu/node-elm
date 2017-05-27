@@ -28,6 +28,7 @@ router.get('/users/list', User.getUserList);
 router.get('/users/count', User.getUserCount);
 router.get('/users/:user_id/addresses', Address.getAddress);
 router.post('/users/:user_id/addresses', Address.addAddress);
+router.get('/user/city/count', User.getUserCity);
 router.get('/addresse/:address_id', Address.getAddAddressById);
 router.delete('/users/:user_id/addresses/:address_id', Address.deleteAddress);
 router.post('/users/:user_id/carts/:cart_id/orders', Order.postOrder);
