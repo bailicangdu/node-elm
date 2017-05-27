@@ -191,7 +191,7 @@ class Order extends BaseComponent{
 				filter = {restaurant_id}
 			}
 
-			const orders = await OrderModel.find(filter).limit(Number(limit)).skip(Number(offset));
+			const orders = await OrderModel.find(filter).sort({id: -1}).limit(Number(limit)).skip(Number(offset));
 			const timeNow = new Date().getTime();
 			orders.map(item => {
 				if (timeNow - item.order_time < 900000) {
