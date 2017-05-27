@@ -64,7 +64,7 @@ class Admin extends AddressComponent {
 						success: '注册管理员成功',
 					})
 				}else if(newpassword.toString() != admin.password.toString()){
-					console.log('密码错误');
+					console.log('管理员登录密码错误');
 					res.send({
 						status: 0,
 						type: 'ERROR_PASSWORD',

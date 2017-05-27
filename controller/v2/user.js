@@ -70,6 +70,7 @@ class User extends AddressComponent {
 					req.session.user_id = user_id;
 					res.send(userinfo);
 				}else if (user.password.toString() !== newpassword.toString()) {
+					console.log('用户登录密码错误')
 					res.send({
 						status: 0,
 						type: 'ERROR_PASSWORD',
@@ -82,7 +83,7 @@ class User extends AddressComponent {
 					res.send(userinfo) 
 				}
 			}catch(err){
-				console.log('登陆失败', err);
+				console.log('用户登陆失败', err);
 				res.send({
 					status: 0,
 					type: 'SAVE_USER_FAILED',
