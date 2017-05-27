@@ -52,7 +52,7 @@ class Admin extends AddressComponent {
 						user_name, 
 						password: newpassword, 
 						id: admin_id,
-						create_time: dtime().format('YYYY-MM-DD'),
+						create_time: dtime().format('YYYY-MM-DD HH:mm'),
 						admin: adminTip,
 						status,
 						city: cityInfo.city
