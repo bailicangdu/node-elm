@@ -42,10 +42,10 @@ npm run dev (需先开启mongodb)
 ```
 
 
-## 效果演示
+# 效果演示
 
 ### 前端网址
-[前端网址请戳这里](http://cangdu.org:8001/)（请用chrome手机模式预览）
+[查看前端网址请戳这里](http://cangdu.org:8001/)（请用chrome手机模式预览）
 
 ### 移动端扫描下方二维码
 
@@ -53,7 +53,7 @@ npm run dev (需先开启mongodb)
 
 
 ### 后台管理系统网址
-[后台管理系统网址请戳这里](http://cangdu.org/manage/)
+[查看后台管理系统网址请戳这里](http://cangdu.org/manage/)
 
 
 
@@ -87,7 +87,7 @@ npm run dev (需先开启mongodb)
 - [x] 订单管理 -- 完成
 - [x] 流量统计 -- 完成
 - [x] 美化路由(history模式) -- 完成
-- [x] 部署上线
+- [x] 部署上线 -- 完成
 
 
 
