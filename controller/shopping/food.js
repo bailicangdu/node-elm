@@ -368,7 +368,7 @@ class Food extends BaseComponent{
 				filter = {restaurant_id}
 			}
 
-			const foods = await FoodModel.find(filter, '-_id').limit(Number(limit)).skip(Number(offset));
+			const foods = await FoodModel.find(filter, '-_id').sort({item_id: -1}).limit(Number(limit)).skip(Number(offset));
 			res.send(foods);
 		}catch(err){
 			console.log('获取食品数据失败', err);

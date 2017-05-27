@@ -130,7 +130,7 @@ class Order extends BaseComponent{
 			return 
 		}
 		try{
-			const orders = await OrderModel.find({user_id}).limit(Number(limit)).skip(Number(offset));
+			const orders = await OrderModel.find({user_id}).sort({id: -1}).limit(Number(limit)).skip(Number(offset));
 			const timeNow = new Date().getTime();
 			orders.map(item => {
 				if (timeNow - item.order_time < 900000) {
