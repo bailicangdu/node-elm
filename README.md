@@ -45,7 +45,7 @@ npm run dev (需先开启mongodb)
 # 效果演示
 
 ### 前端网址
-[查看前端网址请戳这里](http://cangdu.org:8001/)（请用chrome手机模式预览）
+[前端网址请戳这里](http://cangdu.org:8001/)（请用chrome手机模式预览）
 
 ###### 移动端扫描下方二维码
 
@@ -53,7 +53,7 @@ npm run dev (需先开启mongodb)
 
 
 ### 后台管理系统网址
-[查看后台管理系统网址请戳这里](http://cangdu.org/manage/)
+[后台管理网址请戳这里](http://cangdu.org/manage/)
 
 
 
