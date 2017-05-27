@@ -78,7 +78,7 @@ class User extends AddressComponent {
 					return 
 				}else{
 					req.session.user_id = user.user_id;
-					res.cookie('UID', user_id, { maxAge: 31536000000});
+					res.cookie('UID', user.user_id, { maxAge: 31536000000});
 					const userinfo = await UserInfoModel.findOne({user_id: user.user_id}, '-_id');
 					res.send(userinfo) 
 				}
