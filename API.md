@@ -2204,7 +2204,7 @@ http://cangdu.org:8001/statis/api/:date/count
 ```
 
 #### 示例：
-
+[http://cangdu.org:8001/statis/api/2017-05-29/count](http://cangdu.org:8001/statis/api/2017-05-29/count)
 
 #### 请求方式：
 ```
@@ -2239,7 +2239,7 @@ http://cangdu.org:8001/statis/api/count
 ```
 
 #### 示例：
-
+[http://cangdu.org:8001/statis/api/count](http://cangdu.org:8001/statis/api/count)
 
 #### 请求方式：
 ```
@@ -2273,7 +2273,7 @@ http://cangdu.org:8001/statis/user/:date/count
 ```
 
 #### 示例：
-
+[http://cangdu.org:8001/statis/user/2017-05-29/count](http://cangdu.org:8001/statis/user/2017-05-29/count)
 
 #### 请求方式：
 ```
@@ -2308,7 +2308,7 @@ http://cangdu.org:8001/v1/users/count
 ```
 
 #### 示例：
-
+[http://cangdu.org:8001/v1/users/count](http://cangdu.org:8001/v1/users/count)
 
 #### 请求方式：
 ```
@@ -2343,7 +2343,7 @@ http://cangdu.org:8001/statis/order/:date/count
 ```
 
 #### 示例：
-
+[http://cangdu.org:8001/statis/order/2017-05-29/count](http://cangdu.org:8001/statis/order/2017-05-29/count)
 
 #### 请求方式：
 ```
@@ -2377,6 +2377,7 @@ http://cangdu.org:8001/bos/orders/count
 ```
 
 #### 示例：
+[http://cangdu.org:8001/bos/orders/count](http://cangdu.org:8001/bos/orders/count)
 
 
 #### 请求方式：
@@ -2402,4 +2403,656 @@ GET
 ```
 
 
+
+### 46、管理员列表
+
+#### 请求URL：
+```
+http://cangdu.org:8001/admin/all
+```
+
+#### 示例：
+[http://cangdu.org:8001/admin/all?offset=0&limit=20](http://cangdu.org:8001/admin/all?offset=0&limit=20)
+
+#### 请求方式：
+```
+GET
+```
+
+#### 参数类型：query
+
+|参数|是否必选|类型|说明|
+|:-----|:-------:|:-----|:-----|
+|limit      |Y       |int | 获取数据数量，默认 20 |
+|offset      |Y       |int | 跳过数据条数 默认 0 |
+
+
+
+#### 返回示例：
+
+```javascript
+
+{
+  status: 1,
+  data: [
+    {
+      user_name: "s",
+      id: 14,
+      create_time: "2017-05-29 21:23",
+      status: 1,
+      city: "北京",
+      __v: 0,
+      avatar: "default.jpg",
+      admin: "管理员"
+    },
+  ]
+}
+```
+
+
+
+
+### 47、获取管理员数量
+
+#### 请求URL：
+```
+http://cangdu.org:8001/admin/count
+```
+
+#### 示例：
+[http://cangdu.org:8001/admin/count](http://cangdu.org:8001/admin/count)
+
+
+#### 请求方式：
+```
+GET
+```
+
+#### 参数类型：
+
+|参数|是否必选|类型|说明|
+|:-----|:-------:|:-----|:-----|
+
+
+
+#### 返回示例：
+
+```javascript
+
+{
+  status: 1,
+  count: 1
+}
+```
+
+
+
+### 48、获取店铺食品种类
+
+#### 请求URL：
+```
+http://cangdu.org:8001/shopping/getcategory/:restaurant_id
+```
+
+#### 示例：
+[http://cangdu.org:8001/shopping/getcategory/2](http://cangdu.org:8001/shopping/getcategory/2)
+
+
+#### 请求方式：
+```
+GET
+```
+
+#### 参数类型：param
+
+|参数|是否必选|类型|说明|
+|:-----|:-------:|:-----|:-----|
+|restaurant_id      |Y       |int | 餐馆id |
+
+
+
+#### 返回示例：
+
+```javascript
+
+{
+  status: 1,
+  category_list: [
+    {
+      name: "热销榜",
+      description: "大家喜欢吃，才叫真好吃。",
+      id: 1,
+      restaurant_id: 2,
+      __v: 3,
+      foods: []
+    }
+    ...
+  ]
+}
+```
+
+
+
+### 49、获取餐馆数量
+
+#### 请求URL：
+```
+http://cangdu.org:8001/shopping/restaurants/count
+```
+
+#### 示例：
+[http://cangdu.org:8001/shopping/restaurants/count](http://cangdu.org:8001/shopping/restaurants/count)
+
+
+#### 请求方式：
+```
+GET
+```
+
+#### 参数类型：
+
+|参数|是否必选|类型|说明|
+|:-----|:-------:|:-----|:-----|
+
+
+
+#### 返回示例：
+
+```javascript
+
+{
+  status: 1,
+  count: 1
+}
+```
+
+
+
+
+
+
+### 50、更新餐馆
+
+#### 请求URL：
+```
+http://cangdu.org:8001/shopping/updateshop
+```
+
+#### 示例：
+
+
+#### 请求方式：
+```
+POST
+```
+
+#### 参数类型：query
+
+|参数|是否必选|类型|说明|
+|:-----|:-------:|:-----|:-----|
+|id      |Y       |int   | 餐馆id |
+|name      |Y       |string   | 餐馆名称 |
+|address      |Y       |string   | 餐馆地址 |
+|description      |N      |string   | 餐馆介绍 |
+|phone      |Y       |int   |联系电话 |
+|image_path      |Y       |string   |店铺图片地址 |
+|category      |Y       |string   |店铺分类 |
+
+
+#### 返回示例：
+
+```javascript
+{
+  status: 1,
+  success: '修改商铺信息成功',
+}
+```
+
+
+
+
+### 51、删除餐馆
+
+#### 请求URL：
+```
+http://cangdu.org:8001/shopping/restaurant/:restaurant_id
+```
+
+#### 示例：
+
+
+
+#### 请求方式：
+```
+DELETE
+```
+
+#### 参数类型：param
+
+|参数|是否必选|类型|说明|
+|:-----|:-------:|:-----|:-----|
+|restaurant_id      |Y       |int | 餐馆id |
+
+
+
+#### 返回示例：
+
+```javascript
+
+{
+  status: 1,
+  success: '删除餐馆成功'
+}
+```
+
+
+
+
+### 52、获取食品列表
+
+#### 请求URL：
+```
+http://cangdu.org:8001/shopping/v2/foods
+```
+
+#### 示例：
+[http://cangdu.org:8001/shopping/v2/foods?offset=0&limit=20&restaurant_id=2](http://cangdu.org:8001/shopping/v2/foods?offset=0&limit=20&restaurant_id=2)
+
+#### 请求方式：
+```
+GET
+```
+
+#### 参数类型：query
+
+|参数|是否必选|类型|说明|
+|:-----|:-------:|:-----|:-----|
+|limit      |Y       |int | 获取数据数量，默认 20 |
+|offset      |Y       |int | 跳过数据条数 默认 0 |
+|restaurant_id      |Y       |int | 餐馆id |
+
+
+
+#### 返回示例：
+
+```javascript
+[
+  {
+  name: "fdsf",
+  image_path: "15c545e4a705.png",
+  activity: {
+    image_text_color: "f1884f",
+    icon_color: "f07373",
+    image_text: "dsf"
+  },
+  restaurant_id: 2,
+  category_id: 1,
+  item_id: 2,
+  tips: "880评价 月售123份",
+  specfoods: [
+    {
+      specs_name: "默认",
+      name: "fdsf",
+      item_id: 2,
+      sku_id: 2,
+      food_id: 2,
+      restaurant_id: 2,
+      _id: "592c2063153b1136968e3393",
+      specs: [ ],
+      stock: 1000,
+      checkout_mode: 1,
+      is_essential: false,
+      recent_popularity: 254,
+      sold_out: false,
+      price: 20,
+      promotion_stock: -1,
+      recent_rating: 2.8,
+      packing_fee: 0,
+      pinyin_name: "",
+      original_price: 0
+    }
+  ],
+  satisfy_rate: 87,
+  satisfy_count: 803,
+  attributes: [
+    {
+      icon_color: "5ec452",
+      icon_name: "新"
+    }
+  ],
+  is_essential: false,
+  server_utc: "2017-05-29T05:53:51.103Z",
+  specifications: [ ],
+  rating_count: 880,
+  month_sales: 123,
+  description: "dfs",
+  attrs: [ ],
+  display_times: [ ],
+  pinyin_name: "",
+  is_featured: 0,
+  rating: 3.4,
+  __v: 0
+  },
+]
+```
+
+
+
+
+### 53、获取食品数量
+
+#### 请求URL：
+```
+http://cangdu.org:8001/shopping/v2/foods/count
+```
+
+#### 示例：
+[http://cangdu.org:8001/shopping/v2/foods/count](http://cangdu.org:8001/shopping/v2/foods/count)
+
+
+#### 请求方式：
+```
+GET
+```
+
+#### 参数类型：
+
+|参数|是否必选|类型|说明|
+|:-----|:-------:|:-----|:-----|
+
+
+
+#### 返回示例：
+
+```javascript
+
+{
+  status: 1,
+  count: 1
+}
+```
+
+
+
+
+### 54、获取食品种类详情
+
+#### 请求URL：
+```
+http://cangdu.org:8001/shopping/v2/menu/:category_id
+```
+
+#### 示例：
+[http://cangdu.org:8001/shopping/v2/menu/1](http://cangdu.org:8001/shopping/v2/menu/1)
+
+
+#### 请求方式：
+```
+GET
+```
+
+#### 参数类型：param
+
+|参数|是否必选|类型|说明|
+|:-----|:-------:|:-----|:-----|
+|category_id      |Y       |int | 食品种类id |
+
+
+
+#### 返回示例：
+
+```javascript
+
+{
+  name: "热销榜",
+  description: "大家喜欢吃，才叫真好吃。",
+  id: 1,
+  restaurant_id: 2,
+  type: 1,
+  icon_url: "5da3872d782f707b4c82ce4607c73d1ajpeg",
+  is_selected: true,
+  __v: 3
+}
+```
+
+
+
+
+### 55、更新食品
+
+#### 请求URL：
+```
+http://cangdu.org:8001/shopping/v2/updatefood
+```
+
+#### 示例：
+
+
+#### 请求方式：
+```
+POST
+```
+
+#### 参数类型：query
+
+|参数|是否必选|类型|说明|
+|:-----|:-------:|:-----|:-----|
+|item_id      |Y       |int   | 食品id |
+|name      |Y       |string   | 食品名称 |
+|description      |N      |string   | 食品介绍 |
+|image_path      |Y       |string   |店铺图片地址 |
+|restaurant_id      |Y       |int   | 餐馆id |
+|category_id      |Y       |int   | 食品分类id |
+|specfoods      |Y       |array   | 规格： [{specs: '默认',packing_fee: 0,price: 20,}]|
+
+#### 返回示例：
+
+```javascript
+{
+  status: 1,
+  success: '修改食品信息成功',
+}
+```
+
+
+
+
+### 56、删除食品
+
+#### 请求URL：
+```
+http://cangdu.org:8001/shopping/v2/food/:food_id
+```
+
+#### 示例：
+
+
+
+#### 请求方式：
+```
+DELETE
+```
+
+#### 参数类型：param
+
+|参数|是否必选|类型|说明|
+|:-----|:-------:|:-----|:-----|
+|food_id      |Y       |int | 食品id |
+
+
+
+#### 返回示例：
+
+```javascript
+
+{
+  status: 1,
+  success: '删除食品成功'
+}
+```
+
+
+
+### 57、获取用户列表
+
+#### 请求URL：
+```
+http://cangdu.org:8001/v1/users/list
+```
+
+#### 示例：
+[http://cangdu.org:8001/v1/users/list?offset=0&limit=20](http://cangdu.org:8001/v1/users/list?offset=0&limit=20)
+
+#### 请求方式：
+```
+GET
+```
+
+#### 参数类型：query
+
+|参数|是否必选|类型|说明|
+|:-----|:-------:|:-----|:-----|
+|limit      |Y       |int | 获取数据数量，默认 20 |
+|offset      |Y       |int | 跳过数据条数 默认 0 |
+
+
+#### 返回示例：
+
+```javascript
+[
+  {
+    username: "ddfdsf",
+    user_id: 2,
+    id: 2,
+    city: "北京",
+    registe_time: "2017-05-29 21:46",
+    column_desc: {
+      gift_mall_desc: "0元好物在这里",
+      game_link: "https://gamecenter.faas.ele.me",
+      game_is_show: 1,
+      game_image_hash: "05f108ca4e0c543488799f0c7c708cb1jpeg",
+      game_desc: "玩游戏领红包"
+    },
+    point: 0,
+    mobile: "",
+    is_mobile_valid: true,
+    is_email_valid: false,
+    is_active: 1,
+    gift_amount: 3,
+    email: "",
+    delivery_card_expire_days: 0,
+    current_invoice_id: 0,
+    current_address_id: 0,
+    brand_member_new: 0,
+    balance: 0,
+    avatar: "default.jpg",
+    __v: 0
+  },
+  ...
+]
+```
+
+
+
+### 58、获取订单列表
+
+#### 请求URL：
+```
+http://cangdu.org:8001/bos/orders
+```
+
+#### 示例：
+[http://cangdu.org:8001/bos/orders?offset=0&limit=20](http://cangdu.org:8001/bos/orders?offset=0&limit=20)
+
+#### 请求方式：
+```
+GET
+```
+
+#### 参数类型：query
+
+|参数|是否必选|类型|说明|
+|:-----|:-------:|:-----|:-----|
+|limit      |Y       |int | 获取数据数量，默认 20 |
+|offset      |Y       |int | 跳过数据条数 默认 0 |
+
+
+#### 返回示例：
+
+```javascript
+[
+  
+]
+```
+
+
+
+
+### 59、获取地址信息
+
+#### 请求URL：
+```
+http://cangdu.org:8001/v1/addresse/:address_id
+```
+
+#### 示例：
+[http://cangdu.org:8001/v1/addresse/1](http://cangdu.org:8001/v1/addresse/1)
+
+#### 请求方式：
+```
+GET
+```
+
+#### 参数类型：param
+
+|参数|是否必选|类型|说明|
+|:-----|:-------:|:-----|:-----|
+|address_id      |Y       |int | 地址id |
+
+
+#### 返回示例：
+
+```javascript
+[
+  
+]
+```
+
+
+
+### 60、获取用户分布信息
+
+#### 请求URL：
+```
+http://cangdu.org:8001/v1/user/city/count
+```
+
+#### 示例：
+[http://cangdu.org:8001/v1/user/city/count](http://cangdu.org:8001/v1/user/city/count)
+
+#### 请求方式：
+```
+GET
+```
+
+#### 参数类型：
+
+|参数|是否必选|类型|说明|
+|:-----|:-------:|:-----|:-----|
+
+
+#### 返回示例：
+
+```javascript
+{
+  status: 1,
+  user_city: {
+    beijing: 1,
+    shanghai: 0,
+    shenzhen: 1,
+    hangzhou: 0,
+    qita: 0
+  }
+}
+```
 
