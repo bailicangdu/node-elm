@@ -3072,3 +3072,37 @@ GET
 }
 ```
 
+
+
+### 61、获取某天管理员注册量
+
+#### 请求URL：
+```
+http://cangdu.org:8001/statis/admin/:date/count
+```
+
+#### 示例：
+[http://cangdu.org:8001/statis/admin/2017-05-30/count](http://cangdu.org:8001/statis/admin/2017-05-30/count)
+
+#### 请求方式：
+```
+GET
+```
+
+#### 参数类型：param
+
+|参数|是否必选|类型|说明|
+|:-----|:-------:|:-----|:-----|
+|date      |Y       |string  | 日期：格式 2017-05-29 |
+
+
+
+#### 返回示例：
+
+```javascript
+
+{
+  status: 1,
+  count: 1
+}
+```
