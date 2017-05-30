@@ -68,7 +68,7 @@ class Shop extends AddressComponent{
 				opening_hours: [opening_hours],
 				phone: fields.phone,
 				promotion_info: fields.promotion_info || "欢迎光临，用餐高峰请提前下单，谢谢",
-				rating: (3 + Math.random()*2).toFixed(1),
+				rating: (4 + Math.random()).toFixed(1),
 				rating_count: Math.ceil(Math.random()*1000),
 				recent_order_num: Math.ceil(Math.random()*1000),
 				status: Math.round(Math.random()),

@@ -184,7 +184,7 @@ class Food extends BaseComponent{
 				satisfy_rate: Math.ceil(Math.random()*100),
 				satisfy_count: Math.ceil(Math.random()*1000),
 				item_id,
-				rating: (3 + Math.random()*2).toFixed(1),
+				rating: (4 + Math.random()).toFixed(1),
 				rating_count,
 				month_sales,
 				tips,
