@@ -103,7 +103,7 @@ class Statis {
 			return
 		}
 		try{
-			const count = await AdminModel.find({registe_time: eval('/^' + date + '/gi')}).count()
+			const count = await AdminModel.find({create_time: eval('/^' + date + '/gi')}).count()
 			res.send({
 				status: 1,
 				count,
