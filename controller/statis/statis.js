@@ -4,6 +4,7 @@ import StatisModel from '../../models/statis/statis'
 import UserInfoModel from '../../models/v2/userInfo'
 import OrderModel from '../../models/bos/order'
 import dtime from 'time-formater'
+import AdminModel from '../../models/admin/admin'
 
 class Statis {
 	constructor(){
@@ -87,6 +88,32 @@ class Statis {
 				status: 0,
 				type: 'ERROR_GET_USER_REGISTE_COUNT',
 				message: '获取当天注册人数失败'
+			})
+		}
+	}
+	async adminCount(req, res, next){
+		const date = req.params.date;
+		if (!date) {
+			console.log('参数错误')
+			res.send({
+				status: 0,
+				type: 'ERROR_PARAMS',
+				message: '参数错误'
+			})
+			return
+		}
+		try{
+			const count = await AdminModel.find({registe_time: eval('/^' + date + '/gi')}).count()
+			res.send({
+				status: 1,
+				count,
+			})
+		}catch(err){
+			console.log('获取当天注册管理员人数失败');
+			res.send({
+				status: 0,
+				type: 'ERROR_GET_ADMIN_REGISTE_COUNT',
+				message: '获取当天注册管理员人数失败'
 			})
 		}
 	}
