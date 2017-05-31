@@ -28,9 +28,9 @@ class Admin extends AddressComponent {
 			const {user_name, password, status = 1} = fields;
 			try{
 				if (!user_name) {
-					throw new Error('用户名错误')
+					throw new Error('用户名参数错误')
 				}else if(!password){
-					throw new Error('密码错误')
+					throw new Error('密码参数错误')
 				}
 			}catch(err){
 				console.log(err.message, err);
@@ -68,7 +68,7 @@ class Admin extends AddressComponent {
 					res.send({
 						status: 0,
 						type: 'ERROR_PASSWORD',
-						message: '密码输入错误',
+						message: '该用户已存在，密码输入错误',
 					})
 				}else{
 					req.session.admin_id = admin.id;

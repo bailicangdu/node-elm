@@ -13,34 +13,39 @@ class AddressComponent extends BaseComponent {
 	}
 	//获取定位地址
 	async guessPosition(req){
-		let ip = req.headers['x-forwarded-for'] || 
- 		req.connection.remoteAddress || 
- 		req.socket.remoteAddress ||
- 		req.connection.socket.remoteAddress;
- 		const ipArr = ip.split(':');
- 		ip = ipArr[ipArr.length -1];
- 		if (process.env.NODE_ENV == 'development') {
- 			ip = '116.231.55.195';
- 		}
- 		try{
-	 		const result = await this.fetch('http://apis.map.qq.com/ws/location/v1/ip', {
-	 			ip,
-	 			key: this.tencentkey,
-	 		})
-	 		if (result.status == 0) {
-	 			const cityInfo = {
-	 				lat: result.result.location.lat,
-	 				lng: result.result.location.lng,
-	 				city: result.result.ad_info.city,
-	 			}
-	 			cityInfo.city = cityInfo.city.replace(/市$/, '');
-	 			return cityInfo
-	 		}else{
-	 			throw new Error('定位失败');
+		return new Promise(async (resolve, reject) => {
+			let ip = req.headers['x-forwarded-for'] || 
+	 		req.connection.remoteAddress || 
+	 		req.socket.remoteAddress ||
+	 		req.connection.socket.remoteAddress;
+	 		const ipArr = ip.split(':');
+	 		ip = ipArr[ipArr.length -1];
+	 		if (ip.indexOf('.') == -1) {
+	 			resolve({
+	 				city: '本地访问'
+	 			})
+	 			return
 	 		}
- 		}catch(err){
- 			throw new Error(err);
- 		}
+	 		try{
+		 		const result = await this.fetch('http://apis.map.qq.com/ws/location/v1/ip', {
+		 			ip,
+		 			key: this.tencentkey,
+		 		})
+		 		if (result.status == 0) {
+		 			const cityInfo = {
+		 				lat: result.result.location.lat,
+		 				lng: result.result.location.lng,
+		 				city: result.result.ad_info.city,
+		 			}
+		 			cityInfo.city = cityInfo.city.replace(/市$/, '');
+		 			resolve(cityInfo)
+		 		}else{
+		 			reject('定位失败');
+		 		}
+	 		}catch(err){
+	 			reject(err);
+	 		}
+		})
 	}
 	//搜索地址
 	async searchPlace(keyword, cityName, type = 'search'){
