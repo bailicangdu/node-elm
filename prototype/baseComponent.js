@@ -51,9 +51,9 @@ export default class BaseComponent {
 			}else{
 				responseJson = await response.json();
 			}
-		} catch (error) {
-			console.log('获取http数据失败');
-			throw new Error(error)
+		} catch (err) {
+			console.log('获取http数据失败', err);
+			throw new Error(err)
 		}
 		return responseJson
 	}
