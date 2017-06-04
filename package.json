@@ -3,6 +3,9 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
+  "author": "cangdu <1264889788@qq.com>",
+  "license": "GPL",
+  "private": true,
   "scripts": {
     "dev": "cross-env NODE_ENV=development supervisor --harmony index.js",
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -14,8 +17,6 @@
     "type": "git",
     "url": "https://github.com/bailicangdu/node-elm"
   },
-  "author": "cangdu",
-  "license": "GPL",
   "dependencies": {
     "babel": "^6.23.0",
     "babel-cli": "^6.24.1",
