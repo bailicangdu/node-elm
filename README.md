@@ -55,7 +55,7 @@ npm run dev (需先开启mongodb)
 
 ###### 移动端扫描下方二维码
 
-![](https://github.com/bailicangdu/node-elm/blob/master/ewm.png)
+![](https://github.com/bailicangdu/node-elm/blob/master/screenshots/ewm.png)
 
 
 ### 后台管理系统网址
