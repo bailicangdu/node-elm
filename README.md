@@ -2,7 +2,7 @@
 
 一直考虑写一个大一点的Nodejs项目，但苦于没有找到合适的类型，而且后台系统无法直观的感受到，需要有一个前台项目配合，因此迟迟没有动笔。恰好前一段时间开源了一个[vue前端项目](https://github.com/bailicangdu/vue2-elm)，便以此为契机构筑了后台系统。整个项目分为两部分：前台项目接口、后台管理接口，目前接口共60多个。
 
-因为前端项目是根据饿了么官网接口写的，所以后台系统也保持和官网一致的API接口。
+因为前端项目是根据饿了么官网接口写的，所以后台系统也保持了和官网一致的API接口。
 
 __注：此项目只作为nodejs的练习，不用于任何商业用途。__
 
@@ -99,7 +99,7 @@ npm run dev (需先开启mongodb)
 
 # API接口文档
 
-## [接口文档](https://github.com/bailicangdu/node-elm/blob/master/API.md)
+## [接口文档地址](https://github.com/bailicangdu/node-elm/blob/master/API.md)
 
 
 
