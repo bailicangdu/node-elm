@@ -1,10 +1,12 @@
 # About
 
-一直考虑写一个大一点的Nodejs项目，但苦于没有找到合适的类型，而且后台系统无法直观的感受到，需要有一个前台项目配合，因此迟迟没有动笔。恰好前一段时间开源了一个[vue前端项目](https://github.com/bailicangdu/vue2-elm)，便以此为契机构筑了后台系统。整个项目分为两部分：前台项目接口、后台管理接口，目前接口共60多个。
+一直考虑写一个大一点的Nodejs项目，但苦于没有找到合适的类型，而且后台系统无法直观的感受到，需要有一个前台项目配合，因此迟迟没有动笔。恰好前一段时间开源了一个[vue前端项目](https://github.com/bailicangdu/vue2-elm)，便以此为契机构筑了后台系统。
+
+整个项目分为两部分：前台项目接口、后台管理接口，共60多个接口。涉及登陆、注册、添加商品、商品展示、筛选排序、购物车、下单、用户中心等，构成一个完整的流程，基本完成一个外卖平台所需的基础功能。
 
 因为前端项目是根据饿了么官网接口写的，所以后台系统也保持了和官网一致的API接口。
 
-__注：此项目只作为nodejs的练习，不用于任何商业用途。__
+__注：此项目纯属个人瞎搞，不用于任何商业用途。__
 
 
 # 说明
@@ -21,8 +23,9 @@ __注：此项目只作为nodejs的练习，不用于任何商业用途。__
 
 >  如有问题请直接在 Issues 中提，或者您发现问题并有非常好的解决方案，欢迎 PR 👍
 
->  相关项目地址：[前端项目地址](https://github.com/bailicangdu/vue2-elm)  、 [后台管理系统地址](https://github.com/bailicangdu/back-manage)  、 [原生APP项目地址](https://github.com/bailicangdu/RN-elm)
+>  相关项目地址：[前端项目地址](https://github.com/bailicangdu/vue2-elm)  、 [后台管理系统地址](https://github.com/bailicangdu/back-manage)
 
+>  接下来的开源项目[react-native 构建的原生APP](https://github.com/bailicangdu/RN-elm)也是以此后台系统作为基础，因为APP拥有更多功能以及细粒度的操作，因此后台系统会不断扩展更多接口和功能。
 
 ## 技术栈
 
