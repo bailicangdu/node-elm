@@ -105,8 +105,7 @@ npm run dev (需先开启mongodb)
 
 ### 部分前台页面
 
-<img src="http://cangdu.org/files/images/elm_msite.png" width="365" height="619"/>
-<img src="http://cangdu.org/files/images/elm_shop.png" width="365" height="619"/>
+<img src="http://cangdu.org/files/images/elm_msite.png" width="365" height="619"/><img src="http://cangdu.org/files/images/elm_shop.png" width="365" height="619"/>
 
 
 ### License
