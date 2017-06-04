@@ -274,13 +274,19 @@ class Shop extends AddressComponent{
 					return Object.assign(item, distance_duration[index])
 				})
 			}
+		}catch(err){
+			console.log('从addressComoponent获取测距数据失败', err);
+			restaurants.map((item, index) => {
+				return Object.assign(item, {distance: '10公里', order_lead_time: '40分钟'})
+			})
+		}
+		try{
 			res.send(restaurants)
 		}catch(err){
-			console.log('从addressComoponent获取数据后处理失败');
 			res.send({
 				status: 0,
-				type: 'ERROR_DATA',
-				message: '获取数据失败'
+				type: 'ERROR_GET_SHOP_LIST',
+				message: '获取店铺列表数据失败'
 			})
 		}
 	}
