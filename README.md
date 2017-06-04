@@ -112,6 +112,7 @@ npm run dev (需先开启mongodb)
 #### 部分后台管理系统页面
 
 <img src="https://github.com/bailicangdu/node-elm/blob/master/screenshots/manage_home.png"/>
+
 <img src="https://github.com/bailicangdu/node-elm/blob/master/screenshots/manage_shop.png"/>
 
 
