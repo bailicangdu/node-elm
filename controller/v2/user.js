@@ -93,9 +93,11 @@ class User extends AddressComponent {
 		})
 	}
 	async getInfo(req, res, next){
-		let user_id = req.session.user_id;
+		const sid = req.session.user_id;
+		const qid = req.query.user_id;
+		const user_id = sid || qid;
 		if (!user_id || !Number(user_id)) {
-			console.log('获取用户信息sessions失效', user_id)
+			console.log('获取用户信息的参数user_id无效', user_id)
 			res.send({
 				status: 0,
 				type: 'GET_USER_INFO_FAIELD',
@@ -263,7 +265,8 @@ class User extends AddressComponent {
 	}
 	async updateAvatar(req, res, next){
 		const sid = req.session.user_id;
-		const user_id = req.params.user_id;
+		const pid = req.params.user_id;
+		const user_id = sid || pid;
 		if (!user_id || !Number(user_id)) {
 			console.log('更新头像，user_id错误', user_id)
 			res.send({
@@ -272,15 +275,8 @@ class User extends AddressComponent {
 				message: 'user_id参数错误',
 			})
 			return 
-		}else if(Number(sid) !== Number(user_id)){
-			console.log('更新头像sid，user_id不一致', sid, user_id)
-			res.send({
-				status: 0,
-				type: 'NEED_LOGIN_IN',
-				message: '登录后才可修改头像',
-			})
-			return 
 		}
+
 		try{
 			const image_path = await this.qiniu(req);
 			await UserInfoModel.findOneAndUpdate({user_id}, {$set: {avatar: image_path}});

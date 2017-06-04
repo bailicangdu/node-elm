@@ -24,7 +24,7 @@ __注：此项目只作为nodejs的练习，不用于任何商业用途。__
 
 ## 技术栈
 
-nodejs + express + mongodb + mongoose + es6/7 + mocha + bluebird + element-ui
+nodejs + express + mongodb + mongoose + es6/7 + vue + element-ui
 
 
 ## 项目运行

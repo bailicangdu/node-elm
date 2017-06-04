@@ -20,11 +20,8 @@ class AddressComponent extends BaseComponent {
 	 		req.connection.socket.remoteAddress;
 	 		const ipArr = ip.split(':');
 	 		ip = ipArr[ipArr.length -1];
-	 		if (ip.indexOf('.') == -1) {
-	 			resolve({
-	 				city: '本地访问'
-	 			})
-	 			return
+	 		if (process.env.NODE_ENV == 'development') {
+	 			ip = '116.226.184.83';
 	 		}
 	 		try{
 		 		const result = await this.fetch('http://apis.map.qq.com/ws/location/v1/ip', {
