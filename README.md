@@ -100,6 +100,14 @@ npm run dev (需先开启mongodb)
 ## [接口文档](https://github.com/bailicangdu/node-elm/blob/master/API.md)
 
 
+# 部分截图
+
+
+### 前台商铺列表页
+
+<img src="http://cangdu.org/files/images/elm_msite.png" width="365" height="619"/>
+
+
 ### License
 
 [MIT](https://github.com/bailicangdu/node-elm/blob/master/LICENSE)
