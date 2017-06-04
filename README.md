@@ -118,7 +118,7 @@ npm run dev (需先开启mongodb)
 <img src="https://github.com/bailicangdu/node-elm/blob/master/screenshots/manage_shop.png"/>
 
 
-## License
+# License
 
 [GPL](https://github.com/bailicangdu/node-elm/blob/master/COPYING)
 
