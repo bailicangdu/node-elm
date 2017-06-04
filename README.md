@@ -120,6 +120,6 @@ npm run dev (需先开启mongodb)
 
 ### License
 
-[MIT](https://github.com/bailicangdu/node-elm/blob/master/LICENSE)
+[GPL](https://github.com/bailicangdu/node-elm/blob/master/LICENSE)
 
 

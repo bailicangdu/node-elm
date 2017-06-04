@@ -15,7 +15,7 @@
     "url": "https://github.com/bailicangdu/node-elm"
   },
   "author": "cangdu",
-  "license": "MIT",
+  "license": "GPL",
   "dependencies": {
     "babel": "^6.23.0",
     "babel-cli": "^6.24.1",
