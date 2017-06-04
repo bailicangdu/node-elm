@@ -100,12 +100,19 @@ npm run dev (需先开启mongodb)
 ## [接口文档](https://github.com/bailicangdu/node-elm/blob/master/API.md)
 
 
-# 部分截图
 
 
-### 部分前台页面
 
-<img src="https://github.com/bailicangdu/node-elm/blob/master/screenshots/elm_msite.png" width="365" height="619"/><img src="https://github.com/bailicangdu/node-elm/blob/master/screenshots/elm_shop.png" width="365" height="619"/>
+## 部分截图
+
+#### 部分前台页面
+
+<img src="https://github.com/bailicangdu/node-elm/blob/master/screenshots/elm_msite.png" width="365" height="619"/> <img src="https://github.com/bailicangdu/node-elm/blob/master/screenshots/elm_shop.png" width="365" height="619"/>
+
+#### 部分后台管理系统页面
+
+<img src="https://github.com/bailicangdu/node-elm/blob/master/screenshots/manage_home.png"/>
+<img src="https://github.com/bailicangdu/node-elm/blob/master/screenshots/manage_shop.png"/>
 
 
 ### License
