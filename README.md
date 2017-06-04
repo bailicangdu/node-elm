@@ -9,6 +9,8 @@ __注：此项目只作为nodejs的练习，不用于任何商业用途。__
 
 # 说明
 
+>  node-elm 接口文档: [接口文档地址](https://github.com/bailicangdu/node-elm/blob/master/API.md) 
+
 >  如果对您对此项目有兴趣，可以点 "Star" 支持一下 谢谢！ ^_^
 
 >  或者您可以 "follow" 一下，我会不断开源更多的有趣的项目
