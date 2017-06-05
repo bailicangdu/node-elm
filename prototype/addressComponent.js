@@ -11,6 +11,7 @@ class AddressComponent extends BaseComponent {
 		this.tencentkey = 'RLHBZ-WMPRP-Q3JDS-V2IQA-JNRFH-EJBHL';
 		this.tencentkey2 = 'RRXBZ-WC6KF-ZQSJT-N2QU7-T5QIT-6KF5X';
 		this.baidukey = 'fjke3YUipM9N64GdOIh1DNeK2APO2WcT';
+		this.baidukey2 = 'fjke3YUipM9N64GdOIh1DNeK2APO2WcT';
 	}
 	//获取定位地址
 	async guessPosition(req){
@@ -25,10 +26,17 @@ class AddressComponent extends BaseComponent {
 	 			ip = '116.226.184.83';
 	 		}
 	 		try{
-		 		const result = await this.fetch('http://apis.map.qq.com/ws/location/v1/ip', {
+	 			let result;
+		 		result = await this.fetch('http://apis.map.qq.com/ws/location/v1/ip', {
 		 			ip,
 		 			key: this.tencentkey,
 		 		})
+		 		if (result.status !== 0) {
+		 			result = await this.fetch('http://apis.map.qq.com/ws/location/v1/ip', {
+			 			ip,
+			 			key: this.tencentkey2,
+			 		})
+		 		}
 		 		if (result.status == 0) {
 		 			const cityInfo = {
 		 				lat: result.result.location.lat,
@@ -38,22 +46,8 @@ class AddressComponent extends BaseComponent {
 		 			cityInfo.city = cityInfo.city.replace(/市$/, '');
 		 			resolve(cityInfo)
 		 		}else{
-		 			const result = await this.fetch('http://apis.map.qq.com/ws/location/v1/ip', {
-			 			ip,
-			 			key: this.tencentkey2,
-			 		})
-			 		if (result.status == 0) {
-			 			const cityInfo = {
-			 				lat: result.result.location.lat,
-			 				lng: result.result.location.lng,
-			 				city: result.result.ad_info.city,
-			 			}
-			 			cityInfo.city = cityInfo.city.replace(/市$/, '');
-			 			resolve(cityInfo)
-			 		}else{
-			 			console.log('定位失败', result)
-			 			reject('定位失败');
-			 		}
+		 			console.log('定位失败', result)
+		 			reject('定位失败');
 		 		}
 	 		}catch(err){
 	 			reject(err);
@@ -81,12 +75,21 @@ class AddressComponent extends BaseComponent {
 	//测量距离
 	async getDistance(from, to, type){
 		try{
-			const res = await this.fetch('http://api.map.baidu.com/routematrix/v2/driving', {
+			let res;
+			res = await this.fetch('http://api.map.baidu.com/routematrix/v2/driving', {
 				ak: this.baidukey,
 				output: 'json',
 				origins: from,
 				destinations: to,
 			})
+			if(res.status !== 0){
+				res = await this.fetch('http://api.map.baidu.com/routematrix/v2/driving', {
+					ak: this.baidukey2,
+					output: 'json',
+					origins: from,
+					destinations: to,
+				})
+			}
 			if(res.status == 0){
 				const positionArr = [];
 				let timevalue;
