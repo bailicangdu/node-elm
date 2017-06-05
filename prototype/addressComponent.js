@@ -9,6 +9,7 @@ class AddressComponent extends BaseComponent {
 	constructor(){
 		super();
 		this.tencentkey = 'RLHBZ-WMPRP-Q3JDS-V2IQA-JNRFH-EJBHL';
+		this.tencentkey2 = 'RRXBZ-WC6KF-ZQSJT-N2QU7-T5QIT-6KF5X';
 		this.baidukey = 'fjke3YUipM9N64GdOIh1DNeK2APO2WcT';
 	}
 	//获取定位地址
@@ -37,7 +38,22 @@ class AddressComponent extends BaseComponent {
 		 			cityInfo.city = cityInfo.city.replace(/市$/, '');
 		 			resolve(cityInfo)
 		 		}else{
-		 			reject('定位失败');
+		 			const result = await this.fetch('http://apis.map.qq.com/ws/location/v1/ip', {
+			 			ip,
+			 			key: this.tencentkey2,
+			 		})
+			 		if (result.status == 0) {
+			 			const cityInfo = {
+			 				lat: result.result.location.lat,
+			 				lng: result.result.location.lng,
+			 				city: result.result.ad_info.city,
+			 			}
+			 			cityInfo.city = cityInfo.city.replace(/市$/, '');
+			 			resolve(cityInfo)
+			 		}else{
+			 			console.log('定位失败', result)
+			 			reject('定位失败');
+			 		}
 		 		}
 	 		}catch(err){
 	 			reject(err);

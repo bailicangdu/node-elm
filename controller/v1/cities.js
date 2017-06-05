@@ -66,7 +66,7 @@ class CityHandle extends AddressComponent{
 		try{
 			cityInfo = await this.guessPosition(req);
 		}catch(err){
-			console.error('获取IP位置信息失败');
+			console.error('获取IP位置信息失败', err);
 			res.send({
 				name: 'ERROR_DATA',
 				message: '获取数据失败',
