@@ -75,7 +75,7 @@ class AddressComponent extends BaseComponent {
 	//测量距离
 	async getDistance(from, to, type){
 		try{
-			let res;
+			let res
 			res = await this.fetch('http://api.map.baidu.com/routematrix/v2/driving', {
 				ak: this.baidukey,
 				output: 'json',

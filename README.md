@@ -6,7 +6,7 @@
 
 整个项目分为两部分：前台项目接口、后台管理接口，共60多个。涉及登陆、注册、添加商品、商品展示、筛选排序、购物车、下单、用户中心等，构成一个完整的流程，基本完成一个外卖平台所需的基础功能。
 
-__注：此项目纯属个人瞎搞，不用于任何商业用途。__
+__注：此项目纯属个人瞎搞，不用于任何商业用途，遵循GPL协议。__
 
 
 # 说明
@@ -119,6 +119,135 @@ npm run dev (需先开启mongodb)
 <img src="https://github.com/bailicangdu/node-elm/blob/master/screenshots/manage_home.png"/>
 
 <img src="https://github.com/bailicangdu/node-elm/blob/master/screenshots/manage_shop.png"/>
+
+
+## 项目布局
+
+```
+.
+├── InitData                   初始化数据
+│   ├── activity.js
+│   ├── category.js
+│   ├── cities.js
+│   ├── delivery.js
+│   ├── entry.js
+│   ├── explain.js
+│   ├── hongbao.js
+│   ├── payments.js
+│   ├── rate.js
+│   └── remark.js
+├── config                     运行配置
+│   ├── default.js
+│   └── development.js
+├── controller                 处理中心，负责路由的具体操作
+│   ├── admin
+│   │   └── admin.js
+│   ├── bos
+│   ├── eus
+│   ├── member
+│   │   └── vipcart.js
+│   ├── payapi
+│   ├── promotion
+│   │   └── hongbao.js
+│   ├── shopping
+│   │   ├── category.js
+│   │   ├── food.js
+│   │   └── shop.js
+│   ├── statis
+│   │   └── statis.js
+│   ├── ugc
+│   │   └── rating.js
+│   ├── v1
+│   │   ├── address.js
+│   │   ├── captchas.js
+│   │   ├── carts.js
+│   │   ├── cities.js
+│   │   ├── order.js
+│   │   ├── remark.js
+│   │   └── search.js
+│   ├── v2
+│   │   ├── entry.js
+│   │   └── user.js
+│   ├── v3
+│   │   └── explain.js
+│   └── v4
+├── logs                       日志文件
+├── middlewares                中间价
+│   ├── check.js               权限验证    
+│   └── statistic.js           API数据统计
+├── models                     模型(数据库)
+│   ├── admin
+│   │   └── admin.js
+│   ├── bos
+│   │   └── order.js
+│   ├── eus
+│   ├── ids.js
+│   ├── member
+│   ├── payapi
+│   ├── promotion
+│   │   └── hongbao.js
+│   ├── shopping
+│   │   ├── activity.js
+│   │   ├── category.js
+│   │   ├── delivery.js
+│   │   ├── food.js
+│   │   └── shop.js
+│   ├── statis
+│   │   └── statis.js
+│   ├── ugc
+│   │   └── rating.js
+│   ├── v1
+│   │   ├── address.js
+│   │   ├── cart.js
+│   │   ├── cities.js
+│   │   ├── payments.js
+│   │   └── remark.js
+│   ├── v2
+│   │   ├── entry.js
+│   │   ├── user.js
+│   │   └── userInfo.js
+│   ├── v3
+│   │   └── explain.js
+│   └── v4
+├── mongodb                    连接数据库
+│   └── db.js
+├── prototype                  基础功能Class
+│   ├── addressComponent.js
+│   └── baseComponent.js
+├── public                     静态资源目录
+├── routes                     路由配置
+│   ├── admin.js
+│   ├── bos.js
+│   ├── eus.js
+│   ├── index.js               路由配置主文件
+│   ├── member.js
+│   ├── payapi.js
+│   ├── promotion.js
+│   ├── shopping.js
+│   ├── statis.js
+│   ├── ugc.js
+│   ├── v1.js
+│   ├── v2.js
+│   ├── v3.js
+│   └── v4.js
+├── screenshots                项目截图
+├── views
+├── .babelrc 
+├── .gitignore
+├── API.md                     接口文档
+├── app.js                     基础配置
+├── COPYING                    GPL协议
+├── index.js                   入口文件
+├── package.json
+├── README.md                  
+.
+
+
+47 directories, 197 files
+
+```
+
+
 
 
 # License
