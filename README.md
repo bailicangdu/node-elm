@@ -58,8 +58,7 @@ npm run dev (需先开启mongodb)
 
 ###### 移动端扫描下方二维码
 
-![](https://github.com/bailicangdu/node-elm/blob/master/screenshots/ewm.png)
-
+<img src="https://github.com/bailicangdu/node-elm/blob/master/screenshots/ewm.png" width="250" height="250"/>
 
 ### 后台管理系统网址
 [后台管理网址戳这里](http://cangdu.org/manage/)
