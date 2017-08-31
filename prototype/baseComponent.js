@@ -93,7 +93,6 @@ export default class BaseComponent {
 				message: '上传图片失败'
 			})
 		}
-		
 	}
 
 	async getPath(req){
