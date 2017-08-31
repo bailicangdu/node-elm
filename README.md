@@ -34,6 +34,12 @@ nodejs + express + mongodb + mongoose + es6/7 + vue + element-ui
 
 ## 项目运行
 
+```
+项目运行之前，请确保系统已经安装以下应用
+1、node
+2、mongodb (开启状态)
+3、GraphicsMagick (裁切图片)
+```
 
 ```
 git clone https://github.com/bailicangdu/node-elm  
