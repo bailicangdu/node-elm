@@ -48,7 +48,7 @@ cd node-elm
 
 npm install
 
-npm run dev (需先开启mongodb)
+npm run dev
 
 访问: http://localhost:8001
 
