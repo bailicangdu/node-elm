@@ -389,13 +389,13 @@ class Shop extends AddressComponent{
 				return 
 			}
 			const {name, address, description = "", phone, category, id, latitude, longitude, image_path} = fields;
-			if (id == 1) {
-				res.send({
-					status: 0,
-					message: '此店铺用做展示，请不要修改'
-				})
-				return
-			}
+			// if (id == 1) {
+			// 	res.send({
+			// 		status: 0,
+			// 		message: '此店铺用做展示，请不要修改'
+			// 	})
+			// 	return
+			// }
 			try{
 				if (!name) {
 					throw new Error('餐馆名称错误');
