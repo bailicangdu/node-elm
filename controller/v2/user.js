@@ -278,7 +278,7 @@ class User extends AddressComponent {
 		}
 
 		try{
-			const image_path = await this.qiniu(req);
+			const image_path = await this.getPath(req);
 			await UserInfoModel.findOneAndUpdate({user_id}, {$set: {avatar: image_path}});
 			res.send({
 				status: 1,
