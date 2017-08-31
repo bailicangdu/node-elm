@@ -40,17 +40,17 @@ app.use(session({
 	})
 }))
 
-app.use(expressWinston.logger({
-    transports: [
-        new (winston.transports.Console)({
-          json: true,
-          colorize: true
-        }),
-        new winston.transports.File({
-          filename: 'logs/success.log'
-        })
-    ]
-}));
+// app.use(expressWinston.logger({
+//     transports: [
+//         new (winston.transports.Console)({
+//           json: true,
+//           colorize: true
+//         }),
+//         new winston.transports.File({
+//           filename: 'logs/success.log'
+//         })
+//     ]
+// }));
 
 router(app);
 

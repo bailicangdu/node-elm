@@ -2,7 +2,7 @@
 
 import mongoose from 'mongoose';
 import config from 'config-lite';
-mongoose.connect(config.url, {server:{auto_reconnect:true}});
+mongoose.connect(config.url, {useMongoClient:true});
 mongoose.Promise = global.Promise;
 
 const db = mongoose.connection;
