@@ -251,7 +251,7 @@ class Admin extends AddressComponent {
 		}
 
 		try{
-			const image_path = await this.qiniu(req);
+			const image_path = await this.getPath(req);
 			await AdminModel.findOneAndUpdate({id: admin_id}, {$set: {avatar: image_path}});
 			res.send({
 				status: 1,
