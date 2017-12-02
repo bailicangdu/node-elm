@@ -9,7 +9,7 @@ import winston from 'winston';
 import expressWinston from 'express-winston';
 import path from 'path';
 import history from 'connect-history-api-fallback';
-import Statistic from './middlewares/statistic'
+// import Statistic from './middlewares/statistic'
 
 const app = express();
 
@@ -26,7 +26,7 @@ app.all('*', (req, res, next) => {
 	}
 });
 
-app.use(Statistic.apiRecord)
+// app.use(Statistic.apiRecord)
 const MongoStore = connectMongo(session);
 app.use(cookieParser());
 app.use(session({
