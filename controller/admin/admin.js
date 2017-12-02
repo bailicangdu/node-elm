@@ -257,6 +257,7 @@ class Admin extends AddressComponent {
 				status: 1,
 				image_path,
 			})
+			return
 		}catch(err){
 			console.log('上传图片失败', err);
 			res.send({
@@ -264,6 +265,7 @@ class Admin extends AddressComponent {
 				type: 'ERROR_UPLOAD_IMG',
 				message: '上传图片失败'
 			})
+			return
 		}
 	}
 }

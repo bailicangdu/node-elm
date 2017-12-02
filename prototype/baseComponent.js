@@ -116,11 +116,11 @@ export default class BaseComponent {
 					gm(repath)
 					.resize(200, 200, "!")
 					.write(repath, async (err) => {
-						if(err){
-							console.log('裁切图片失败');
-							reject('裁切图片失败');
-							return
-						}
+						// if(err){
+						// 	console.log('裁切图片失败');
+						// 	reject('裁切图片失败');
+						// 	return
+						// }
 						resolve(fullName)
 					})
 				}catch(err){
