@@ -23,7 +23,7 @@ class AddressComponent extends BaseComponent {
 	 		const ipArr = ip.split(':');
 	 		ip = ipArr[ipArr.length -1];
 	 		if (process.env.NODE_ENV == 'development') {
-	 			ip = '116.226.184.83';
+	 			ip = '220.249.123.162';
 	 		}
 	 		try{
 	 			let result;

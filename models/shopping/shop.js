@@ -72,7 +72,7 @@ const shopSchema = new mongoose.Schema({
 	}],
 });
 
-shopSchema.index({ id: 1 });
+shopSchema.index({ id: 1 }); //primary_key 主键
 
 const Shop = mongoose.model('Shop', shopSchema);
 
