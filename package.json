@@ -27,6 +27,7 @@
     "babel-register": "^6.24.0",
     "bluebird": "^3.5.0",
     "captchapng": "0.0.1",
+    "chalk": "^2.3.0",
     "config-lite": "^1.5.0",
     "connect-flash": "^0.1.1",
     "connect-history-api-fallback": "^1.3.0",
