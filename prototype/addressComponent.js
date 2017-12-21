@@ -23,15 +23,14 @@ class AddressComponent extends BaseComponent {
 	 		const ipArr = ip.split(':');
 	 		ip = ipArr[ipArr.length -1];
 	 		if (process.env.NODE_ENV == 'development') {
-	 			ip = '220.249.123.162';
+	 			ip = '180.158.102.141';
 	 		}
 	 		try{
-	 			let result;
-		 		result = await this.fetch('http://apis.map.qq.com/ws/location/v1/ip', {
+		 		let result = await this.fetch('http://apis.map.qq.com/ws/location/v1/ip', {
 		 			ip,
-		 			key: this.tencentkey,
+		 			key: this.tencentkey2,
 		 		})
-		 		if (result.status !== 0) {
+		 		if (result.status != 0) {
 		 			result = await this.fetch('http://apis.map.qq.com/ws/location/v1/ip', {
 			 			ip,
 			 			key: this.tencentkey2,
