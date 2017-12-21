@@ -10,6 +10,7 @@ class AddressComponent extends BaseComponent {
 		super();
 		this.tencentkey = 'RLHBZ-WMPRP-Q3JDS-V2IQA-JNRFH-EJBHL';
 		this.tencentkey2 = 'RRXBZ-WC6KF-ZQSJT-N2QU7-T5QIT-6KF5X';
+		this.tencentkey3 = 'OHTBZ-7IFRG-JG2QF-IHFUK-XTTK6-VXFBN';
 		this.baidukey = 'fjke3YUipM9N64GdOIh1DNeK2APO2WcT';
 		this.baidukey2 = 'fjke3YUipM9N64GdOIh1DNeK2APO2WcT';
 	}
@@ -28,12 +29,18 @@ class AddressComponent extends BaseComponent {
 	 		try{
 		 		let result = await this.fetch('http://apis.map.qq.com/ws/location/v1/ip', {
 		 			ip,
-		 			key: this.tencentkey2,
+		 			key: this.tencentkey,
 		 		})
 		 		if (result.status != 0) {
 		 			result = await this.fetch('http://apis.map.qq.com/ws/location/v1/ip', {
 			 			ip,
 			 			key: this.tencentkey2,
+			 		})
+		 		}
+		 		if (result.status != 0) {
+		 			result = await this.fetch('http://apis.map.qq.com/ws/location/v1/ip', {
+			 			ip,
+			 			key: this.tencentkey3,
 			 		})
 		 		}
 		 		if (result.status == 0) {
