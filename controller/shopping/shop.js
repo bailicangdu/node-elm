@@ -442,6 +442,13 @@ class Shop extends AddressComponent{
 			})
 			return 
 		}
+		if (restaurant_id == 1) {
+				res.send({
+					status: 0,
+					message: '此店铺用做展示，请不要删除'
+				})
+				return
+			}
 		try{
 			await ShopModel.remove({id: restaurant_id});
 			res.send({
