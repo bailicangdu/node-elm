@@ -21,7 +21,7 @@ class Check {
 				res.send({
 					status: 0,
 					type: 'HAS_NO_ACCESS',
-					message: '权限不足',
+					message: '亲，您还不是管理员',
 				})
 				return
 			}
@@ -39,11 +39,11 @@ class Check {
 			return
 		}else{
 			const admin = await AdminModel.findOne({id: admin_id});
-			if (!admin /* || admin.status != 2*/) {
+			if (!admin || admin.status != 2) {
 				res.send({
 					status: 0,
 					type: 'HAS_NO_ACCESS',
-					message: '权限不足，请联系管理员提升权限',
+					message: '亲，您的权限不足',
 				})
 				return
 			}
