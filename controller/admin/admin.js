@@ -211,7 +211,7 @@ class Admin extends AddressComponent {
 	async getAdminInfo(req, res, next){
 		const admin_id = req.session.admin_id;
 		if (!admin_id || !Number(admin_id)) {
-			console.log('获取管理员信息的session失效');
+			// console.log('获取管理员信息的session失效');
 			res.send({
 				status: 0,
 				type: 'ERROR_SESSION',

@@ -97,7 +97,7 @@ class User extends AddressComponent {
 		const qid = req.query.user_id;
 		const user_id = sid || qid;
 		if (!user_id || !Number(user_id)) {
-			console.log('获取用户信息的参数user_id无效', user_id)
+			// console.log('获取用户信息的参数user_id无效', user_id)
 			res.send({
 				status: 0,
 				type: 'GET_USER_INFO_FAIELD',
