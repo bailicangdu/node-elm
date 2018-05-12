@@ -42,7 +42,7 @@ git clone https://github.com/bailicangdu/node-elm  
 
 cd node-elm
 
-npm install
+npm install 或 yarn(推荐)
 
 npm run dev
 
