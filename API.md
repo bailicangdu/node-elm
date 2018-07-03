@@ -1,7 +1,7 @@
 # node-elm 接口文档
 ```
 
-baseUrl: http://elm.cangdu.org
+baseUrl: https://elm.cangdu.org
 
 ```
 
@@ -79,11 +79,11 @@ baseUrl: http://elm.cangdu.org
 
 #### 请求URL:  
 ```
-http://elm.cangdu.org/v1/cities
+https://elm.cangdu.org/v1/cities
 ```
 
 #### 示例：
- [http://elm.cangdu.org/v1/cities?type=guess](http://elm.cangdu.org/v1/cities?type=guess)
+ [https://elm.cangdu.org/v1/cities?type=guess](https://elm.cangdu.org/v1/cities?type=guess)
 
 #### 请求方式: 
 ```
@@ -116,11 +116,11 @@ GET
 
 #### 请求URL：
 ```
-http://elm.cangdu.org/v1/cities/:id
+https://elm.cangdu.org/v1/cities/:id
 ```
 
 #### 示例：
-[http://elm.cangdu.org/v1/cities/1](http://elm.cangdu.org/v1/cities/1)
+[https://elm.cangdu.org/v1/cities/1](https://elm.cangdu.org/v1/cities/1)
 
 #### 请求方式：
 ```
@@ -152,11 +152,11 @@ GET
 
 #### 请求URL：
 ```
-http://elm.cangdu.org/v1/pois
+https://elm.cangdu.org/v1/pois
 ```
 
 #### 示例：
-[http://elm.cangdu.org/v1/pois?city_id=1&keyword=迪士尼&type=search](http://elm.cangdu.org/v1/pois?city_id=1&keyword=%E8%BF%AA%E5%A3%AB%E5%B0%BC&type=search)
+[https://elm.cangdu.org/v1/pois?city_id=1&keyword=迪士尼&type=search](https://elm.cangdu.org/v1/pois?city_id=1&keyword=%E8%BF%AA%E5%A3%AB%E5%B0%BC&type=search)
 
 #### 请求方式：
 ```
@@ -197,11 +197,11 @@ GET
 
 #### 请求URL：
 ```
-http://elm.cangdu.org/v2/pois/:geohash
+https://elm.cangdu.org/v2/pois/:geohash
 ```
 
 #### 示例：
-[http://elm.cangdu.org/v2/pois/31.22967,121.4762](http://elm.cangdu.org/v2/pois/31.22967,121.4762)
+[https://elm.cangdu.org/v2/pois/31.22967,121.4762](https://elm.cangdu.org/v2/pois/31.22967,121.4762)
 
 #### 请求方式：
 ```
@@ -231,11 +231,11 @@ GET
 
 #### 请求URL：
 ```
-http://elm.cangdu.org/v2/index_entry
+https://elm.cangdu.org/v2/index_entry
 ```
 
 #### 示例：
-[http://elm.cangdu.org/v2/index_entry](http://elm.cangdu.org/v2/index_entry)
+[https://elm.cangdu.org/v2/index_entry](https://elm.cangdu.org/v2/index_entry)
 
 #### 请求方式：
 ```
@@ -281,11 +281,11 @@ GET
 
 #### 请求URL：
 ```
-http://elm.cangdu.org/shopping/restaurants
+https://elm.cangdu.org/shopping/restaurants
 ```
 
 #### 示例：
-[http://elm.cangdu.org/shopping/restaurants?latitude=31.22967&longitude=121.4762](http://elm.cangdu.org/shopping/restaurants?latitude=31.22967&longitude=121.4762)
+[https://elm.cangdu.org/shopping/restaurants?latitude=31.22967&longitude=121.4762](https://elm.cangdu.org/shopping/restaurants?latitude=31.22967&longitude=121.4762)
 
 #### 请求方式：
 ```
@@ -418,11 +418,11 @@ GET
 
 #### 请求URL：
 ```
-http://elm.cangdu.org/v4/restaurants
+https://elm.cangdu.org/v4/restaurants
 ```
 
 #### 示例：
-[http://elm.cangdu.org/v4/restaurants?geohash=31.22967,121.4762&keyword=肯德基](http://elm.cangdu.org/v4/restaurants?geohash=31.22967,121.4762&keyword=肯德基)
+[https://elm.cangdu.org/v4/restaurants?geohash=31.22967,121.4762&keyword=肯德基](https://elm.cangdu.org/v4/restaurants?geohash=31.22967,121.4762&keyword=肯德基)
 
 #### 请求方式：
 ```
@@ -547,11 +547,11 @@ GET
 
 #### 请求URL：
 ```
-http://elm.cangdu.org/shopping/v2/restaurant/category
+https://elm.cangdu.org/shopping/v2/restaurant/category
 ```
 
 #### 示例：
-[http://elm.cangdu.org/shopping/v2/restaurant/category](http://elm.cangdu.org/shopping/v2/restaurant/category)
+[https://elm.cangdu.org/shopping/v2/restaurant/category](https://elm.cangdu.org/shopping/v2/restaurant/category)
 
 #### 请求方式：
 ```
@@ -619,11 +619,11 @@ GET
 
 #### 请求URL：
 ```
-http://elm.cangdu.org/shopping/v1/restaurants/delivery_modes
+https://elm.cangdu.org/shopping/v1/restaurants/delivery_modes
 ```
 
 #### 示例：
-[http://elm.cangdu.org/shopping/v1/restaurants/delivery_modes](http://elm.cangdu.org/shopping/v1/restaurants/delivery_modes)
+[https://elm.cangdu.org/shopping/v1/restaurants/delivery_modes](https://elm.cangdu.org/shopping/v1/restaurants/delivery_modes)
 
 #### 请求方式：
 ```
@@ -655,11 +655,11 @@ GET
 
 #### 请求URL：
 ```
-http://elm.cangdu.org/shopping/v1/restaurants/activity_attributes
+https://elm.cangdu.org/shopping/v1/restaurants/activity_attributes
 ```
 
 #### 示例：
-[http://elm.cangdu.org/shopping/v1/restaurants/activity_attributes](http://elm.cangdu.org/shopping/v1/restaurants/activity_attributes)
+[https://elm.cangdu.org/shopping/v1/restaurants/activity_attributes](https://elm.cangdu.org/shopping/v1/restaurants/activity_attributes)
 
 #### 请求方式：
 ```
@@ -695,11 +695,11 @@ GET
 
 #### 请求URL：
 ```
-http://elm.cangdu.org/shopping/restaurant/:shopid
+https://elm.cangdu.org/shopping/restaurant/:shopid
 ```
 
 #### 示例：
-[http://elm.cangdu.org/shopping/restaurant/1](http://elm.cangdu.org/shopping/restaurant/1)
+[https://elm.cangdu.org/shopping/restaurant/1](https://elm.cangdu.org/shopping/restaurant/1)
 
 #### 请求方式：
 ```
@@ -821,7 +821,7 @@ GET
 
 #### 请求URL:  
 ```
-http://elm.cangdu.org/v1/addimg/:type
+https://elm.cangdu.org/v1/addimg/:type
 ```
 
 #### 示例：
@@ -852,7 +852,7 @@ POST
 
 #### 请求URL：
 ```
-http://elm.cangdu.org/shopping/addshop
+https://elm.cangdu.org/shopping/addshop
 ```
 
 #### 示例：
@@ -904,7 +904,7 @@ POST
 
 #### 请求URL：
 ```
-http://elm.cangdu.org/shopping/addcategory
+https://elm.cangdu.org/shopping/addcategory
 ```
 
 #### 示例：
@@ -936,7 +936,7 @@ POST
 
 #### 请求URL：
 ```
-http://elm.cangdu.org/shopping/addfood
+https://elm.cangdu.org/shopping/addfood
 ```
 
 #### 示例：
@@ -973,12 +973,12 @@ POST
 
 #### 请求URL：
 ```
-http://elm.cangdu.org/shopping/v2/menu
+https://elm.cangdu.org/shopping/v2/menu
 ```
 
 #### 示例：
 
-[http://elm.cangdu.org/shopping/v2/menu?restaurant_id=1](http://elm.cangdu.org/shopping/v2/menu?restaurant_id=1)
+[https://elm.cangdu.org/shopping/v2/menu?restaurant_id=1](https://elm.cangdu.org/shopping/v2/menu?restaurant_id=1)
 
 
 #### 请求方式：
@@ -1077,12 +1077,12 @@ GET
 
 #### 请求URL：
 ```
-http://elm.cangdu.org/ugc/v2/restaurants/:restaurant_id/ratings
+https://elm.cangdu.org/ugc/v2/restaurants/:restaurant_id/ratings
 ```
 
 #### 示例：
 
-[http://elm.cangdu.org/ugc/v2/restaurants/1/ratings?offset=0&limit=10](http://elm.cangdu.org/ugc/v2/restaurants/1/ratings?offset=0&limit=10)
+[https://elm.cangdu.org/ugc/v2/restaurants/1/ratings?offset=0&limit=10](https://elm.cangdu.org/ugc/v2/restaurants/1/ratings?offset=0&limit=10)
 
 
 #### 请求方式：
@@ -1139,12 +1139,12 @@ GET
 
 #### 请求URL：
 ```
-http://elm.cangdu.org/ugc/v2/restaurants/:restaurant_id/ratings/scores
+https://elm.cangdu.org/ugc/v2/restaurants/:restaurant_id/ratings/scores
 ```
 
 #### 示例：
 
-[http://elm.cangdu.org/ugc/v2/restaurants/1/ratings/scores](http://elm.cangdu.org/ugc/v2/restaurants/1/ratings/scores)
+[https://elm.cangdu.org/ugc/v2/restaurants/1/ratings/scores](https://elm.cangdu.org/ugc/v2/restaurants/1/ratings/scores)
 
 
 #### 请求方式：
@@ -1178,12 +1178,12 @@ service_score: 4.69295
 
 #### 请求URL：
 ```
-http://elm.cangdu.org/ugc/v2/restaurants/:restaurant_id/ratings/tags
+https://elm.cangdu.org/ugc/v2/restaurants/:restaurant_id/ratings/tags
 ```
 
 #### 示例：
 
-[http://elm.cangdu.org/ugc/v2/restaurants/1/ratings/tags](http://elm.cangdu.org/ugc/v2/restaurants/1/ratings/tags)
+[https://elm.cangdu.org/ugc/v2/restaurants/1/ratings/tags](https://elm.cangdu.org/ugc/v2/restaurants/1/ratings/tags)
 
 
 #### 请求方式：
@@ -1217,7 +1217,7 @@ GET
 
 #### 请求URL：
 ```
-http://elm.cangdu.org/v1/carts/checkout
+https://elm.cangdu.org/v1/carts/checkout
 ```
 
 #### 示例：
@@ -1291,12 +1291,12 @@ POST
 
 #### 请求URL：
 ```
-http://elm.cangdu.org/v1/carts/:cart_id/remarks
+https://elm.cangdu.org/v1/carts/:cart_id/remarks
 ```
 
 #### 示例：
 
-[http://elm.cangdu.org/v1/carts/1/remarks](http://elm.cangdu.org/v1/carts/1/remarks)
+[https://elm.cangdu.org/v1/carts/1/remarks](https://elm.cangdu.org/v1/carts/1/remarks)
 
 
 #### 请求方式：
@@ -1332,12 +1332,12 @@ GET
 
 #### 请求URL：
 ```
-http://elm.cangdu.org/v1/users/:user_id/addresses
+https://elm.cangdu.org/v1/users/:user_id/addresses
 ```
 
 #### 示例：
 
-[http://elm.cangdu.org/v1/users/1/addresses](http://elm.cangdu.org/v1/users/1/addresses)
+[https://elm.cangdu.org/v1/users/1/addresses](https://elm.cangdu.org/v1/users/1/addresses)
 
 
 #### 请求方式：
@@ -1384,7 +1384,7 @@ GET
 
 #### 请求URL：
 ```
-http://elm.cangdu.org/v1/captchas
+https://elm.cangdu.org/v1/captchas
 ```
 
 #### 示例：
@@ -1416,7 +1416,7 @@ POST
 
 #### 请求URL：
 ```
-http://elm.cangdu.org/v1/user
+https://elm.cangdu.org/v1/user
 ```
 
 #### 示例：
@@ -1462,7 +1462,7 @@ GET
 
 #### 请求URL：
 ```
-http://elm.cangdu.org/v2/login
+https://elm.cangdu.org/v2/login
 ```
 
 #### 示例：
@@ -1512,7 +1512,7 @@ POST
 
 #### 请求URL：
 ```
-http://elm.cangdu.org/v2/signout
+https://elm.cangdu.org/v2/signout
 ```
 
 #### 示例：
@@ -1544,7 +1544,7 @@ GET
 
 #### 请求URL：
 ```
-http://elm.cangdu.org/v2/changepassword
+https://elm.cangdu.org/v2/changepassword
 ```
 
 #### 示例：
@@ -1580,7 +1580,7 @@ POST
 
 #### 请求URL：
 ```
-http://elm.cangdu.org/v1/users/:user_id/addresses
+https://elm.cangdu.org/v1/users/:user_id/addresses
 ```
 
 #### 示例：
@@ -1623,7 +1623,7 @@ POST
 
 #### 请求URL：
 ```
-http://elm.cangdu.org/v1/users/:user_id/addresses/:address_id
+https://elm.cangdu.org/v1/users/:user_id/addresses/:address_id
 ```
 
 #### 示例：
@@ -1656,7 +1656,7 @@ DELETE
 
 #### 请求URL：
 ```
-http://elm.cangdu.org/v1/users/:user_id/carts/:cart_id/orders
+https://elm.cangdu.org/v1/users/:user_id/carts/:cart_id/orders
 ```
 
 #### 示例：
@@ -1697,12 +1697,12 @@ POST
 
 #### 请求URL：
 ```
-http://elm.cangdu.org/bos/v2/users/:user_id/orders
+https://elm.cangdu.org/bos/v2/users/:user_id/orders
 ```
 
 #### 示例：
 
-[http://elm.cangdu.org/bos/v2/users/1/orders?limit=10&offset=0](http://elm.cangdu.org/bos/v2/users/1/orders?limit=10&offset=0)
+[https://elm.cangdu.org/bos/v2/users/1/orders?limit=10&offset=0](https://elm.cangdu.org/bos/v2/users/1/orders?limit=10&offset=0)
 
 
 #### 请求方式：
@@ -1804,12 +1804,12 @@ GET
 
 #### 请求URL：
 ```
-http://elm.cangdu.org/bos/v1/users/:user_id/orders/:order_id/snapshot
+https://elm.cangdu.org/bos/v1/users/:user_id/orders/:order_id/snapshot
 ```
 
 #### 示例：
 
-[http://elm.cangdu.org/bos/v1/users/1/orders/1/snapshot](http://elm.cangdu.org/bos/v1/users/1/orders/1/snapshot)
+[https://elm.cangdu.org/bos/v1/users/1/orders/1/snapshot](https://elm.cangdu.org/bos/v1/users/1/orders/1/snapshot)
 
 
 #### 请求方式：
@@ -1926,12 +1926,12 @@ GET
 
 #### 请求URL：
 ```
-http://elm.cangdu.org/v3/profile/explain
+https://elm.cangdu.org/v3/profile/explain
 ```
 
 #### 示例：
 
-[http://elm.cangdu.org/v3/profile/explain](http://elm.cangdu.org/v3/profile/explain)
+[https://elm.cangdu.org/v3/profile/explain](https://elm.cangdu.org/v3/profile/explain)
 
 
 #### 请求方式：
@@ -1958,12 +1958,12 @@ GET
 
 #### 请求URL：
 ```
-http://elm.cangdu.org/promotion/v2/users/:user_id/hongbaos
+https://elm.cangdu.org/promotion/v2/users/:user_id/hongbaos
 ```
 
 #### 示例：
 
-[http://elm.cangdu.org/promotion/v2/users/1/hongbaos?limit=20&offset=0](http://elm.cangdu.org/promotion/v2/users/1/hongbaos?limit=20&offset=0)
+[https://elm.cangdu.org/promotion/v2/users/1/hongbaos?limit=20&offset=0](https://elm.cangdu.org/promotion/v2/users/1/hongbaos?limit=20&offset=0)
 
 
 #### 请求方式：
@@ -2015,12 +2015,12 @@ GET
 
 #### 请求URL：
 ```
-http://elm.cangdu.org/promotion/v2/users/:user_id/expired_hongbaos
+https://elm.cangdu.org/promotion/v2/users/:user_id/expired_hongbaos
 ```
 
 #### 示例：
 
-[http://elm.cangdu.org/promotion/v2/users/1/expired_hongbaos?limit=20&offset=0](http://elm.cangdu.org/promotion/v2/users/1/expired_hongbaos?limit=20&offset=0)
+[https://elm.cangdu.org/promotion/v2/users/1/expired_hongbaos?limit=20&offset=0](https://elm.cangdu.org/promotion/v2/users/1/expired_hongbaos?limit=20&offset=0)
 
 
 #### 请求方式：
@@ -2073,7 +2073,7 @@ GET
 
 #### 请求URL：
 ```
-http://elm.cangdu.org/v1/users/:user_id/hongbao/exchange
+https://elm.cangdu.org/v1/users/:user_id/hongbao/exchange
 ```
 
 #### 示例：
@@ -2108,7 +2108,7 @@ POST
 
 #### 请求URL：
 ```
-http://elm.cangdu.org/admin/login
+https://elm.cangdu.org/admin/login
 ```
 
 #### 示例：
@@ -2142,7 +2142,7 @@ POST
 
 #### 请求URL：
 ```
-http://elm.cangdu.org/admin/singout
+https://elm.cangdu.org/admin/singout
 ```
 
 #### 示例：
@@ -2176,7 +2176,7 @@ GET
 
 #### 请求URL：
 ```
-http://elm.cangdu.org/admin/info
+https://elm.cangdu.org/admin/info
 ```
 
 #### 示例：
@@ -2216,11 +2216,11 @@ GET
 
 #### 请求URL：
 ```
-http://elm.cangdu.org/statis/api/:date/count
+https://elm.cangdu.org/statis/api/:date/count
 ```
 
 #### 示例：
-[http://elm.cangdu.org/statis/api/2017-05-29/count](http://elm.cangdu.org/statis/api/2017-05-29/count)
+[https://elm.cangdu.org/statis/api/2017-05-29/count](https://elm.cangdu.org/statis/api/2017-05-29/count)
 
 #### 请求方式：
 ```
@@ -2251,11 +2251,11 @@ GET
 
 #### 请求URL：
 ```
-http://elm.cangdu.org/statis/api/count
+https://elm.cangdu.org/statis/api/count
 ```
 
 #### 示例：
-[http://elm.cangdu.org/statis/api/count](http://elm.cangdu.org/statis/api/count)
+[https://elm.cangdu.org/statis/api/count](https://elm.cangdu.org/statis/api/count)
 
 #### 请求方式：
 ```
@@ -2285,11 +2285,11 @@ GET
 
 #### 请求URL：
 ```
-http://elm.cangdu.org/statis/user/:date/count
+https://elm.cangdu.org/statis/user/:date/count
 ```
 
 #### 示例：
-[http://elm.cangdu.org/statis/user/2017-05-29/count](http://elm.cangdu.org/statis/user/2017-05-29/count)
+[https://elm.cangdu.org/statis/user/2017-05-29/count](https://elm.cangdu.org/statis/user/2017-05-29/count)
 
 #### 请求方式：
 ```
@@ -2320,11 +2320,11 @@ GET
 
 #### 请求URL：
 ```
-http://elm.cangdu.org/v1/users/count
+https://elm.cangdu.org/v1/users/count
 ```
 
 #### 示例：
-[http://elm.cangdu.org/v1/users/count](http://elm.cangdu.org/v1/users/count)
+[https://elm.cangdu.org/v1/users/count](https://elm.cangdu.org/v1/users/count)
 
 #### 请求方式：
 ```
@@ -2355,11 +2355,11 @@ GET
 
 #### 请求URL：
 ```
-http://elm.cangdu.org/statis/order/:date/count
+https://elm.cangdu.org/statis/order/:date/count
 ```
 
 #### 示例：
-[http://elm.cangdu.org/statis/order/2017-05-29/count](http://elm.cangdu.org/statis/order/2017-05-29/count)
+[https://elm.cangdu.org/statis/order/2017-05-29/count](https://elm.cangdu.org/statis/order/2017-05-29/count)
 
 #### 请求方式：
 ```
@@ -2389,11 +2389,11 @@ GET
 
 #### 请求URL：
 ```
-http://elm.cangdu.org/bos/orders/count
+https://elm.cangdu.org/bos/orders/count
 ```
 
 #### 示例：
-[http://elm.cangdu.org/bos/orders/count](http://elm.cangdu.org/bos/orders/count)
+[https://elm.cangdu.org/bos/orders/count](https://elm.cangdu.org/bos/orders/count)
 
 
 #### 请求方式：
@@ -2424,11 +2424,11 @@ GET
 
 #### 请求URL：
 ```
-http://elm.cangdu.org/admin/all
+https://elm.cangdu.org/admin/all
 ```
 
 #### 示例：
-[http://elm.cangdu.org/admin/all?offset=0&limit=20](http://elm.cangdu.org/admin/all?offset=0&limit=20)
+[https://elm.cangdu.org/admin/all?offset=0&limit=20](https://elm.cangdu.org/admin/all?offset=0&limit=20)
 
 #### 请求方式：
 ```
@@ -2472,11 +2472,11 @@ GET
 
 #### 请求URL：
 ```
-http://elm.cangdu.org/admin/count
+https://elm.cangdu.org/admin/count
 ```
 
 #### 示例：
-[http://elm.cangdu.org/admin/count](http://elm.cangdu.org/admin/count)
+[https://elm.cangdu.org/admin/count](https://elm.cangdu.org/admin/count)
 
 
 #### 请求方式：
@@ -2507,11 +2507,11 @@ GET
 
 #### 请求URL：
 ```
-http://elm.cangdu.org/shopping/getcategory/:restaurant_id
+https://elm.cangdu.org/shopping/getcategory/:restaurant_id
 ```
 
 #### 示例：
-[http://elm.cangdu.org/shopping/getcategory/2](http://elm.cangdu.org/shopping/getcategory/2)
+[https://elm.cangdu.org/shopping/getcategory/2](https://elm.cangdu.org/shopping/getcategory/2)
 
 
 #### 请求方式：
@@ -2553,11 +2553,11 @@ GET
 
 #### 请求URL：
 ```
-http://elm.cangdu.org/shopping/restaurants/count
+https://elm.cangdu.org/shopping/restaurants/count
 ```
 
 #### 示例：
-[http://elm.cangdu.org/shopping/restaurants/count](http://elm.cangdu.org/shopping/restaurants/count)
+[https://elm.cangdu.org/shopping/restaurants/count](https://elm.cangdu.org/shopping/restaurants/count)
 
 
 #### 请求方式：
@@ -2591,7 +2591,7 @@ GET
 
 #### 请求URL：
 ```
-http://elm.cangdu.org/shopping/updateshop
+https://elm.cangdu.org/shopping/updateshop
 ```
 
 #### 示例：
@@ -2631,7 +2631,7 @@ POST
 
 #### 请求URL：
 ```
-http://elm.cangdu.org/shopping/restaurant/:restaurant_id
+https://elm.cangdu.org/shopping/restaurant/:restaurant_id
 ```
 
 #### 示例：
@@ -2668,11 +2668,11 @@ DELETE
 
 #### 请求URL：
 ```
-http://elm.cangdu.org/shopping/v2/foods
+https://elm.cangdu.org/shopping/v2/foods
 ```
 
 #### 示例：
-[http://elm.cangdu.org/shopping/v2/foods?offset=0&limit=20&restaurant_id=2](http://elm.cangdu.org/shopping/v2/foods?offset=0&limit=20&restaurant_id=2)
+[https://elm.cangdu.org/shopping/v2/foods?offset=0&limit=20&restaurant_id=2](https://elm.cangdu.org/shopping/v2/foods?offset=0&limit=20&restaurant_id=2)
 
 #### 请求方式：
 ```
@@ -2759,11 +2759,11 @@ GET
 
 #### 请求URL：
 ```
-http://elm.cangdu.org/shopping/v2/foods/count
+https://elm.cangdu.org/shopping/v2/foods/count
 ```
 
 #### 示例：
-[http://elm.cangdu.org/shopping/v2/foods/count](http://elm.cangdu.org/shopping/v2/foods/count)
+[https://elm.cangdu.org/shopping/v2/foods/count](https://elm.cangdu.org/shopping/v2/foods/count)
 
 
 #### 请求方式：
@@ -2795,11 +2795,11 @@ GET
 
 #### 请求URL：
 ```
-http://elm.cangdu.org/shopping/v2/menu/:category_id
+https://elm.cangdu.org/shopping/v2/menu/:category_id
 ```
 
 #### 示例：
-[http://elm.cangdu.org/shopping/v2/menu/1](http://elm.cangdu.org/shopping/v2/menu/1)
+[https://elm.cangdu.org/shopping/v2/menu/1](https://elm.cangdu.org/shopping/v2/menu/1)
 
 
 #### 请求方式：
@@ -2838,7 +2838,7 @@ GET
 
 #### 请求URL：
 ```
-http://elm.cangdu.org/shopping/v2/updatefood
+https://elm.cangdu.org/shopping/v2/updatefood
 ```
 
 #### 示例：
@@ -2877,7 +2877,7 @@ POST
 
 #### 请求URL：
 ```
-http://elm.cangdu.org/shopping/v2/food/:food_id
+https://elm.cangdu.org/shopping/v2/food/:food_id
 ```
 
 #### 示例：
@@ -2913,11 +2913,11 @@ DELETE
 
 #### 请求URL：
 ```
-http://elm.cangdu.org/v1/users/list
+https://elm.cangdu.org/v1/users/list
 ```
 
 #### 示例：
-[http://elm.cangdu.org/v1/users/list?offset=0&limit=20](http://elm.cangdu.org/v1/users/list?offset=0&limit=20)
+[https://elm.cangdu.org/v1/users/list?offset=0&limit=20](https://elm.cangdu.org/v1/users/list?offset=0&limit=20)
 
 #### 请求方式：
 ```
@@ -2974,11 +2974,11 @@ GET
 
 #### 请求URL：
 ```
-http://elm.cangdu.org/bos/orders
+https://elm.cangdu.org/bos/orders
 ```
 
 #### 示例：
-[http://elm.cangdu.org/bos/orders?offset=0&limit=20](http://elm.cangdu.org/bos/orders?offset=0&limit=20)
+[https://elm.cangdu.org/bos/orders?offset=0&limit=20](https://elm.cangdu.org/bos/orders?offset=0&limit=20)
 
 #### 请求方式：
 ```
@@ -3008,11 +3008,11 @@ GET
 
 #### 请求URL：
 ```
-http://elm.cangdu.org/v1/addresse/:address_id
+https://elm.cangdu.org/v1/addresse/:address_id
 ```
 
 #### 示例：
-[http://elm.cangdu.org/v1/addresse/1](http://elm.cangdu.org/v1/addresse/1)
+[https://elm.cangdu.org/v1/addresse/1](https://elm.cangdu.org/v1/addresse/1)
 
 #### 请求方式：
 ```
@@ -3040,11 +3040,11 @@ GET
 
 #### 请求URL：
 ```
-http://elm.cangdu.org/v1/user/city/count
+https://elm.cangdu.org/v1/user/city/count
 ```
 
 #### 示例：
-[http://elm.cangdu.org/v1/user/city/count](http://elm.cangdu.org/v1/user/city/count)
+[https://elm.cangdu.org/v1/user/city/count](https://elm.cangdu.org/v1/user/city/count)
 
 #### 请求方式：
 ```
@@ -3078,11 +3078,11 @@ GET
 
 #### 请求URL：
 ```
-http://elm.cangdu.org/statis/admin/:date/count
+https://elm.cangdu.org/statis/admin/:date/count
 ```
 
 #### 示例：
-[http://elm.cangdu.org/statis/admin/2017-05-30/count](http://elm.cangdu.org/statis/admin/2017-05-30/count)
+[https://elm.cangdu.org/statis/admin/2017-05-30/count](https://elm.cangdu.org/statis/admin/2017-05-30/count)
 
 #### 请求方式：
 ```
