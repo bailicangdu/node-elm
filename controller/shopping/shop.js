@@ -275,6 +275,7 @@ class Shop extends AddressComponent{
 				})
 			}
 		}catch(err){
+			// 百度地图达到上限后会导致加车失败，需优化
 			console.log('从addressComoponent获取测距数据失败', err);
 			restaurants.map((item, index) => {
 				return Object.assign(item, {distance: '10公里', order_lead_time: '40分钟'})
