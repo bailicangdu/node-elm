@@ -105,18 +105,19 @@ export default class BaseComponent {
 					img_id = await this.getId('img_id');
 				}catch(err){
 					console.log('获取图片id失败');
-					fs.unlink(files.file.path);
-					reject('获取图片id失败')
+					fs.unlinkSync(files.file.path);
+					reject('获取图片id失败');
 				}
 				const hashName = (new Date().getTime() + Math.ceil(Math.random()*10000)).toString(16) + img_id;
 				const extname = path.extname(files.file.name);
 				if (!['.jpg', '.jpeg', '.png'].includes(extname)) {
-					fs.unlink(files.file.path);
+					fs.unlinkSync(files.file.path);
 					res.send({
 						status: 0,
 						type: 'ERROR_EXTNAME',
 						message: '文件格式错误'
 					})
+					reject('上传失败');
 					return 
 				}
 				const fullName = hashName + extname;
@@ -136,9 +137,9 @@ export default class BaseComponent {
 				}catch(err){
 					console.log('保存图片失败', err);
 					if (fs.existsSync(repath)) {
-						fs.unlink(repath);
+						fs.unlinkSync(repath);
 					} else {
-						fs.unlink(files.file.path);
+						fs.unlinkSync(files.file.path);
 					}
 					reject('保存图片失败')
 				}
@@ -156,7 +157,7 @@ export default class BaseComponent {
 					img_id = await this.getId('img_id');
 				}catch(err){
 					console.log('获取图片id失败');
-					fs.unlink(files.file.path);
+					fs.unlinkSync(files.file.path);
 					reject('获取图片id失败')
 				}
 				const hashName = (new Date().getTime() + Math.ceil(Math.random()*10000)).toString(16) + img_id;
@@ -167,11 +168,11 @@ export default class BaseComponent {
 					await fs.rename(files.file.path, repath);
 					const token = this.uptoken('node-elm', key);
 					const qiniuImg = await this.uploadFile(token.toString(), key, repath);
-					fs.unlink(repath);
+					fs.unlinkSync(repath);
 					resolve(qiniuImg)
 				}catch(err){
 					console.log('保存至七牛失败', err);
-					fs.unlink(files.file.path)
+					fs.unlinkSync(files.file.path)
 					reject('保存至七牛失败')
 				}
 			});
