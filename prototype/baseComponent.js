@@ -80,7 +80,7 @@ export default class BaseComponent {
 		const type = req.params.type;
 		try{
 			//const image_path = await this.qiniu(req, type);
-			const image_path = await this.getPath(req);
+			const image_path = await this.getPath(req, res);
 			res.send({
 				status: 1,
 				image_path,
@@ -95,7 +95,7 @@ export default class BaseComponent {
 		}
 	}
 
-	async getPath(req){
+	async getPath(req, res){
 		return new Promise((resolve, reject) => {
 			const form = formidable.IncomingForm();
 			form.uploadDir = './public/img';
@@ -108,8 +108,18 @@ export default class BaseComponent {
 					fs.unlink(files.file.path);
 					reject('获取图片id失败')
 				}
-				const imgName = (new Date().getTime() + Math.ceil(Math.random()*10000)).toString(16) + img_id;
-				const fullName = imgName + path.extname(files.file.name);
+				const hashName = (new Date().getTime() + Math.ceil(Math.random()*10000)).toString(16) + img_id;
+				const extname = path.extname(files.file.name);
+				if (!['.jpg', '.jpeg', '.png'].includes(extname)) {
+					fs.unlink(files.file.path);
+					res.send({
+						status: 0,
+						type: 'ERROR_EXTNAME',
+						message: '文件格式错误'
+					})
+					return 
+				}
+				const fullName = hashName + extname;
 				const repath = './public/img/' + fullName;
 				try{
 					fs.renameSync(files.file.path, repath);
@@ -125,7 +135,11 @@ export default class BaseComponent {
 					})
 				}catch(err){
 					console.log('保存图片失败', err);
-					fs.unlink(files.file.path)
+					if (fs.existsSync(repath)) {
+						fs.unlink(repath);
+					} else {
+						fs.unlink(files.file.path);
+					}
 					reject('保存图片失败')
 				}
 			});
@@ -145,11 +159,11 @@ export default class BaseComponent {
 					fs.unlink(files.file.path);
 					reject('获取图片id失败')
 				}
-				const imgName = (new Date().getTime() + Math.ceil(Math.random()*10000)).toString(16) + img_id;
+				const hashName = (new Date().getTime() + Math.ceil(Math.random()*10000)).toString(16) + img_id;
 				const extname = path.extname(files.file.name);
-				const repath = './public/img/' + imgName + extname;
+				const repath = './public/img/' + hashName + extname;
 				try{
-					const key = imgName + extname;
+					const key = hashName + extname;
 					await fs.rename(files.file.path, repath);
 					const token = this.uptoken('node-elm', key);
 					const qiniuImg = await this.uploadFile(token.toString(), key, repath);
