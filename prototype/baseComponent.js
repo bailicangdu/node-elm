@@ -112,7 +112,7 @@ export default class BaseComponent {
 				const fullName = imgName + path.extname(files.file.name);
 				const repath = './public/img/' + fullName;
 				try{
-					await fs.rename(files.file.path, repath);
+					fs.renameSync(files.file.path, repath);
 					gm(repath)
 					.resize(200, 200, "!")
 					.write(repath, async (err) => {
