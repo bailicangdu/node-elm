@@ -52,6 +52,15 @@ class Shop extends AddressComponent{
 				})
 				return
 			}
+			const exists = await ShopModel.findOne({name: fields.name});
+			if (exists) {
+				res.send({
+					status: 0,
+					type: 'RESTURANT_EXISTS',
+					message: '店铺已存在，请尝试其他店铺名称'
+				})
+				return
+			}
 			const opening_hours = fields.startTime&&fields.endTime? fields.startTime + '/' + fields.endTime : "8:30/20:30";
 			const newShop = {
 				name: fields.name,
