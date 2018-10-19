@@ -843,7 +843,7 @@ POST
 {
   status: 1,
   image_path: '15bfafa418322.jpeg'  
-  // 图片保存至七牛，图片全部地址为， http://images.cangdu.org/15bfafa418322.jpeg
+  // 图片保存至七牛，图片全部地址为， https://elm.cangdu.org/img/15bfafa418322.jpeg
 }
 ```
 
