@@ -14,17 +14,6 @@ class AddressComponent extends BaseComponent {
 		this.tencentkey4 = 'Z2BBZ-QBSKJ-DFUFG-FDGT3-4JRYV-JKF5O';
 		this.baidukey = 'fjke3YUipM9N64GdOIh1DNeK2APO2WcT';
 		// this.baidukey2 = 'fjke3YUipM9N64GdOIh1DNeK2APO2WcT';
-		this.defaultAddress = {
-			pinyin: "shanghai",
-			is_map: true,
-			longitude: 121.473701,
-			latitude: 31.23037,
-			sort: 1,
-			area_code: "021",
-			abbr: "SH",
-			name: "上海",
-			id: 1
-		}
 	}
 	//获取定位地址
 	async guessPosition(req){
