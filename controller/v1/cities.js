@@ -62,28 +62,22 @@ class CityHandle extends AddressComponent{
 		}
 	}
 	async getCityName(req){
-		let cityInfo;
 		try{
-			cityInfo = await this.guessPosition(req);
-		}catch(err){
-			console.error('获取IP位置信息失败', err);
-			res.send({
-				name: 'ERROR_DATA',
-				message: '获取数据失败',
-			});
-			return 
-		}
-		/*
-		汉字转换成拼音
-		 */
-        const pinyinArr = pinyin(cityInfo.city, {
+			const cityInfo = await this.guessPosition(req);
+			/*
+			汉字转换成拼音
+			 */
+	    const pinyinArr = pinyin(cityInfo.city, {
 		  	style: pinyin.STYLE_NORMAL,
-		});
-		let cityName = '';
-		pinyinArr.forEach(item => {
-			cityName += item[0];
-		})
-		return cityName
+			});
+			let cityName = '';
+			pinyinArr.forEach(item => {
+				cityName += item[0];
+			})
+			return cityName;
+		}catch(err){
+			return '上海';
+		}
 	}
 	async getExactAddress(req, res, next){
 		try{

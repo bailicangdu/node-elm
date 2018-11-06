@@ -11,20 +11,39 @@ class AddressComponent extends BaseComponent {
 		this.tencentkey = 'RLHBZ-WMPRP-Q3JDS-V2IQA-JNRFH-EJBHL';
 		this.tencentkey2 = 'RRXBZ-WC6KF-ZQSJT-N2QU7-T5QIT-6KF5X';
 		this.tencentkey3 = 'OHTBZ-7IFRG-JG2QF-IHFUK-XTTK6-VXFBN';
+		this.tencentkey4 = 'Z2BBZ-QBSKJ-DFUFG-FDGT3-4JRYV-JKF5O';
 		this.baidukey = 'fjke3YUipM9N64GdOIh1DNeK2APO2WcT';
-		this.baidukey2 = 'fjke3YUipM9N64GdOIh1DNeK2APO2WcT';
+		// this.baidukey2 = 'fjke3YUipM9N64GdOIh1DNeK2APO2WcT';
+		this.defaultAddress = {
+			pinyin: "shanghai",
+			is_map: true,
+			longitude: 121.473701,
+			latitude: 31.23037,
+			sort: 1,
+			area_code: "021",
+			abbr: "SH",
+			name: "上海",
+			id: 1
+		}
 	}
 	//获取定位地址
 	async guessPosition(req){
 		return new Promise(async (resolve, reject) => {
-			let ip = req.headers['x-forwarded-for'] || 
-	 		req.connection.remoteAddress || 
-	 		req.socket.remoteAddress ||
-	 		req.connection.socket.remoteAddress;
-	 		const ipArr = ip.split(':');
-	 		ip = ipArr[ipArr.length -1];
+			let ip;
+			const defaultIp = '180.158.102.141';
 	 		if (process.env.NODE_ENV == 'development') {
-	 			ip = '180.158.102.141';
+	 			ip = defaultIp;
+	 		} else {
+	 			try {
+					ip = req.headers['x-forwarded-for'] || 
+			 		req.connection.remoteAddress || 
+			 		req.socket.remoteAddress ||
+			 		req.connection.socket.remoteAddress;
+			 		const ipArr = ip.split(':');
+			 		ip = ipArr[ipArr.length -1] || defaultIp;
+				} catch (e) {
+					ip = defaultIp;
+				}
 	 		}
 	 		try{
 		 		let result = await this.fetch('http://apis.map.qq.com/ws/location/v1/ip', {
@@ -41,6 +60,12 @@ class AddressComponent extends BaseComponent {
 		 			result = await this.fetch('http://apis.map.qq.com/ws/location/v1/ip', {
 			 			ip,
 			 			key: this.tencentkey3,
+			 		})
+		 		}
+		 		if (result.status != 0) {
+		 			result = await this.fetch('http://apis.map.qq.com/ws/location/v1/ip', {
+			 			ip,
+			 			key: this.tencentkey4,
 			 		})
 		 		}
 		 		if (result.status == 0) {
@@ -88,14 +113,14 @@ class AddressComponent extends BaseComponent {
 				origins: from,
 				destinations: to,
 			})
-			if(res.status !== 0){
-				res = await this.fetch('http://api.map.baidu.com/routematrix/v2/driving', {
-					ak: this.baidukey2,
-					output: 'json',
-					origins: from,
-					destinations: to,
-				})
-			}
+			// if(res.status !== 0){
+			// 	res = await this.fetch('http://api.map.baidu.com/routematrix/v2/driving', {
+			// 		ak: this.baidukey2,
+			// 		output: 'json',
+			// 		origins: from,
+			// 		destinations: to,
+			// 	})
+			// }
 			if(res.status == 0){
 				const positionArr = [];
 				let timevalue;
@@ -116,10 +141,14 @@ class AddressComponent extends BaseComponent {
 					return positionArr
 				}
 			}else{
-				throw new Error('调用百度地图测距失败');
+				if (type == 'tiemvalue') {
+					return 2000;
+				} else {
+					throw new Error('调用百度地图测距失败');
+				}
 			}
 		}catch(err){
-			console.log('获取位置距离失败')
+			console.log('获取位置距离失败');
 			throw new Error(err);
 		}
 	}
@@ -127,10 +156,23 @@ class AddressComponent extends BaseComponent {
 	async geocoder(req){
 		try{
 			const address = await this.guessPosition(req);
-			const res = await this.fetch('http://apis.map.qq.com/ws/geocoder/v1/', {
+			const params = {
 				key: this.tencentkey,
 				location: address.lat + ',' + address.lng
-			})
+			};
+			let res = await this.fetch('http://apis.map.qq.com/ws/geocoder/v1/', params);
+			if (res.status != 0) {
+				params.key = this.tencentkey2;
+	 			res = await this.fetch('http://apis.map.qq.com/ws/geocoder/v1/', params);
+	 		}
+	 		if (res.status != 0) {
+	 			params.key = this.tencentkey3;
+	 			res = await this.fetch('http://apis.map.qq.com/ws/geocoder/v1/', params);
+	 		}
+	 		if (res.status != 0) {
+	 			params.key = this.tencentkey4;
+	 			res = await this.fetch('http://apis.map.qq.com/ws/geocoder/v1/', params);
+	 		}
 			if (res.status == 0) {
 				return res
 			}else{
@@ -148,6 +190,18 @@ class AddressComponent extends BaseComponent {
 				key: this.tencentkey,
 				location: lat + ',' + lng
 			})
+			if (res.status != 0) {
+				params.key = this.tencentkey2;
+	 			res = await this.fetch('http://apis.map.qq.com/ws/geocoder/v1/', params);
+	 		}
+	 		if (res.status != 0) {
+	 			params.key = this.tencentkey3;
+	 			res = await this.fetch('http://apis.map.qq.com/ws/geocoder/v1/', params);
+	 		}
+	 		if (res.status != 0) {
+	 			params.key = this.tencentkey4;
+	 			res = await this.fetch('http://apis.map.qq.com/ws/geocoder/v1/', params);
+	 		}
 			if (res.status == 0) {
 				return res
 			}else{

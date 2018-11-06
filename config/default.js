@@ -8,8 +8,8 @@ module.exports = {
 		secret: 'SID',
 		cookie: {
 			httpOnly: true,
-		    secure:   false,
-		    maxAge:   365 * 24 * 60 * 60 * 1000,
+	    secure:   false,
+	    maxAge:   365 * 24 * 60 * 60 * 1000,
 		}
 	}
 }
