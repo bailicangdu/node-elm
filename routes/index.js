@@ -8,6 +8,7 @@ import ugc from './ugc'
 import bos from './bos'
 import eus from './eus'
 import admin from './admin'
+import payapi from './payapi'
 import statis from './statis'
 import member from './member'
 import shopping from './shopping'
@@ -25,6 +26,7 @@ export default app => {
 	app.use('/bos', bos);
 	app.use('/eus', eus);
 	app.use('/admin', admin);
+	app.use('/payapi', payapi);
 	app.use('/member', member);
 	app.use('/statis', statis);
 	app.use('/shopping', shopping);
