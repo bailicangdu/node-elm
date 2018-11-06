@@ -179,7 +179,7 @@ class AddressComponent extends BaseComponent {
 				throw new Error('获取具体位置信息失败');
 			}
 		}catch(err){
-			console.log('geocoder获取定位失败')
+			console.log('geocoder获取定位失败', err);
 			throw new Error(err);
 		}
 	}
@@ -208,7 +208,7 @@ class AddressComponent extends BaseComponent {
 				throw new Error('通过获geohash取具体位置失败');
 			}
 		}catch(err){
-			console.log('getpois获取定位失败')
+			console.log('getpois获取定位失败', err)
 			throw new Error(err);
 		}
 	}
