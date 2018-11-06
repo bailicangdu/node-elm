@@ -76,7 +76,7 @@ class CityHandle extends AddressComponent{
 			})
 			return cityName;
 		}catch(err){
-			return '上海';
+			return '北京';
 		}
 	}
 	async getExactAddress(req, res, next){
