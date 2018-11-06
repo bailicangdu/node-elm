@@ -186,10 +186,11 @@ class AddressComponent extends BaseComponent {
 	//通过geohash获取精确位置
 	async getpois(lat, lng){
 		try{
-			const res = await this.fetch('http://apis.map.qq.com/ws/geocoder/v1/', {
+			const params = {
 				key: this.tencentkey,
 				location: lat + ',' + lng
-			})
+			};
+			let res = await this.fetch('http://apis.map.qq.com/ws/geocoder/v1/', params);
 			if (res.status != 0) {
 				params.key = this.tencentkey2;
 	 			res = await this.fetch('http://apis.map.qq.com/ws/geocoder/v1/', params);
