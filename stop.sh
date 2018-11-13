@@ -1,3 +1,0 @@
-#stop server
-
-npm stop

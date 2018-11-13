@@ -1,3 +1,0 @@
-#start server
-
-npm start

@@ -10,9 +10,7 @@
     "dev": "cross-env NODE_ENV=development supervisor --harmony index.js",
     "check": "cross-env NODE_ENV=check supervisor  --harmony index.js",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "cross-env NODE_ENV=production pm2 start index.js --node-args='--harmony' --name 'node-elm --port 8001'",
-    "stop": "cross-env NODE_ENV=production pm2 stop index.js --name 'node-elm --port 8001'",
-    "restart": "cross-env NODE_ENV=production pm2 restart index.js --node-args='--harmony' --name 'node-elm --port 8001'"
+    "deploy": "pm2 deploy production"
   },
   "repository": {
     "type": "git",
