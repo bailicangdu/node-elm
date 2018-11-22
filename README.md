@@ -174,7 +174,7 @@ npm run dev
 │   │   └── explain.js              解析说明
 │   └── v4
 ├── logs                            日志文件
-├── middlewares                     中间价
+├── middlewares                     中间件
 │   ├── check.js                    权限验证    
 │   └── statistic.js                API数据统计
 ├── models                          模型(数据库)
