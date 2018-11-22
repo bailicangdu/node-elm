@@ -248,11 +248,6 @@ npm run dev
 
 ```
 
-# Donate
-
-[donate](https://github.com/bailicangdu/vue2-elm/blob/master/donate.md)
-
-
 # License
 
 [GPL](https://github.com/bailicangdu/node-elm/blob/master/COPYING)
