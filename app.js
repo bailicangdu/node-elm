@@ -21,7 +21,7 @@ app.all('*', (req, res, next) => {
   res.header("Access-Control-Allow-Credentials", true); //可以带cookies
 	res.header("X-Powered-By", 'Express');
 	if (req.method == 'OPTIONS') {
-  	return
+  	res.sendStatus(200);
 	} else {
     next();
 	}
