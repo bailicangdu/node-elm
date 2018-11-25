@@ -20,7 +20,11 @@ app.all('*', (req, res, next) => {
 	res.header("Access-Control-Allow-Methods", "PUT,POST,GET,DELETE,OPTIONS");
   res.header("Access-Control-Allow-Credentials", true); //可以带cookies
 	res.header("X-Powered-By", 'Express');
-  next();
+	if (req.method == 'OPTIONS') {
+  	return
+	} else {
+    next();
+	}
 });
 
 // app.use(Statistic.apiRecord)
