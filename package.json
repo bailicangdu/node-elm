@@ -7,8 +7,8 @@
   "license": "GPL",
   "private": true,
   "scripts": {
-    "dev": "cross-env NODE_ENV=development supervisor --harmony index.js",
-    "check": "cross-env NODE_ENV=check supervisor  --harmony index.js",
+    "dev": "cross-env NODE_ENV=development nodemon --harmony index.js",
+    "check": "cross-env NODE_ENV=check nodemon  --harmony index.js",
     "test": "echo \"Error: no test specified\" && exit 1",
     "deploy": "pm2 deploy production"
   },
@@ -46,7 +46,6 @@
     "pm2": "^2.8.0",
     "qiniu": "^6.1.13",
     "sha1": "^1.1.1",
-    "supervisor": "^0.12.0",
     "time-formater": "^1.0.1",
     "time-stamp": "^2.0.0",
     "winston": "^2.3.1"
@@ -55,6 +54,7 @@
     "babel-plugin-transform-async-to-generator": "^6.24.1",
     "babel-plugin-transform-es2015-classes": "^6.24.1",
     "babel-plugin-transform-es2015-modules-commonjs": "^6.24.1",
-    "babel-plugin-transform-export-extensions": "^6.22.0"
+    "babel-plugin-transform-export-extensions": "^6.22.0",
+    "nodemon": "^1.18.6"
   }
 }
