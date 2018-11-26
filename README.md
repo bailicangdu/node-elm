@@ -51,7 +51,7 @@ npm run dev
 ```
 
 
-# 效果演示
+## 效果演示
 
 #### (可在后台管理系统添加商铺，食品等数据，并在前端地址查看效果)
 
@@ -68,7 +68,7 @@ npm run dev
 
 
 
-# 目标功能
+## 目标功能
 
 - [x] IP定位 -- 完成
 - [x] 城市列表 -- 完成
@@ -100,7 +100,7 @@ npm run dev
 - [x] 部署上线 -- 完成
 
 
-# API接口文档
+## API接口文档
 
 ## [接口文档地址](https://github.com/bailicangdu/node-elm/blob/master/API.md)
 
@@ -108,7 +108,7 @@ npm run dev
 
 
 
-# 部分截图
+## 部分截图
 
 #### 部分前台页面
 
@@ -123,7 +123,7 @@ npm run dev
 
 
 
-# 项目布局
+## 项目布局
 
 ```
 .
@@ -248,7 +248,7 @@ npm run dev
 
 ```
 
-# TODO
+## TODO
 
 - [ ] 图片管理系统，优先级高
 - [ ] 七日数据查询优化
@@ -258,6 +258,6 @@ npm run dev
 - [ ] 弃用百度地图，改用腾讯地图
 
 
-# License
+## License
 
 [GPL](https://github.com/bailicangdu/node-elm/blob/master/COPYING)
