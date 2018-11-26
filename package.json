@@ -8,7 +8,7 @@
   "private": true,
   "scripts": {
     "dev": "cross-env NODE_ENV=development nodemon --harmony index.js",
-    "check": "cross-env NODE_ENV=check nodemon  --harmony index.js",
+    "check": "cross-env NODE_ENV=production nodemon --harmony index.js",
     "test": "echo \"Error: no test specified\" && exit 1",
     "deploy": "pm2 deploy production"
   },
