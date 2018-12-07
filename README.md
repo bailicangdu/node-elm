@@ -248,16 +248,6 @@ npm run dev
 
 ```
 
-## TODO
-
-- [ ] 图片管理系统，优先级高
-- [ ] 七日数据查询优化
-- [ ] 日志优化
-- [ ] 内存管理优化
-- [ ] 负载均衡优化
-- [ ] 弃用百度地图，改用腾讯地图
-
-
 ## License
 
 [GPL](https://github.com/bailicangdu/node-elm/blob/master/COPYING)
