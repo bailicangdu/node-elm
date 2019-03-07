@@ -3106,3 +3106,58 @@ GET
   count: 1
 }
 ```
+
+### 62、通过user_id获取用户信息
+
+#### 请求URL：
+```
+https://elm.cangdu.org/v1/user/:user_id
+```
+
+#### 示例：
+[https://elm.cangdu.org/v1/user/1](https://elm.cangdu.org/v1/user/1)
+
+#### 请求方式：
+```
+GET
+```
+
+#### 参数类型：param
+
+|参数|是否必选|类型|说明|
+|:-----|:-------:|:-----|:-----|
+|user_id      |Y       |int  | 用户id |
+
+
+#### 返回示例：
+
+```javascript
+{
+  avatar: "168a92d1e8126673.jpg",
+  balance: 0,
+  brand_member_new: 0,
+  city: "广州",
+  column_desc: {
+    game_desc: "玩游戏领红包",
+    game_image_hash: "05f108ca4e0c543488799f0c7c708cb1jpeg",
+    game_is_show: 1,
+    game_link: "https://gamecenter.faas.ele.me",
+    gift_mall_desc: "0元好物在这里"
+  },
+  current_address_id: 0,
+  current_invoice_id: 0,
+  delivery_card_expire_days: 0,
+  email: "",
+  gift_amount: 3,
+  id: 1,
+  is_active: 1,
+  is_email_valid: false,
+  is_mobile_valid: true,
+  mobile: "",
+  point: 0,
+  registe_time: "2017-12-02 21:48",
+  user_id: 1,
+  username: "jiweih",
+  __v: 0
+}
+```
