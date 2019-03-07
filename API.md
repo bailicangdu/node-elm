@@ -2857,9 +2857,9 @@ POST
 |name      |Y       |string   | 食品名称 |
 |description      |N      |string   | 食品介绍 |
 |image_path      |Y       |string   |店铺图片地址 |
-|restaurant_id      |Y       |int   | 餐馆id |
-|category_id      |Y       |int   | 食品分类id |
-|specfoods      |Y       |array   | 规格： [{specs: '默认',packing_fee: 0,price: 20,}]|
+|category_id      |Y       |int   | 原有食品分类id |
+|new_category_id      |Y       |int   | 新的食品分类id |
+|specs      |Y       |array   | 规格： [{specs: '默认',packing_fee: 0,price: 20,}]|
 
 #### 返回示例：
 
