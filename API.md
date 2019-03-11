@@ -68,6 +68,8 @@ baseUrl: https://elm.cangdu.org
 [59、获取地址信息](#59获取地址信息)<br/>
 [60、获取用户分布信息](#60获取用户分布信息)<br/>
 [61、获取某天管理员注册量](#61获取某天管理员注册量)<br/>
+[62、通过user_id获取用户信息](#62通过user_id获取用户信息)<br/>
+[63、管理员更换头像](#62管理员更换头像)<br/>
 
 
 
@@ -888,7 +890,6 @@ POST
 |endTime      |N       |string   |停止营业时间 |
 |business_license_image      |N       |string   |营业执照图片地址 |
 |catering_service_license_image      |N       |string   |餐饮服务许可证图片地址 |
-|catering_service_license_image      |N       |string   |餐饮服务许可证图片地址 |
 |activities      |N      |array   | 商铺活动：示例：[{icon_name:'新', name:'新用户立减', description: ''}]|
 
 #### 返回示例：
@@ -958,7 +959,7 @@ POST
 |specs      |Y       |array   | 规格： [{specs: '默认',packing_fee: 0,price: 20,}]|
 |description      |N       |string   |描述 |
 |activity      |N      |string   |活动 |
-|attributes      |N       |array   |特点：[{value: '新',label: '新品'}] |
+|attributes      |N       |array   |特点：['新', '招牌'] |
 
 #### 返回示例：
 
@@ -3159,5 +3160,36 @@ GET
   user_id: 1,
   username: "jiweih",
   __v: 0
+}
+```
+
+### 63、管理员更换头像
+
+#### 请求URL：
+```
+https://elm.cangdu.org/admin/update/avatar/:id
+```
+
+#### 示例：
+
+
+#### 请求方式：
+```
+POST
+```
+
+#### 参数类型：param
+
+|参数|是否必选|类型|说明|
+|:-----|:-------:|:-----|:-----|
+|id      |Y       |int  | 管理员id |
+
+
+#### 返回示例：
+
+```javascript
+{
+  image_path: "1696c81f08328615.jpg",
+  status: 1
 }
 ```
