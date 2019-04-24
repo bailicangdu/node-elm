@@ -7,7 +7,6 @@ import session from 'express-session';
 import connectMongo from 'connect-mongo';
 import winston from 'winston';
 import expressWinston from 'express-winston';
-import path from 'path';
 import history from 'connect-history-api-fallback';
 import chalk from 'chalk';
 // import Statistic from './middlewares/statistic'
