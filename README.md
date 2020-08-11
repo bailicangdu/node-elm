@@ -56,14 +56,14 @@ npm run dev
 #### (可在后台管理系统添加商铺，食品等数据，并在前端地址查看效果)
 
 ### 前端网址
-[前端网址戳这里](http://cangdu.org/elm/)（请用chrome手机模式预览）
+[前端网址戳这里](https://cangdu.org/elm/)（请用chrome手机模式预览）
 
 ###### 移动端扫描下方二维码
 
-<img src="https://github.com/bailicangdu/node-elm/blob/master/screenshots/ewm.png" width="250" height="250"/>
+<img src="https://github.com/bailicangdu/node-elm/blob/master/screenshots/ewm.png" width="200" height="200"/>
 
 ### 后台管理系统网址
-[后台管理网址戳这里](http://cangdu.org/manage/)
+[后台管理网址戳这里](https://cangdu.org/manage/)
 
 
 
