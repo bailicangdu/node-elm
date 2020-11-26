@@ -106,7 +106,11 @@ npm run dev
 
 ## [接口文档地址](https://github.com/bailicangdu/node-elm/blob/master/API.md)
 
+## 数据库文件
 
+数据库备份文件地址：`https://cangdu.org/file/elm.zip` (mongodb)
+
+按照mongodb的方式恢复备份。
 
 
 
