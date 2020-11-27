@@ -52,6 +52,16 @@ npm run dev
 
 ```
 
+## API接口文档
+
+接口文档地址：https://github.com/bailicangdu/node-elm/blob/master/API.md
+
+## 数据库文件
+
+数据库备份文件地址：https://cangdu.org/file/elm.zip (mongodb)
+
+按照mongodb的方式恢复备份。
+
 
 ## 效果演示
 
@@ -100,18 +110,6 @@ npm run dev
 - [x] 流量统计 -- 完成
 - [x] 前后台路由同构 -- 完成
 - [x] 部署上线 -- 完成
-
-
-## API接口文档
-
-接口文档地址：https://github.com/bailicangdu/node-elm/blob/master/API.md
-
-## 数据库文件
-
-数据库备份文件地址：https://cangdu.org/file/elm.zip (mongodb)
-
-按照mongodb的方式恢复备份。
-
 
 
 ## 部分截图
