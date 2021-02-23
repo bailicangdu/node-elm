@@ -58,9 +58,9 @@ npm run dev
 
 ## 数据库文件
 
-数据库备份文件地址：https://cangdu.org/file/elm.zip (mongodb)
+数据库备份文件：https://cangdu.org/file/elm.zip (mongodb)
 
-按照mongodb的方式恢复备份。
+按照mongodb的方式恢复备份即可
 
 
 ## 效果演示
