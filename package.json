@@ -41,7 +41,7 @@
     "moment": "^2.18.1",
     "mongodb": "^2.2.25",
     "mongoose": "^4.9.3",
-    "node-fetch": "^1.6.3",
+    "node-fetch": "^2.6.1",
     "pinyin": "^2.8.3",
     "pm2": "^2.8.0",
     "qiniu": "^6.1.13",
