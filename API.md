@@ -68,6 +68,8 @@ baseUrl: https://elm.cangdu.org
 [59、获取地址信息](#59获取地址信息)<br/>
 [60、获取用户分布信息](#60获取用户分布信息)<br/>
 [61、获取某天管理员注册量](#61获取某天管理员注册量)<br/>
+[62、通过user_id获取用户信息](#62通过user_id获取用户信息)<br/>
+[63、管理员更换头像](#63管理员更换头像)<br/>
 
 
 
@@ -888,7 +890,6 @@ POST
 |endTime      |N       |string   |停止营业时间 |
 |business_license_image      |N       |string   |营业执照图片地址 |
 |catering_service_license_image      |N       |string   |餐饮服务许可证图片地址 |
-|catering_service_license_image      |N       |string   |餐饮服务许可证图片地址 |
 |activities      |N      |array   | 商铺活动：示例：[{icon_name:'新', name:'新用户立减', description: ''}]|
 
 #### 返回示例：
@@ -958,7 +959,7 @@ POST
 |specs      |Y       |array   | 规格： [{specs: '默认',packing_fee: 0,price: 20,}]|
 |description      |N       |string   |描述 |
 |activity      |N      |string   |活动 |
-|attributes      |N       |array   |特点：[{value: '新',label: '新品'}] |
+|attributes      |N       |array   |特点：['新', '招牌'] |
 
 #### 返回示例：
 
@@ -2857,9 +2858,9 @@ POST
 |name      |Y       |string   | 食品名称 |
 |description      |N      |string   | 食品介绍 |
 |image_path      |Y       |string   |店铺图片地址 |
-|restaurant_id      |Y       |int   | 餐馆id |
-|category_id      |Y       |int   | 食品分类id |
-|specfoods      |Y       |array   | 规格： [{specs: '默认',packing_fee: 0,price: 20,}]|
+|category_id      |Y       |int   | 原有食品分类id |
+|new_category_id      |Y       |int   | 新的食品分类id |
+|specs      |Y       |array   | 规格： [{specs: '默认',packing_fee: 0,price: 20,}]|
 
 #### 返回示例：
 
@@ -3104,5 +3105,91 @@ GET
 {
   status: 1,
   count: 1
+}
+```
+
+### 62、通过user_id获取用户信息
+
+#### 请求URL：
+```
+https://elm.cangdu.org/v1/user/:user_id
+```
+
+#### 示例：
+[https://elm.cangdu.org/v1/user/1](https://elm.cangdu.org/v1/user/1)
+
+#### 请求方式：
+```
+GET
+```
+
+#### 参数类型：param
+
+|参数|是否必选|类型|说明|
+|:-----|:-------:|:-----|:-----|
+|user_id      |Y       |int  | 用户id |
+
+
+#### 返回示例：
+
+```javascript
+{
+  avatar: "168a92d1e8126673.jpg",
+  balance: 0,
+  brand_member_new: 0,
+  city: "广州",
+  column_desc: {
+    game_desc: "玩游戏领红包",
+    game_image_hash: "05f108ca4e0c543488799f0c7c708cb1jpeg",
+    game_is_show: 1,
+    game_link: "https://gamecenter.faas.ele.me",
+    gift_mall_desc: "0元好物在这里"
+  },
+  current_address_id: 0,
+  current_invoice_id: 0,
+  delivery_card_expire_days: 0,
+  email: "",
+  gift_amount: 3,
+  id: 1,
+  is_active: 1,
+  is_email_valid: false,
+  is_mobile_valid: true,
+  mobile: "",
+  point: 0,
+  registe_time: "2017-12-02 21:48",
+  user_id: 1,
+  username: "jiweih",
+  __v: 0
+}
+```
+
+### 63、管理员更换头像
+
+#### 请求URL：
+```
+https://elm.cangdu.org/admin/update/avatar/:id
+```
+
+#### 示例：
+
+
+#### 请求方式：
+```
+POST
+```
+
+#### 参数类型：param
+
+|参数|是否必选|类型|说明|
+|:-----|:-------:|:-----|:-----|
+|id      |Y       |int  | 管理员id |
+
+
+#### 返回示例：
+
+```javascript
+{
+  image_path: "1696c81f08328615.jpg",
+  status: 1
 }
 ```
