@@ -77,7 +77,7 @@ class Statis {
 			return
 		}
 		try{
-			const count = await UserInfoModel.find({registe_time: eval('/^' + date + '/gi')}).count()
+			const count = await UserInfoModel.find({registe_time: new RegExp(`^${date}`, 'gi')}).count()
 			res.send({
 				status: 1,
 				count,
@@ -103,7 +103,7 @@ class Statis {
 			return
 		}
 		try{
-			const count = await AdminModel.find({create_time: eval('/^' + date + '/gi')}).count()
+			const count = await AdminModel.find({create_time: new RegExp(`^${date}`, 'gi')}).count()
 			res.send({
 				status: 1,
 				count,
@@ -129,7 +129,7 @@ class Statis {
 			return
 		}
 		try{
-			const count = await OrderModel.find({formatted_created_at: eval('/^' + date + '/gi')}).count()
+			const count = await OrderModel.find({formatted_created_at: new RegExp(`^${date}`, 'gi')}).count()
 			res.send({
 				status: 1,
 				count,

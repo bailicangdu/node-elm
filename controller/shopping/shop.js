@@ -320,7 +320,7 @@ class Shop extends AddressComponent{
 		}
 		
 		try{
-			const restaurants = await ShopModel.find({name: eval('/' + keyword + '/gi')}, '-_id').limit(50);
+			const restaurants = await ShopModel.find({name: new RegExp(String(keyword), 'gi')}, '-_id').limit(50);
 			if (restaurants.length) {
 				const [latitude, longitude] = geohash.split(',');
 				const from = latitude + ',' + longitude;
